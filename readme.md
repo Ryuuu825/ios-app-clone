@@ -8,5 +8,7 @@ I am trying to clone some IOS application to learn how to build IOS application.
 
   1. Call 師傅
 
-  ![call cfu](./assets/callcfu/home1.png) ![call cfu](./assets/callcfu/home2.png)
+  <image src="./assets/callcfu/home1.png" width="300px" />
+  <image src="./assets/callcfu/home2.png" width="300px" />
+
   
