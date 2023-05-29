@@ -60,7 +60,6 @@ struct HomePage: View {
                             .padding(10)
                     }
                     .background( Color(red: 1, green: 0.5882030129, blue: 0.0004810865503).ignoresSafeArea(.all) )
-                 
 
                     ScrollView( showsIndicators: false ) {
                         
@@ -148,11 +147,11 @@ struct HomePage: View {
                         }
    
                     }
-                    .ignoresSafeArea()
+                    .frame(height: proxy.size.height * 0.9)
                     .frame(maxWidth: .infinity)
                 }
-                
             }
+            .ignoresSafeArea( edges: .horizontal )
         }
         
     }
