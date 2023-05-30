@@ -18,6 +18,8 @@
 		4245620F2A21C3CE002B454A /* UserFeedBackAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245620E2A21C3CE002B454A /* UserFeedBackAPIManager.swift */; };
 		424562112A21C64A002B454A /* NewsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424562102A21C64A002B454A /* NewsAPIManager.swift */; };
 		424562132A21C65E002B454A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424562122A21C65E002B454A /* Response.swift */; };
+		42F3BC182A25A8B5002161DB /* String+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F3BC172A25A8B5002161DB /* String+View.swift */; };
+		42F3BC1B2A25AC5C002161DB /* LatestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F3BC1A2A25AC5C002161DB /* LatestInfo.swift */; };
 		42FAD5082A246C0500CFC092 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAD5072A246C0500CFC092 /* AppEntry.swift */; };
 		42FAD50A2A246FF600CFC092 /* OrderRecordsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAD5092A246FF600CFC092 /* OrderRecordsPage.swift */; };
 		42FAD50D2A24819D00CFC092 /* MessagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAD50C2A24819D00CFC092 /* MessagePage.swift */; };
@@ -38,6 +40,8 @@
 		4245620E2A21C3CE002B454A /* UserFeedBackAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedBackAPIManager.swift; sourceTree = "<group>"; };
 		424562102A21C64A002B454A /* NewsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIManager.swift; sourceTree = "<group>"; };
 		424562122A21C65E002B454A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		42F3BC172A25A8B5002161DB /* String+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+View.swift"; sourceTree = "<group>"; };
+		42F3BC1A2A25AC5C002161DB /* LatestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestInfo.swift; sourceTree = "<group>"; };
 		42FAD5072A246C0500CFC092 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		42FAD5092A246FF600CFC092 /* OrderRecordsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRecordsPage.swift; sourceTree = "<group>"; };
 		42FAD50C2A24819D00CFC092 /* MessagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePage.swift; sourceTree = "<group>"; };
@@ -100,6 +104,7 @@
 				421365432A20B33800820602 /* Color+.swift */,
 				421365452A20BDD300820602 /* Image+.swift */,
 				421365472A20C3C000820602 /* View+.swift */,
+				42F3BC172A25A8B5002161DB /* String+View.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -115,9 +120,18 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		42F3BC192A25AC40002161DB /* Settings+ */ = {
+			isa = PBXGroup;
+			children = (
+				42F3BC1A2A25AC5C002161DB /* LatestInfo.swift */,
+			);
+			path = "Settings+";
+			sourceTree = "<group>";
+		};
 		42FAD50B2A24817700CFC092 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				42F3BC192A25AC40002161DB /* Settings+ */,
 				421365362A20AA5700820602 /* HomePage.swift */,
 				42FAD5092A246FF600CFC092 /* OrderRecordsPage.swift */,
 				42FAD50C2A24819D00CFC092 /* MessagePage.swift */,
@@ -201,12 +215,14 @@
 				42FAD5112A24A94400CFC092 /* SettingPage.swift in Sources */,
 				424562112A21C64A002B454A /* NewsAPIManager.swift in Sources */,
 				42FAD50D2A24819D00CFC092 /* MessagePage.swift in Sources */,
+				42F3BC1B2A25AC5C002161DB /* LatestInfo.swift in Sources */,
 				42FAD50A2A246FF600CFC092 /* OrderRecordsPage.swift in Sources */,
 				42FAD5082A246C0500CFC092 /* AppEntry.swift in Sources */,
 				421365462A20BDD300820602 /* Image+.swift in Sources */,
 				421365442A20B33800820602 /* Color+.swift in Sources */,
 				424562132A21C65E002B454A /* Response.swift in Sources */,
 				421365482A20C3C000820602 /* View+.swift in Sources */,
+				42F3BC182A25A8B5002161DB /* String+View.swift in Sources */,
 				4245620F2A21C3CE002B454A /* UserFeedBackAPIManager.swift in Sources */,
 				4245620A2A21AC83002B454A /* ServiceAPIManager.swift in Sources */,
 				421365352A20AA5700820602 /* CallCFuApp.swift in Sources */,
