@@ -18,6 +18,7 @@
 		4245620F2A21C3CE002B454A /* UserFeedBackAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4245620E2A21C3CE002B454A /* UserFeedBackAPIManager.swift */; };
 		424562112A21C64A002B454A /* NewsAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424562102A21C64A002B454A /* NewsAPIManager.swift */; };
 		424562132A21C65E002B454A /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424562122A21C65E002B454A /* Response.swift */; };
+		424EB0FD2A260A2D0085944A /* SelectedMainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424EB0FC2A260A2D0085944A /* SelectedMainService.swift */; };
 		42F3BC182A25A8B5002161DB /* String+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F3BC172A25A8B5002161DB /* String+View.swift */; };
 		42F3BC1B2A25AC5C002161DB /* LatestInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F3BC1A2A25AC5C002161DB /* LatestInfo.swift */; };
 		42F3BC1D2A25B563002161DB /* FAQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F3BC1C2A25B563002161DB /* FAQ.swift */; };
@@ -47,6 +48,7 @@
 		4245620E2A21C3CE002B454A /* UserFeedBackAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedBackAPIManager.swift; sourceTree = "<group>"; };
 		424562102A21C64A002B454A /* NewsAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAPIManager.swift; sourceTree = "<group>"; };
 		424562122A21C65E002B454A /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		424EB0FC2A260A2D0085944A /* SelectedMainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMainService.swift; sourceTree = "<group>"; };
 		42F3BC172A25A8B5002161DB /* String+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+View.swift"; sourceTree = "<group>"; };
 		42F3BC1A2A25AC5C002161DB /* LatestInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestInfo.swift; sourceTree = "<group>"; };
 		42F3BC1C2A25B563002161DB /* FAQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQ.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				42F3BC292A25CEA0002161DB /* SelectedServicePage.swift */,
+				424EB0FC2A260A2D0085944A /* SelectedMainService.swift */,
 			);
 			path = SelectedService;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 				42F3BC182A25A8B5002161DB /* String+View.swift in Sources */,
 				42F3BC212A25C04D002161DB /* PrivacyPolicy.swift in Sources */,
 				42F3BC232A25C182002161DB /* Aboutus.swift in Sources */,
+				424EB0FD2A260A2D0085944A /* SelectedMainService.swift in Sources */,
 				4245620F2A21C3CE002B454A /* UserFeedBackAPIManager.swift in Sources */,
 				4245620A2A21AC83002B454A /* ServiceAPIManager.swift in Sources */,
 				421365352A20AA5700820602 /* CallCFuApp.swift in Sources */,

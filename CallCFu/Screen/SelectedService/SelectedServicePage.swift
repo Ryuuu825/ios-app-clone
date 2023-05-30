@@ -20,7 +20,10 @@ struct SelectedServicePage: View {
     @State var imageSelection : PhotosPickerItem?
     @State private var selectedImageData: Data? = nil
     
-    @State private var shouldOpenRecordingSheet = true
+    @State var imageSelection2 : PhotosPickerItem?
+    @State private var selectedImageData2: Data? = nil
+
+    @State private var shouldOpenRecordingSheet = false
     
     @State private var audioRecorder : AVAudioRecorder?
     @State private var isRecording : Bool = false
@@ -258,8 +261,35 @@ struct SelectedServicePage: View {
                     
                     FormGroup {
                         HStack {
-                            ForEach(0..<3) { _ in
-                                PhotosPicker(selection: $imageSelection , matching: .images) {
+                            
+                            PhotosPicker(selection: $imageSelection , matching: .images) {
+                                if let selectedImageData , let uiImage = UIImage(data: selectedImageData) {
+                                    Image(uiImage: uiImage)
+                                        .resizable()
+                                        .padding(6)
+                                        .frame(width: 55 , height: 50)
+                                    
+                                } else {
+                                    Image(systemName: "photo" )
+                                        .resizable()
+                                        .padding(6)
+                                        .frame(width: 55 , height: 50)
+                                        
+                                }
+                                
+                            }
+                            .onChange(of: imageSelection) { newValue in
+                                
+                                Task {
+                                    if let data = try? await newValue?.loadTransferable(type: Data.self) {
+                                        selectedImageData = data
+                                    }
+                                }
+                                
+                            }
+                            
+                            ForEach(0..<2) { _ in
+                                PhotosPicker(selection: $imageSelection2 , matching: .images) {
                                     if let selectedImageData , let uiImage = UIImage(data: selectedImageData) {
                                         Image(uiImage: uiImage)
                                             .resizable()
@@ -275,11 +305,11 @@ struct SelectedServicePage: View {
                                     }
                                     
                                 }
-                                .onChange(of: imageSelection) { newValue in
+                                .onChange(of: imageSelection2) { newValue in
                                     
                                     Task {
                                         if let data = try? await newValue?.loadTransferable(type: Data.self) {
-                                            selectedImageData = data
+                                            selectedImageData2 = data
                                         }
                                     }
                                     

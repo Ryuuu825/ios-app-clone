@@ -15,35 +15,37 @@ struct Option: View {
     
     var body: some View {
         GeometryReader { proxy in
-            MyNavigationView(title: "取回記錄" , isRoot: false) {
+            MyNavigationView(title: "意思／查詢" , isRoot: false) {
                
-                TextField( "稱呼" ,  text: $name )
-                    .padding(.leading )
-                    .frame(width: .infinity , height: 30)
-                    .background(Color(red: 0.9568627477, green: 0.9568627477, blue: 0.9568627477))
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal)
-                
-                TextField( "電郵地址" ,  text: $name )
-                    .padding(.leading )
-                    .frame(width: .infinity , height: 30)
-                    .background(Color(red: 0.9568627477, green: 0.9568627477, blue: 0.9568627477))
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal)
-                
-                TextField( "電話號碼" ,  text: $name )
-                    .padding(.leading )
-                    .frame(width: .infinity , height: 30)
-                    .background(Color(red: 0.9568627477, green: 0.9568627477, blue: 0.9568627477))
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal)
-                
-                TextField( "內容" ,  text: $name )
-                    .padding(.leading )
-                    .frame(width: .infinity , height: 250)
-                    .background(Color(red: 0.9568627477, green: 0.9568627477, blue: 0.9568627477))
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal)
+                VStack {
+                    TextField( "稱呼" ,  text: $name )
+                        .padding(.leading )
+                        .frame(width: .infinity , height: 30)
+                        .background(Color(red: 0.9568627477, green: 0.9568627477, blue: 0.9568627477))
+                        .multilineTextAlignment(.leading)
+                        .padding(.horizontal)
+                    
+                    TextField( "電郵地址" ,  text: $name )
+                        .padding(.leading )
+                        .frame(width: .infinity , height: 30)
+                        .background(Color(red: 0.9568627477, green: 0.9568627477, blue: 0.9568627477))
+                        .multilineTextAlignment(.leading)
+                        .padding(.horizontal)
+                    
+                    TextField( "電話號碼" ,  text: $name )
+                        .padding(.leading )
+                        .frame(width: .infinity , height: 30)
+                        .background(Color(red: 0.9568627477, green: 0.9568627477, blue: 0.9568627477))
+                        .multilineTextAlignment(.leading)
+                        .padding(.horizontal)
+                    
+                    TextField( "內容" ,  text: $name )
+                        .padding(.leading )
+                        .frame(width: .infinity , height: 250)
+                        .background(Color(red: 0.9568627477, green: 0.9568627477, blue: 0.9568627477))
+                        .multilineTextAlignment(.leading)
+                        .padding(.horizontal)
+                }
                 
                 Button {} label: {
                     Text("送出")

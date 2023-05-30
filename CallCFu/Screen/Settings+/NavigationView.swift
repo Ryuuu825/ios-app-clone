@@ -24,7 +24,7 @@ struct MyNavigationView<Content: View>: View {
     var body: some View {
         NavigationStack {
             
-            VStack {
+            VStack ( spacing: 0 ) {
                 Text(title)
                     .foregroundColor(.white)
                     .bold()
@@ -36,13 +36,19 @@ struct MyNavigationView<Content: View>: View {
             
                 content
                     .offset(y : isRoot ? 0 : -15 )
+                    .padding(.top , isRoot ? 15 : 0 )
+                    .background(bgColor)
+                    
+                
             
                 Spacer()
             }
-            .frame(maxWidth: .infinity , maxHeight: .infinity)
-            .background(bgColor)
             
+            .frame(maxWidth: .infinity , maxHeight: .infinity)
+            .background(isRoot ? Color.white : bgColor)
+     
         }
+        .background(Color.white)
     }
 }
 

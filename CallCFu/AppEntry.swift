@@ -26,15 +26,15 @@ extension Tab {
     private var tabLabel: some View {
         switch self {
             case .Home:
-                return Label("Home", systemImage: "house")
+                return Label("", image: "tab1")
             case .Order:
-                return Label("Home", systemImage: "house")
+                return Label("", image: "tab2")
             case .Message:
-                return Label("Home", systemImage: "house")
+                return Label("", image: "tab3")
             case .MyCFu:
-                return Label("Home", systemImage: "house")
-        case .Setting:
-            return Label("Setting", systemImage: "house")
+                return Label("", image: "tab4")
+            case .Setting:
+                return Label("", image: "tab5")
            
         }
     }
@@ -45,6 +45,7 @@ extension Tab {
             .tabItem {
                 tabLabel
             }
+            .background(Color.white)
     }
 }
 

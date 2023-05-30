@@ -163,7 +163,7 @@ struct HomePage: View {
     @ViewBuilder func serviceTypeTab(_ title : String , color : Color , @ViewBuilder  content : @escaping () -> some View ) -> some View {
         VStack {
             
-            NavigationLink(destination: Text("abc"), label: {
+            NavigationLink(destination: SelectedMainService() , label: {
                 content()
             })
             
@@ -175,7 +175,7 @@ struct HomePage: View {
     @ViewBuilder func subServiceTypeTab(_ title : String  , @ViewBuilder  content : @escaping () -> some View ) -> some View {
         VStack {
             
-            NavigationLink(destination: SelectedServicePage(title:"dfsf" ) , label: {
+            NavigationLink(destination: SelectedServicePage(title: title ) , label: {
                 content()
             })
             

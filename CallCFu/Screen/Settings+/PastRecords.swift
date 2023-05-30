@@ -60,6 +60,8 @@ struct PastRecords: View {
                 .clipped()
                 .padding()
                 
+                Spacer()
+                
             }
         }
     }

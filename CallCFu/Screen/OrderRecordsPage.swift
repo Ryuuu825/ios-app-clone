@@ -14,7 +14,7 @@ enum OrderRecordsPagesTab : String , View , CaseIterable{
         switch self {
             case .posting: Text("系統正在為您配對師傅，柯打張貼期為72小時，閣下的聯絡資料只提供給有興趣報價的1-5位師傅").lineLimit(2...3)
             case .inaction: Text("柯打已完成張貼程序，正在聯絡商議或安排工作中。")
-            case .records: Text("柯打已經完工、被取消或末能配對，有關記錄將保存180日。").lineLimit(2...3)
+            case .records: Text("柯打已經完工、被取消或末能配對，有關記錄將保存180日。")
         }
     }
 }
@@ -40,79 +40,80 @@ struct OrderRecordsPage: View {
 
     
     var body: some View {
-        MyNavigationView(title: "柯打紀錄" , bgColor: Color(red: 0.9176469445, green: 0.9137256742, blue: 0.9372537136) ) {
-            GeometryReader { proxy in
-                VStack {
+        GeometryReader { proxy in
+            MyNavigationView(title: "柯打紀錄" , bgColor: Color(red: 0.9176469445, green: 0.9137256742, blue: 0.9372537136) ) {
+          
+                    VStack {
+                        
+                       
+                        HStack {
+                            
+                            Button {
+                                tab = .posting
+                            } label: {
+                                Spacer()
+                                Text("張貼中")
+                                Spacer()
+                            }
+                            .frame(height: 40)
+                            .foregroundColor(tab == .posting ? Color.white : Color.blue)
+                            .background(tab == .posting ? Color.blue : Color.clear)
+                            
+                            Button {
+                                tab = .inaction
+                            } label: {
+                                Spacer()
+                                Text("進行中")
+                                Spacer()
+                            }
+                            .frame(height: 40)
+                            .foregroundColor(tab == .inaction ? Color.white : Color.blue)
+                            .background(tab == .inaction ? Color.blue : Color.clear)
+                            
+                            Button{
+                                tab = .records
+                            } label: {
+                                Spacer()
+                                Text("紀錄")
+                                Spacer()
+                            }
+                            .frame(height: 40)
+                            .foregroundColor(tab == .records ? Color.white : Color.blue)
+                            .background(tab == .records ? Color.blue : Color.clear)
                     
-                   
-                    HStack {
-                        
-                        Button {
-                            tab = .posting
-                        } label: {
-                            Spacer()
-                            Text("張貼中")
-                            Spacer()
                         }
-                        .frame(height: 40)
-                        .foregroundColor(tab == .posting ? Color.white : Color.blue)
-                        .background(tab == .posting ? Color.blue : Color.clear)
+                        .frame(width: proxy.size.width - 20 )
+                        .border(Color.blue)
+                        .padding(.horizontal , 10)
                         
-                        Button {
-                            tab = .inaction
-                        } label: {
-                            Spacer()
-                            Text("進行中")
-                            Spacer()
-                        }
-                        .frame(height: 40)
-                        .foregroundColor(tab == .inaction ? Color.white : Color.blue)
-                        .background(tab == .inaction ? Color.blue : Color.clear)
-                        
-                        Button{
-                            tab = .records
-                        } label: {
-                            Spacer()
-                            Text("紀錄")
-                            Spacer()
-                        }
-                        .frame(height: 40)
-                        .foregroundColor(tab == .records ? Color.white : Color.blue)
-                        .background(tab == .records ? Color.blue : Color.clear)
-                
-                    }
-                    .frame(width: proxy.size.width - 20 )
-                    .border(Color.blue)
-                    .padding(.horizontal , 10)
-                    
-                    tab
-                        .textBox(width: proxy.size.width - 20 )
-                        
-                        
+                        tab
+                            .textBox(width: proxy.size.width - 20 )
+                            
+                            
 
-                    Image("cfu")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: proxy.size.width * 0.6 , height:  proxy.size.width * 0.6)
-                    
-                    Group {
-                        Text("暫末有紀錄！")
-                            .font(.title2)
+                        Image("cfu")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: proxy.size.width * 0.6 , height:  proxy.size.width * 0.6)
                         
-                        Text("立即使用Call師傅體驗專業裝修維修服務")
-                            .font(.body)
-                            .padding(.top, 10)
+                        Group {
+                            Text("暫末有紀錄！")
+                                .font(.title2)
+                            
+                            Text("立即使用Call師傅體驗專業裝修維修服務")
+                                .font(.body)
+                                .padding(.top, 10)
+                            
+                        }
+                        .foregroundColor(Color(red: 0.4666665792, green: 0.4666667581, blue: 0.4705880284))
+                        
+                        Spacer().layoutPriority(12)
                         
                     }
-                    .foregroundColor(Color(red: 0.4666665792, green: 0.4666667581, blue: 0.4705880284))
+                    .frame(  width: .infinity , height: .infinity )
                     
-                    Spacer().layoutPriority(12)
-                    
-                }
-                .frame(  width: .infinity , height: .infinity )
-                
+            
             }
-            .ignoresSafeArea(edges: .horizontal)
         }
     }
 }
