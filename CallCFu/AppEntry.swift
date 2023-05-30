@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Tab : String, View , CaseIterable , Identifiable {
-    case Home, Order, Message, MyCFu
+    case Home, Order, Message, MyCFu, Setting
 }
 
 extension Tab {
@@ -19,6 +19,7 @@ extension Tab {
             case .Order: OrderRecordsPage()
             case .Message: MessagePage()
             case .MyCFu: MyCFuPage()
+            case .Setting: SettingPage()
         }
     }
     
@@ -32,6 +33,8 @@ extension Tab {
                 return Label("Home", systemImage: "house")
             case .MyCFu:
                 return Label("Home", systemImage: "house")
+        case .Setting:
+            return Label("Setting", systemImage: "house")
            
         }
     }

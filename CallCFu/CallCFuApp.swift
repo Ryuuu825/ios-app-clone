@@ -11,7 +11,7 @@ import SwiftUI
 struct CallCFuApp: App {
     var body: some Scene {
         WindowGroup {
-            HomePage()
+            AppEntry()
         }
     }
 }

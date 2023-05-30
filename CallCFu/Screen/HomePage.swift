@@ -46,110 +46,98 @@ struct HomePage: View {
    
     
     var body: some View {
-        NavigationStack {
+        MyNavigationView(title:"選擇所需服務" ) {
             GeometryReader { proxy in
 
-                VStack {
+                ScrollView( showsIndicators: false ) {
                     
-                    VStack {
-                        Text("選擇所需服務")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .bold()
-                            .frame(maxWidth: .infinity)
-                            .padding(10)
+                    group("Main Service") {
+                        LazyVGrid( columns: Array(repeating: GridItem(.flexible()), count: 3 ) , spacing: 5 ) {
+                            
+                            ForEach(0..<mainService.count) { index in
+                                serviceTypeTab(mainService[index].name , color: Self.colors[index] ) {
+                                    Image(mainService[index].icon)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: .infinity , height: 90 )
+                                }
+                            }
+                            
+                        }
+                        .padding()
                     }
-                    .background( Color(red: 1, green: 0.5882030129, blue: 0.0004810865503).ignoresSafeArea(.all) )
-
-                    ScrollView( showsIndicators: false ) {
-                        
-                        group("Main Service") {
-                            LazyVGrid( columns: Array(repeating: GridItem(.flexible()), count: 3 ) , spacing: 5 ) {
-                                
-                                ForEach(0..<mainService.count) { index in
-                                    serviceTypeTab(mainService[index].name , color: Self.colors[index] ) {
-                                        Image(mainService[index].icon)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: .infinity , height: 90 )
-                                    }
-                                }
-                                
-                            }
-                            .padding()
-                        }
 
 
-                        group("recommend service / sub service ") {
-                            Text("推介服務")
-                                .foregroundColor(.secondaryLabel)
-                                
+                    group("recommend service / sub service ") {
+                        Text("推介服務")
+                            .foregroundColor(.secondaryLabel)
                             
-                            LazyVGrid( columns: Array(repeating: GridItem(.flexible()), count: 4 ) , spacing: 15 ) {
-                                
-                                ForEach(0..<subService.count) { index in
-                                    subServiceTypeTab(subService[index].name) {
-                                        Image(subService[index].icon)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: .infinity , height: 72 )
-                                    }
-                                }
-                                
-                            }
-                            .padding()
-                        }
-
                         
-                        
-                        group("some stat") {
-                            HStack {
-                                Group {
-                                    stat("註冊師傅")
-                                    
-                                    stat("配對柯圢")
-       
-                                }
-                                .frame(width: proxy.size.width * 0.47 )
-                                .background(Color.systemBackground)
-                                
-                            }
-                            .marginY(12)
-                            .frame(maxWidth: .infinity)
-                            .background(Color.secondarySystemBackground)
-                        }
-                        
-                        
-                        
-                        group("user feedback") {
-                            ScrollView(.horizontal , showsIndicators: false ) {
-                                LazyHStack {
-                                    ForEach(userFeedback) { feedback in
-                                        userFeedbackBox(feedback, w: proxy.size.width * 0.45 )
-                                    }
-                                }
-                            }
-                            .padding(.horizontal , 10 )
-                        }
-                        
-                        
-                        group("News") {
+                        LazyVGrid( columns: Array(repeating: GridItem(.flexible()), count: 4 ) , spacing: 15 ) {
                             
-                               VStack {
-                                   ForEach(news) { new in
-                                       newsRow(new , imageW: proxy.size.width * 0.33 )
-                                   }
-                               }
-                               .padding(.vertical , 10)
-                               .padding(.horizontal , 10)
-                               .padding(.bottom , 20)
-                               .background(Color.secondarySystemBackground)
+                            ForEach(0..<subService.count) { index in
+                                subServiceTypeTab(subService[index].name) {
+                                    Image(subService[index].icon)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: .infinity , height: 72 )
+                                }
+                            }
+                            
                         }
+                        .padding()
+                    }
+
+                    
+                    
+                    group("some stat") {
+                        HStack {
+                            Group {
+                                stat("註冊師傅")
+                                
+                                stat("配對柯圢")
    
+                            }
+                            .frame(width: proxy.size.width * 0.47 )
+                            .background(Color.systemBackground)
+                            
+                        }
+                        .marginY(12)
+                        .frame(maxWidth: .infinity)
+                        .background(Color.secondarySystemBackground)
                     }
-                    .frame(height: proxy.size.height * 0.9)
-                    .frame(maxWidth: .infinity)
+                    
+                    
+                    
+                    group("user feedback") {
+                        ScrollView(.horizontal , showsIndicators: false ) {
+                            LazyHStack {
+                                ForEach(userFeedback) { feedback in
+                                    userFeedbackBox(feedback, w: proxy.size.width * 0.45 )
+                                }
+                            }
+                        }
+                        .padding(.horizontal , 10 )
+                    }
+                    
+                    
+                    group("News") {
+                        
+                           VStack {
+                               ForEach(news) { new in
+                                   newsRow(new , imageW: proxy.size.width * 0.33 )
+                               }
+                           }
+                           .padding(.vertical , 10)
+                           .padding(.horizontal , 10)
+                           .padding(.bottom , 20)
+                           .background(Color.secondarySystemBackground)
+                    }
+
                 }
+                
+                .frame(maxWidth: .infinity)
+                
             }
             .ignoresSafeArea( edges: .horizontal )
         }

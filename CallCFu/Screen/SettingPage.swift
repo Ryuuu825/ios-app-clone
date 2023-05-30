@@ -11,7 +11,7 @@ fileprivate enum SystemLanguage: String , CaseIterable , Identifiable {
     case Chinese = "中文" , English = "Eng"
     
     var id : Self { self }
-    
+
 }
 
 struct SettingPage: View {
@@ -31,6 +31,7 @@ struct SettingPage: View {
                             .padding(10)
                     }
                     .background( Color(red: 1, green: 0.5882030129, blue: 0.0004810865503).ignoresSafeArea(.all) )
+                    
                     
                     Form {
                         Section("語言") {
@@ -52,50 +53,75 @@ struct SettingPage: View {
                         
                         
                         Section("資訊") {
-                            NavigationLink(destination: Text("sdf")) {
-                                Text("最新通知")
+                            NavigationLink(destination: LatestInfo() ) {
+                                "最新通知"
                             }
                             
-                            NavigationLink(destination: Text("sdf")) {
+                            NavigationLink(destination: FAQ() ) {
                                 Text("常見問題")
                             }
                             
-                            NavigationLink(destination: Text("sdf")) {
+                            NavigationLink(destination: PrivacyPolicy() ) {
                                 Text("私隱政策")
                             }
                             
-                            NavigationLink(destination: Text("sdf")) {
+                            NavigationLink(destination: Aboutus() ) {
                                 "關於我們"
                             }
                         }
                         
                         
                         Section("其他") {
-                            NavigationLink(destination: "sdf" ) {
+                            NavigationLink(destination: PastRecords() ) {
                                 Text("連結過往柯打及對話記錄")
                             }
                             
-                            NavigationLink(destination: Text("sdf")) {
+                            NavigationLink(destination: Option() ) {
                                 Text("意見及查詢")
                             }
                             
-                            NavigationLink(destination: Text("sdf")) {
-                                Text("給倜好評吧")
-                            }
+                            Link(destination: URL(string: "https://github.com/Ryuuu825/ios-app-clone")! , label: {
+                                HStack {
+                                    Text("給倜好評吧")
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
+                            }).foregroundColor(.label)
                             
-                            NavigationLink(destination: Text("sdf")) {
-                                Text("給Call 師傅打賞支持")
-                            }
+                            Link(destination: URL(string: "https://github.com/Ryuuu825/ios-app-clone")! , label: {
+                                HStack {
+                                    Text("給Call 師傅打賞支持")
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
+                            }).foregroundColor(.label)
                             
-                            NavigationLink(destination: Text("sdf")) {
-                                Text("下載 \"Call師傳 - 師傳版\"")
-                            }
+                            
+                            Link(destination: URL(string: "https://github.com/Ryuuu825/ios-app-clone")! , label: {
+                                HStack {
+                                    Text("下載 \"Call師傳 - 師傳版\"")
+                                    
+                                    Spacer()
+                                    
+                                    Image(systemName: "chevron.right")
+                                        .font(.footnote)
+                                        .foregroundColor(.gray)
+                                }
+                            }).foregroundColor(.label)
+                            
                         }
                         
                         
                         
                     }
-                    
                 }
                 .background(Color(red: 0.9176469445, green: 0.9137256742, blue: 0.9372537136))
             }
