@@ -29,25 +29,29 @@ struct MyNavigationView<Content: View>: View {
                     .foregroundColor(.white)
                     .bold()
                     .padding(.bottom , 15 )
+                    .padding(.top , isRoot ? 10 : 0 )
                     .frame(maxWidth: .infinity, minHeight: 20 )
                     .background( Color(red: 1, green: 0.5882030129, blue: 0.0004810865503).ignoresSafeArea(edges: [.top]) )
                     .offset(y : isRoot ? 0 : -35 )
             
                 content
+                    .offset(y : isRoot ? 0 : -15 )
             
                 Spacer()
             }
+            .frame(maxWidth: .infinity , maxHeight: .infinity)
             .background(bgColor)
             
         }
-        .navigationTitle( isRoot ? title : "" )
     }
 }
 
 struct NavigationView_Previews: PreviewProvider {
     static var previews: some View {
         MyNavigationView(title: "sdfskdjf") {
-            Text("ksudf")
+            VStack {
+                Color.gray
+            }
         }
     }
 }

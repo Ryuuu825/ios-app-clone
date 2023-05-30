@@ -26,6 +26,7 @@
 		42F3BC232A25C182002161DB /* Aboutus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F3BC222A25C182002161DB /* Aboutus.swift */; };
 		42F3BC252A25C30A002161DB /* PastRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F3BC242A25C30A002161DB /* PastRecords.swift */; };
 		42F3BC272A25C618002161DB /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F3BC262A25C618002161DB /* Option.swift */; };
+		42F3BC2A2A25CEA0002161DB /* SelectedServicePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F3BC292A25CEA0002161DB /* SelectedServicePage.swift */; };
 		42FAD5082A246C0500CFC092 /* AppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAD5072A246C0500CFC092 /* AppEntry.swift */; };
 		42FAD50A2A246FF600CFC092 /* OrderRecordsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAD5092A246FF600CFC092 /* OrderRecordsPage.swift */; };
 		42FAD50D2A24819D00CFC092 /* MessagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42FAD50C2A24819D00CFC092 /* MessagePage.swift */; };
@@ -54,6 +55,7 @@
 		42F3BC222A25C182002161DB /* Aboutus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aboutus.swift; sourceTree = "<group>"; };
 		42F3BC242A25C30A002161DB /* PastRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastRecords.swift; sourceTree = "<group>"; };
 		42F3BC262A25C618002161DB /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		42F3BC292A25CEA0002161DB /* SelectedServicePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedServicePage.swift; sourceTree = "<group>"; };
 		42FAD5072A246C0500CFC092 /* AppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEntry.swift; sourceTree = "<group>"; };
 		42FAD5092A246FF600CFC092 /* OrderRecordsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRecordsPage.swift; sourceTree = "<group>"; };
 		42FAD50C2A24819D00CFC092 /* MessagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePage.swift; sourceTree = "<group>"; };
@@ -146,9 +148,18 @@
 			path = "Settings+";
 			sourceTree = "<group>";
 		};
+		42F3BC282A25CE8D002161DB /* SelectedService */ = {
+			isa = PBXGroup;
+			children = (
+				42F3BC292A25CEA0002161DB /* SelectedServicePage.swift */,
+			);
+			path = SelectedService;
+			sourceTree = "<group>";
+		};
 		42FAD50B2A24817700CFC092 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				42F3BC282A25CE8D002161DB /* SelectedService */,
 				42F3BC192A25AC40002161DB /* Settings+ */,
 				421365362A20AA5700820602 /* HomePage.swift */,
 				42FAD5092A246FF600CFC092 /* OrderRecordsPage.swift */,
@@ -237,6 +248,7 @@
 				42F3BC1D2A25B563002161DB /* FAQ.swift in Sources */,
 				42F3BC252A25C30A002161DB /* PastRecords.swift in Sources */,
 				42FAD50A2A246FF600CFC092 /* OrderRecordsPage.swift in Sources */,
+				42F3BC2A2A25CEA0002161DB /* SelectedServicePage.swift in Sources */,
 				42FAD5082A246C0500CFC092 /* AppEntry.swift in Sources */,
 				421365462A20BDD300820602 /* Image+.swift in Sources */,
 				421365442A20B33800820602 /* Color+.swift in Sources */,
@@ -382,6 +394,7 @@
 				DEVELOPMENT_TEAM = VW6AF5Z6XL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"asda\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -411,6 +424,7 @@
 				DEVELOPMENT_TEAM = VW6AF5Z6XL;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "\"asda\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

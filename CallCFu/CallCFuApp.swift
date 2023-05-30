@@ -12,6 +12,7 @@ struct CallCFuApp: App {
     var body: some Scene {
         WindowGroup {
             AppEntry()
+                .environment(\.colorScheme, .light)
         }
     }
 }

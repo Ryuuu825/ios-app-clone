@@ -175,7 +175,7 @@ struct HomePage: View {
     @ViewBuilder func subServiceTypeTab(_ title : String  , @ViewBuilder  content : @escaping () -> some View ) -> some View {
         VStack {
             
-            NavigationLink(destination: Text("abc"), label: {
+            NavigationLink(destination: SelectedServicePage(title:"dfsf" ) , label: {
                 content()
             })
             

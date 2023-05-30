@@ -15,7 +15,7 @@ struct Option: View {
     
     var body: some View {
         GeometryReader { proxy in
-            MyNavigationView(title: "取回記錄" , isRoot: false  ) {
+            MyNavigationView(title: "取回記錄" , isRoot: false) {
                
                 TextField( "稱呼" ,  text: $name )
                     .padding(.leading )
