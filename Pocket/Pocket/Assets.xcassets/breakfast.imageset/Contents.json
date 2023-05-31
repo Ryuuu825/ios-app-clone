@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "https___s3.amazonaws.com_pocket-collectionapi-prod-images_088ab246-396f-4c5d-a430-4395221eb958.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
