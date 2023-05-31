@@ -8,8 +8,8 @@ I am trying to clone some IOS application to learn how to build IOS application.
 
 1. Call 師傅 [App Store](https://apps.apple.com/hk/app/call-shi-fu-yong-hu-ban/id943297218?l=zh)
 
-    ![Call 師傅](./assets/callcfu/callcfu.gif)
+    ![Call 師傅](./assets/callcfu/callcfu.gif) 
 
-2. Pocket [App Store](https://apps.apple.com/tw/app/pocket/id309601447)
+2. Pocket [App Store](https://apps.apple.com/tw/app/pocket/id309601447) 
 
     ![Pocket](./assets/pocket/Pocket.gif)
