@@ -31,30 +31,18 @@ struct SavedPage: View {
     
     var body: some View {
         
-        NavigationView {
+        
             
-            VStack {
+            NavigationView { GeometryReader { proxy in
                 
-               
-//                    Picker(selection: $searchTab ) {
-//                        ForEach(SearchTab.allCases) {
-//                            $0
-//                        }
-//                    } label: {
-//                        Text("sdf")
-//                    }
-//                    .pickerStyle(.segmented)
-               
-                
-                    
-                ForEach(savedPost, id:\.id) { post in
-                    GeometryReader { proxy in
-                        
-                        VStack(alignment: .trailing) {
+                VStack {
+       
+                    ForEach(savedPost, id:\.id) { post in
+                        VStack(alignment: .trailing , spacing: 12) {
                             HStack(alignment: .top) {
                                 
                                 VStack(alignment: .leading , spacing: 12) {
-                                    Text(post.title)
+                                    Text(post.title.capitalized)
                                         .fontWeight(.semibold)
                                         .lineLimit(3)
                                     
@@ -74,7 +62,7 @@ struct SavedPage: View {
                                     .font(.footnote)
                                     .foregroundColor(Color(UIColor.secondaryLabel))
                                 }
-                                .frame(maxWidth: proxy.size.width * 0.7)
+                                .frame(maxWidth: proxy.size.width * 0.6 , alignment: .leading)
                                 
                                 Spacer()
                                 
@@ -103,23 +91,20 @@ struct SavedPage: View {
                                 
                             }
                             .font(.callout)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color(UIColor.label))
                             
-                        }.padding(.trailing , 12)
-                        
+                        }
+                        .padding(.trailing , 12)
+                        .padding(.vertical , 4 )
                     }
+                    
                 }
-                
-                Spacer()
-                
-                
-                
+                .padding()
+                .background(Color(UIColor.systemBackground))
+                .navigationTitle("Saves")
+                .navigationBarTitleDisplayMode(.inline)
+                .searchable(text: $searchKeyword )
             }
-            .padding()
-            .background(Color(UIColor.systemBackground))
-            .navigationTitle("Saves")
-            .navigationBarTitleDisplayMode(.inline)
-            .searchable(text: $searchKeyword )
         }
         
         

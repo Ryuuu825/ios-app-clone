@@ -10,7 +10,7 @@ import SwiftUI
 
 
 enum Tab : String , View , CaseIterable, Identifiable {
-    case Home, Test
+    case Home, Saves, Setting
     
     var body: some View {
         
@@ -25,7 +25,8 @@ enum Tab : String , View , CaseIterable, Identifiable {
     var tabItem : some View {
         switch self {
             case .Home : return Label("Home" , systemImage: "house")
-            case .Test : return Label("Saves" , systemImage: "house")
+            case .Saves : return Label("Saves" , systemImage: "bookmark.fill")
+            case .Setting : return Label("Setting" , systemImage: "gearshape")
         }
     }
     
@@ -33,7 +34,8 @@ enum Tab : String , View , CaseIterable, Identifiable {
     @ViewBuilder var tabContent : some View {
         switch self {
             case .Home : HomePage()
-            case .Test : SavedPage()
+            case .Saves : SavedPage()
+            case .Setting : SettingsPage()
         }
     }
     
