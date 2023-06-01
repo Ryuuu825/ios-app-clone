@@ -23,6 +23,76 @@ enum Tab : String , View , CaseIterable {
     }
 }
 
+extension View {
+    @ViewBuilder func TimeBar() -> some View {
+        
+        ZStack {
+            Rectangle()
+                .frame(maxWidth: .infinity )
+                .foregroundColor(Color.gray)
+            
+            GeometryReader { proxy in
+                HStack {
+                    Rectangle()
+                        .frame(maxWidth: proxy.size.width * 0.3)
+                }
+            }
+                
+        }
+        .frame(maxWidth:.infinity , maxHeight: 3 )
+    }
+    
+    @ViewBuilder func PlayBar() -> some View {
+        VStack(spacing: 4) {
+            HStack {
+                Image("giveup-rect")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 40 , height: 40)
+                    .background(Color.white)
+                    .cornerRadius(4)
+                
+                VStack {
+                    Text("Never Gonna Give You Up")
+                        .fontWeight(.semibold)
+                        .frame(maxWidth: .infinity , alignment: .leading)
+
+
+                    Text("Rick Astley")
+                        .frame(maxWidth: .infinity , alignment: .leading)
+                }
+                .frame(maxWidth: .infinity , alignment: .leading)
+                .font(.caption)
+                
+                Spacer()
+                
+                
+                HStack(spacing: 20) {
+                    Image(systemName: "tv.and.hifispeaker.fill")
+                        .foregroundColor(Color(UIColor.secondaryLabel))
+                    
+                    Image(systemName: "play.fill")
+                    
+                }
+                .font(.headline)
+                .padding(.trailing , 12)
+                
+            }
+             
+            
+            TimeBar()
+
+        }
+        .padding(6)
+        .padding(.bottom , -6)
+        .frame(maxWidth: .infinity)
+        .background(Color(red: 0.01055992915, green: 0.0729453993, blue: 0.1143102872))
+        .cornerRadius(8)
+        .padding(.horizontal)
+        
+    }
+}
+
 struct SpotifyAppView: View {
     @State private var tab: Tab = .Home
     
@@ -32,41 +102,7 @@ struct SpotifyAppView: View {
             
             tab
             
-            HStack {
-                Image("yuika-suki")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 40 , height: 40)
-                    .background(Color.white)
-                    .cornerRadius(4)
-                
-                VStack {
-                    Text("好きたから。")
-                        .fontWeight(.medium)
-                    
-                    Text("「ユイカ」")
-                }
-                .font(.caption)
-                
-                Spacer()
-                
-                
-                HStack(spacing: 20) {
-                    Image(systemName: "tv.and.hifispeaker.fill")
-                    
-                    Image(systemName: "play.fill")
-                    
-                }
-                .font(.headline)
-                .padding(.trailing , 12)
-                
-                    
-            }
-            .padding(6)
-            .frame(maxWidth: .infinity)
-            .background(Color(red: 0.1097778752, green: 0.2000038028, blue: 0.2392120361))
-            .cornerRadius(8)
-            .padding(.horizontal)
+            PlayBar()
             
             HStack {
                 ForEach(Tab.allCases, id:\.rawValue) { t in

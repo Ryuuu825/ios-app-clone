@@ -120,10 +120,37 @@ struct HomePage: View {
                     .background(Color(UIColor.secondarySystemBackground))
                     .cornerRadius(4)
                     
+                    HStack {
+                        ZStack {
+                            
+                            LinearGradient(colors: [ Color(red: 0.3019181192, green: 0.09418017417, blue: 0.9489968419)  , Color(red: 0.7568323016, green: 0.9176529646, blue: 0.8588226438) ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                           
+                            Image( systemName: "heart.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 18 , height: 18)
+                            
+                        }.frame(width: 55 , height: 55)
+                            
+                        
+                        Text("お気に入りの曲")
+                            .font(.footnote)
+                            .fontWeight(.medium)
+                        
+                        Spacer()
+                    }
+                    .frame(maxWidth: .infinity)
+                    .background(Color(UIColor.secondarySystemBackground))
+                    .cornerRadius(4)
+                    
                     
                     
                 }
                 .padding(.vertical , 12)
+                
+                
+                
+                
                 
                 section("自分のプレイレスト") {
                     
@@ -136,7 +163,7 @@ struct HomePage: View {
                    
                 }
                 
-                section("自分のプレイレスト") {
+                section("インターネット発音楽力ルチャー") {
                     
                     playlist_2("ヨルシカ" , image: "yorushika")
                     
@@ -163,6 +190,15 @@ struct HomePage: View {
                     
                 }
                 
+                section("あなたのTop Mix") {
+                    
+                    playlist_4( "角卷わため" , desc: "sdf" ,  image: "watame")
+                    
+                   
+                    playlist_4( "ヨルシカ" , desc: "sdf" ,  image: "yorushika")
+                }
+                
+        
                 
                 
                 
@@ -207,7 +243,7 @@ struct HomePage: View {
                 
                 ZStack {
                     Rectangle()
-                        .frame(width: 150, height: 60)
+                        .frame(width: 150, height: 55)
                     
                     VStack {
                         Text("This is")
@@ -257,8 +293,65 @@ struct HomePage: View {
                 .cornerRadius(.infinity)
             
          
-                
+            
+            Text(title)
+                .font(.footnote)
+                .foregroundColor(Color(UIColor.label))
+                .multilineTextAlignment(.leading)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity , alignment: .center)
+                .fontWeight(.medium)
+                .padding(.top , 3)
+        }
+        
+    }
+    
+    
+    @ViewBuilder func playlist_4( _ title : String , desc : String ,  image : String ) -> some View {
+        
+        let colors = [ Color(red: 0.6156104207, green: 0.9372660518, blue: 0.8862698674) , Color(red: 0.9961079955, green: 0.8078332543, blue: 0.8235346079) ]
+        let color = colors.randomElement()
 
+
+        VStack(alignment: .center ) {
+ 
+                    
+                
+            ZStack {
+                
+                Image(image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxWidth: 150 , maxHeight: 150)
+                    .clipped()
+                
+                Color.black.opacity(0.45)
+                
+                Image(systemName: "music.note")
+                    .foregroundColor(.white)
+                    .padding(.bottom , 120)
+                    .padding(.trailing , 120)
+                
+                Text(title + " Mix")
+                    .padding(.top , 100)
+                    .fontWeight(.black)
+                    .font(.system(size: 16 ))
+                    .padding(.trailing , 6)
+                
+                Rectangle()
+                    .frame(maxWidth: .infinity , maxHeight: 5)
+                    .foregroundColor(color)
+                    .padding(.top , 145)
+                
+                
+                Rectangle()
+                    .frame(maxWidth: 6 , maxHeight: 15)
+                    .foregroundColor(color)
+                    .padding(.top , 100)
+                    .padding(.trailing , 144)
+               
+            }
+            
             Text(title)
                 .font(.footnote)
                 .foregroundColor(Color(UIColor.label))
