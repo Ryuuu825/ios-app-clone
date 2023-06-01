@@ -12,6 +12,10 @@
 		42187C672A27580F0017FB7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42187C662A27580F0017FB7C /* Assets.xcassets */; };
 		42187C6A2A27580F0017FB7C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42187C692A27580F0017FB7C /* Preview Assets.xcassets */; };
 		42187C712A2785320017FB7C /* SpotifyAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42187C702A2785320017FB7C /* SpotifyAppView.swift */; };
+		4275EBD02A289C83008976B7 /* Popup+ActivePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBCF2A289C83008976B7 /* Popup+ActivePlay.swift */; };
+		4275EBD22A289D75008976B7 /* MiniPlayBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBD12A289D75008976B7 /* MiniPlayBar.swift */; };
+		4275EBD62A28A0AE008976B7 /* MyLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBD52A28A0AE008976B7 /* MyLibrary.swift */; };
+		4275EBD92A28A213008976B7 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBD82A28A213008976B7 /* Tags.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +25,10 @@
 		42187C662A27580F0017FB7C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42187C692A27580F0017FB7C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42187C702A2785320017FB7C /* SpotifyAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyAppView.swift; sourceTree = "<group>"; };
+		4275EBCF2A289C83008976B7 /* Popup+ActivePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Popup+ActivePlay.swift"; sourceTree = "<group>"; };
+		4275EBD12A289D75008976B7 /* MiniPlayBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayBar.swift; sourceTree = "<group>"; };
+		4275EBD52A28A0AE008976B7 /* MyLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibrary.swift; sourceTree = "<group>"; };
+		4275EBD82A28A213008976B7 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,8 +61,8 @@
 		42187C612A27580D0017FB7C /* Spotify */ = {
 			isa = PBXGroup;
 			children = (
+				4275EBCD2A289C47008976B7 /* Screen */,
 				42187C622A27580D0017FB7C /* SpotifyApp.swift */,
-				42187C642A27580D0017FB7C /* HomePage.swift */,
 				42187C662A27580F0017FB7C /* Assets.xcassets */,
 				42187C682A27580F0017FB7C /* Preview Content */,
 				42187C702A2785320017FB7C /* SpotifyAppView.swift */,
@@ -68,6 +76,50 @@
 				42187C692A27580F0017FB7C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4275EBCD2A289C47008976B7 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				4275EBD72A28A1FD008976B7 /* Componment */,
+				4275EBD42A28A0A0008976B7 /* MyLIbrary */,
+				4275EBD32A289FE4008976B7 /* HomePage */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		4275EBCE2A289C56008976B7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4275EBCF2A289C83008976B7 /* Popup+ActivePlay.swift */,
+				4275EBD12A289D75008976B7 /* MiniPlayBar.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4275EBD32A289FE4008976B7 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				4275EBCE2A289C56008976B7 /* View */,
+				42187C642A27580D0017FB7C /* HomePage.swift */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		4275EBD42A28A0A0008976B7 /* MyLIbrary */ = {
+			isa = PBXGroup;
+			children = (
+				4275EBD52A28A0AE008976B7 /* MyLibrary.swift */,
+			);
+			path = MyLIbrary;
+			sourceTree = "<group>";
+		};
+		4275EBD72A28A1FD008976B7 /* Componment */ = {
+			isa = PBXGroup;
+			children = (
+				4275EBD82A28A213008976B7 /* Tags.swift */,
+			);
+			path = Componment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,7 +194,11 @@
 			files = (
 				42187C712A2785320017FB7C /* SpotifyAppView.swift in Sources */,
 				42187C652A27580D0017FB7C /* HomePage.swift in Sources */,
+				4275EBD92A28A213008976B7 /* Tags.swift in Sources */,
+				4275EBD02A289C83008976B7 /* Popup+ActivePlay.swift in Sources */,
 				42187C632A27580D0017FB7C /* SpotifyApp.swift in Sources */,
+				4275EBD22A289D75008976B7 /* MiniPlayBar.swift in Sources */,
+				4275EBD62A28A0AE008976B7 /* MyLibrary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

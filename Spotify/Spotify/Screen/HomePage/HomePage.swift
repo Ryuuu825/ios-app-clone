@@ -31,22 +31,8 @@ struct HomePage: View {
                     }
                     .font(.title3)
                 }
-                
-                HStack {
-                    Group {
-                        Text("音楽")
-                        Text("ポッドキャストと番組")
-                    }
-                    .font(.footnote)
-                    .padding(.horizontal , 12)
-                    .padding(.vertical , 6)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(24)
-                    
-                    
-                }
-                .padding(.vertical , 1)
-                .frame(maxWidth: .infinity , alignment: .leading)
+                                
+                Tags(tags: ["音楽", "ポッドキャストと番組"])
                 
                 
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2)) {
