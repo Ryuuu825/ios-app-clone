@@ -190,18 +190,6 @@ struct HomePage: View {
                     
                 }
                 
-                section("あなたのTop Mix") {
-                    
-                    playlist_4( "角卷わため" , desc: "sdf" ,  image: "watame")
-                    
-                   
-                    playlist_4( "ヨルシカ" , desc: "sdf" ,  image: "yorushika")
-                }
-                
-        
-                
-                
-                
             }
         }
         .preferredColorScheme(.dark)
