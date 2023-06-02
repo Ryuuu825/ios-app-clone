@@ -16,6 +16,7 @@
 		4275EBD22A289D75008976B7 /* MiniPlayBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBD12A289D75008976B7 /* MiniPlayBar.swift */; };
 		4275EBD62A28A0AE008976B7 /* MyLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBD52A28A0AE008976B7 /* MyLibrary.swift */; };
 		4275EBD92A28A213008976B7 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBD82A28A213008976B7 /* Tags.swift */; };
+		429617022A299EEE00B7F88E /* PlsylistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429617012A299EEE00B7F88E /* PlsylistPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		4275EBD12A289D75008976B7 /* MiniPlayBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayBar.swift; sourceTree = "<group>"; };
 		4275EBD52A28A0AE008976B7 /* MyLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibrary.swift; sourceTree = "<group>"; };
 		4275EBD82A28A213008976B7 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		429617012A299EEE00B7F88E /* PlsylistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlsylistPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 		4275EBCD2A289C47008976B7 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				429617002A299EDF00B7F88E /* Playlist */,
 				4275EBD72A28A1FD008976B7 /* Componment */,
 				4275EBD42A28A0A0008976B7 /* MyLIbrary */,
 				4275EBD32A289FE4008976B7 /* HomePage */,
@@ -120,6 +123,14 @@
 				4275EBD82A28A213008976B7 /* Tags.swift */,
 			);
 			path = Componment;
+			sourceTree = "<group>";
+		};
+		429617002A299EDF00B7F88E /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				429617012A299EEE00B7F88E /* PlsylistPage.swift */,
+			);
+			path = Playlist;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +209,7 @@
 				4275EBD02A289C83008976B7 /* Popup+ActivePlay.swift in Sources */,
 				42187C632A27580D0017FB7C /* SpotifyApp.swift in Sources */,
 				4275EBD22A289D75008976B7 /* MiniPlayBar.swift in Sources */,
+				429617022A299EEE00B7F88E /* PlsylistPage.swift in Sources */,
 				4275EBD62A28A0AE008976B7 /* MyLibrary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
