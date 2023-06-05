@@ -16,6 +16,7 @@
 		4275EBD22A289D75008976B7 /* MiniPlayBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBD12A289D75008976B7 /* MiniPlayBar.swift */; };
 		4275EBD62A28A0AE008976B7 /* MyLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBD52A28A0AE008976B7 /* MyLibrary.swift */; };
 		4275EBD92A28A213008976B7 /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4275EBD82A28A213008976B7 /* Tags.swift */; };
+		428CA05D2A2DA32700A1C517 /* SearchPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428CA05C2A2DA32700A1C517 /* SearchPage.swift */; };
 		429617022A299EEE00B7F88E /* PlsylistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429617012A299EEE00B7F88E /* PlsylistPage.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		4275EBD12A289D75008976B7 /* MiniPlayBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniPlayBar.swift; sourceTree = "<group>"; };
 		4275EBD52A28A0AE008976B7 /* MyLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLibrary.swift; sourceTree = "<group>"; };
 		4275EBD82A28A213008976B7 /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
+		428CA05C2A2DA32700A1C517 /* SearchPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPage.swift; sourceTree = "<group>"; };
 		429617012A299EEE00B7F88E /* PlsylistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlsylistPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 		4275EBCD2A289C47008976B7 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				428CA05B2A2DA31C00A1C517 /* Search */,
 				429617002A299EDF00B7F88E /* Playlist */,
 				4275EBD72A28A1FD008976B7 /* Componment */,
 				4275EBD42A28A0A0008976B7 /* MyLIbrary */,
@@ -123,6 +126,14 @@
 				4275EBD82A28A213008976B7 /* Tags.swift */,
 			);
 			path = Componment;
+			sourceTree = "<group>";
+		};
+		428CA05B2A2DA31C00A1C517 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				428CA05C2A2DA32700A1C517 /* SearchPage.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		429617002A299EDF00B7F88E /* Playlist */ = {
@@ -211,6 +222,7 @@
 				4275EBD22A289D75008976B7 /* MiniPlayBar.swift in Sources */,
 				429617022A299EEE00B7F88E /* PlsylistPage.swift in Sources */,
 				4275EBD62A28A0AE008976B7 /* MyLibrary.swift in Sources */,
+				428CA05D2A2DA32700A1C517 /* SearchPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

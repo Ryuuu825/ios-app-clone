@@ -65,7 +65,7 @@ Never gonna run around and desert you
                             VStack(alignment: .leading) {
                                 Text("Never Gonna Give You Up")
                                     .font(.title2)
-                                    .fontWeight(.semibold)
+                                    .fontWeight(.bold)
                                 
                                 Text("Rick Astley")
                                     .fontWeight(.regular)
@@ -102,7 +102,8 @@ Never gonna run around and desert you
                             .foregroundColor(.gray)
                             .padding(.top , -4 )
                             
-                        }.padding(.vertical , 20)
+                        }
+                        .padding(.vertical , 10)
                                  
                                 
                         
@@ -132,6 +133,7 @@ Never gonna run around and desert you
                         
                         
                         
+                        
                         HStack(spacing: 32) {
                             
                             HStack(alignment: .center, spacing: 5) {
@@ -152,7 +154,7 @@ Never gonna run around and desert you
                             
                         }
                         .fontWeight(.medium)
-                        .padding(.top , 32)
+                        .padding(.top , 18)
                         .padding(.horizontal , 12)
                         
 
@@ -192,7 +194,7 @@ Never gonna run around and desert you
                     .frame(maxWidth: .infinity , maxHeight: 300)
                     .background(Color(red: 0.03260218889, green: 0.3519735694, blue: 0.6274399161))
                     .cornerRadius(6)
-                    .padding(.top , 24)
+                    .padding(.top , 20)
                     .padding(.horizontal, 24)
                     
                 }

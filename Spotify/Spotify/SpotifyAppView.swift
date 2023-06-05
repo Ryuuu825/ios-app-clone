@@ -8,19 +8,30 @@
 import SwiftUI
 
 enum Tab : String , View , CaseIterable {
-    case Home, Mylibrary
+    case Home, Search , Mylibrary
     
     @ViewBuilder var body : some View {
         switch self {
             case .Home :  HomePage()
             case .Mylibrary :  MyLibrary()
+            case .Search :  SearchPage()
         }
     }
         
     @ViewBuilder var tabItem : some View {
         switch self {
-            case .Home : VStack { Image(systemName: "house.fill"); Text("ホーム").font(.footnote).padding(.top, 2 ) }
-            case .Mylibrary : VStack { Image(systemName: "books.vertical.fill"); Text("マイライブラリ").font(.footnote).padding(.top, 2 ) }
+            case .Home : VStack { Image(systemName: "house").font(.title3); Text("ホーム").font(.footnote).padding(.top, 2 ) }
+            case .Search : VStack { Image(systemName: "magnifyingglass").font(.title3); Text("マイライブラリ").font(.footnote).padding(.top, 2 ) }
+            case .Mylibrary : VStack { Image(systemName: "books.vertical").font(.title3); Text("マイライブラリ").font(.footnote).padding(.top, 2 ) }
+        }
+    }
+    
+    
+    @ViewBuilder var ftabItem : some View {
+        switch self {
+            case .Home : VStack { Image(systemName: "house.fill").font(.title3); Text("ホーム").font(.footnote).padding(.top, 2 ) }
+        case .Search : VStack { Image(systemName: "magnifyingglass.circle.fill").font(.title3); Text("マイライブラリ").font(.footnote).padding(.top, 2 ) }
+            case .Mylibrary : VStack { Image(systemName: "books.vertical.fill").font(.title3); Text("マイライブラリ").font(.footnote).padding(.top, 2 ) }
         }
     }
 }
@@ -49,7 +60,13 @@ struct SpotifyAppView: View {
             
             LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3 )) {
                 ForEach(Tab.allCases, id:\.rawValue) { t in
-                    Button { tab = t; } label: { t.tabItem }
+                    Button { tab = t; } label: {
+                        if tab == t {
+                            t.ftabItem
+                        } else {
+                            t.tabItem
+                        }
+                    }
                 }
             }
             .padding(.horizontal)

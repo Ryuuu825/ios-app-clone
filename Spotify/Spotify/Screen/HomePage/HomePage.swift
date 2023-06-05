@@ -185,6 +185,7 @@ struct HomePage: View {
             .preferredColorScheme(.dark)
             .padding(.horizontal)
             .padding(.vertical, 1)
+            .padding(.top , 12)
 
         }
     }
