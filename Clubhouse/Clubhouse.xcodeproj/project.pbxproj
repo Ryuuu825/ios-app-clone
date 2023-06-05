@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		428CA06B2A2DE32B00A1C517 /* ClubhouseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428CA06A2A2DE32B00A1C517 /* ClubhouseApp.swift */; };
+		428CA06B2A2DE32B00A1C517 /* ClubhouseAppEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428CA06A2A2DE32B00A1C517 /* ClubhouseAppEntry.swift */; };
 		428CA06D2A2DE32B00A1C517 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428CA06C2A2DE32B00A1C517 /* ContentView.swift */; };
 		428CA06F2A2DE32C00A1C517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428CA06E2A2DE32C00A1C517 /* Assets.xcassets */; };
 		428CA0722A2DE32C00A1C517 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428CA0712A2DE32C00A1C517 /* Preview Assets.xcassets */; };
+		428CA07A2A2DE39200A1C517 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428CA0792A2DE39200A1C517 /* HomePageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		428CA0672A2DE32B00A1C517 /* Clubhouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clubhouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		428CA06A2A2DE32B00A1C517 /* ClubhouseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubhouseApp.swift; sourceTree = "<group>"; };
+		428CA06A2A2DE32B00A1C517 /* ClubhouseAppEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClubhouseAppEntry.swift; sourceTree = "<group>"; };
 		428CA06C2A2DE32B00A1C517 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		428CA06E2A2DE32C00A1C517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		428CA0712A2DE32C00A1C517 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		428CA0792A2DE39200A1C517 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +53,8 @@
 		428CA0692A2DE32B00A1C517 /* Clubhouse */ = {
 			isa = PBXGroup;
 			children = (
-				428CA06A2A2DE32B00A1C517 /* ClubhouseApp.swift */,
+				428CA0782A2DE37B00A1C517 /* Screen */,
+				428CA06A2A2DE32B00A1C517 /* ClubhouseAppEntry.swift */,
 				428CA06C2A2DE32B00A1C517 /* ContentView.swift */,
 				428CA06E2A2DE32C00A1C517 /* Assets.xcassets */,
 				428CA0702A2DE32C00A1C517 /* Preview Content */,
@@ -65,6 +68,14 @@
 				428CA0712A2DE32C00A1C517 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		428CA0782A2DE37B00A1C517 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				428CA0792A2DE39200A1C517 /* HomePageView.swift */,
+			);
+			path = Screen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +149,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				428CA06D2A2DE32B00A1C517 /* ContentView.swift in Sources */,
-				428CA06B2A2DE32B00A1C517 /* ClubhouseApp.swift in Sources */,
+				428CA07A2A2DE39200A1C517 /* HomePageView.swift in Sources */,
+				428CA06B2A2DE32B00A1C517 /* ClubhouseAppEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
