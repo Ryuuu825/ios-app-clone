@@ -7,10 +7,17 @@
 
 import SwiftUI
 
-struct HomePageView: View {
+
+
+struct HomePageView : View {
+    
+    var tabItem : some View {
+        Image(systemName: "House")
+    }
+    
     var body: some View {
-        NavigationView {
-            ScrollView {
+        NavigationStack {
+            ScrollView(showsIndicators: false) {
                 VStack {
                     VStack {
                         Image(systemName: "plus")
@@ -170,11 +177,13 @@ struct HomePageView: View {
                 }
             }
             .padding()
+            .navigationTitle("")
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarItems(leading: navigationBar_leading)
+            .navigationBarItems(trailing:  navigationBar_trailing)
+            .preferredColorScheme(.dark)
         }
-        .navigationTitle("")
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarItems(leading: navigationBar_leading)
-        .navigationBarItems(trailing:  navigationBar_trailing)
+        
     }
     
     
@@ -210,9 +219,8 @@ struct HomePageView: View {
 
 struct HomePageView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            HomePageView()
-        }
-        .environment(\.colorScheme, .dark)
+        
+        HomePageView()
+        
     }
 }
