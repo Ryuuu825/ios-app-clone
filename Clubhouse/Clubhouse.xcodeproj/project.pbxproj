@@ -12,6 +12,8 @@
 		428CA06F2A2DE32C00A1C517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428CA06E2A2DE32C00A1C517 /* Assets.xcassets */; };
 		428CA0722A2DE32C00A1C517 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 428CA0712A2DE32C00A1C517 /* Preview Assets.xcassets */; };
 		428CA07A2A2DE39200A1C517 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428CA0792A2DE39200A1C517 /* HomePageView.swift */; };
+		428CA07C2A2DEEDC00A1C517 /* ExplorePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428CA07B2A2DEEDC00A1C517 /* ExplorePageView.swift */; };
+		428CA07E2A2DF80200A1C517 /* HousePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 428CA07D2A2DF80200A1C517 /* HousePageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		428CA06E2A2DE32C00A1C517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		428CA0712A2DE32C00A1C517 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		428CA0792A2DE39200A1C517 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
+		428CA07B2A2DEEDC00A1C517 /* ExplorePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePageView.swift; sourceTree = "<group>"; };
+		428CA07D2A2DF80200A1C517 /* HousePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousePageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				428CA0792A2DE39200A1C517 /* HomePageView.swift */,
+				428CA07B2A2DEEDC00A1C517 /* ExplorePageView.swift */,
+				428CA07D2A2DF80200A1C517 /* HousePageView.swift */,
 			);
 			path = Screen;
 			sourceTree = "<group>";
@@ -151,6 +157,8 @@
 				428CA06D2A2DE32B00A1C517 /* ContentView.swift in Sources */,
 				428CA07A2A2DE39200A1C517 /* HomePageView.swift in Sources */,
 				428CA06B2A2DE32B00A1C517 /* ClubhouseAppEntry.swift in Sources */,
+				428CA07E2A2DF80200A1C517 /* HousePageView.swift in Sources */,
+				428CA07C2A2DEEDC00A1C517 /* ExplorePageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
