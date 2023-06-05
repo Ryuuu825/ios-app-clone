@@ -11,176 +11,182 @@ import SwiftUI
 
 struct HomePage: View {
     var body: some View {
-        VStack {
-            
-            ScrollView(showsIndicators: false ) {
+        NavigationStack {
+            VStack {
                 
-                HStack {
-                    Text("こんばんは")
-                        .font(.title2)
-                        .fontWeight(.heavy)
+                ScrollView(showsIndicators: false ) {
                     
-                    Spacer()
-                    
-                    HStack (spacing: 20 ) {
-                        Image(systemName: "bell.badge")
+                    HStack {
+                        Text("こんばんは")
+                            .font(.title2)
+                            .fontWeight(.heavy)
                         
-                        Image(systemName: "timer")
+                        Spacer()
                         
-                        Image(systemName: "gearshape" )
+                        HStack (spacing: 20 ) {
+                            Image(systemName: "bell.badge")
+                            
+                            Image(systemName: "timer")
+                            
+                            Image(systemName: "gearshape" )
+                        }
+                        .font(.title3)
                     }
-                    .font(.title3)
-                }
+                                    
+                    Tags(tags: ["音楽", "ポッドキャストと番組"])
+                    
+                    
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2)) {
+                        
+                        NavigationLink(destination: PlsylistPage()) {
+                            HStack {
+                                Image("yuika-suki")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 55 , height: 55)
+                                    .clipped()
                                 
-                Tags(tags: ["音楽", "ポッドキャストと番組"])
-                
-                
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 2)) {
-                    
-                    HStack {
-                        Image("yuika-suki")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 55 , height: 55)
-                            .clipped()
+                                Text("ユイカ")
+                                    .font(.footnote)
+                                    .fontWeight(.medium)
+                                
+                                Spacer()
+                            }
+                            .frame(maxWidth: .infinity)
+                            .background(Color(UIColor.secondarySystemBackground))
+                            .cornerRadius(4)
+                        }
+                        .foregroundColor(.white)
                         
-                        Text("ユイカ")
-                            .font(.footnote)
-                            .fontWeight(.medium)
-                        
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(4)
-                    
-                    HStack {
-                        Image("hachi-twline")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 55 , height: 55)
-                            .clipped()
-                        
-                        Text("HACHI")
-                            .font(.footnote)
-                            .fontWeight(.medium)
-                        
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(4)
-                    
-                    HStack {
-                        Image("eva")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 55 , height: 55)
-                            .clipped()
-                        
-                        
-                        Text("エヴァンげlイオン")
-                            .font(.footnote)
-                            .fontWeight(.medium)
-                        
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(4)
-                    
-                    HStack {
-                        Image("yorushika")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 55 , height: 55)
-                            .clipped()
-                        
-                        Text("Yorushika - 月光")
-                            .font(.footnote)
-                            .fontWeight(.medium)
-                        
-                        Spacer()
-                    }
-                    .frame(maxWidth: .infinity)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(4)
-                    
-                    HStack {
-                        ZStack {
-                            
-                            LinearGradient(colors: [ Color(red: 0.3019181192, green: 0.09418017417, blue: 0.9489968419)  , Color(red: 0.7568323016, green: 0.9176529646, blue: 0.8588226438) ], startPoint: .topLeading, endPoint: .bottomTrailing)
-                           
-                            Image( systemName: "heart.fill")
+                        HStack {
+                            Image("hachi-twline")
                                 .resizable()
-                                .scaledToFit()
-                                .frame(width: 18 , height: 18)
+                                .scaledToFill()
+                                .frame(width: 55 , height: 55)
+                                .clipped()
                             
-                        }.frame(width: 55 , height: 55)
+                            Text("HACHI")
+                                .font(.footnote)
+                                .fontWeight(.medium)
                             
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(4)
                         
-                        Text("お気に入りの曲")
-                            .font(.footnote)
-                            .fontWeight(.medium)
+                        HStack {
+                            Image("eva")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 55 , height: 55)
+                                .clipped()
+                            
+                            
+                            Text("エヴァンげlイオン")
+                                .font(.footnote)
+                                .fontWeight(.medium)
+                            
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(4)
                         
-                        Spacer()
+                        HStack {
+                            Image("yorushika")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 55 , height: 55)
+                                .clipped()
+                            
+                            Text("Yorushika - 月光")
+                                .font(.footnote)
+                                .fontWeight(.medium)
+                            
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(4)
+                        
+                        HStack {
+                            ZStack {
+                                
+                                LinearGradient(colors: [ Color(red: 0.3019181192, green: 0.09418017417, blue: 0.9489968419)  , Color(red: 0.7568323016, green: 0.9176529646, blue: 0.8588226438) ], startPoint: .topLeading, endPoint: .bottomTrailing)
+                               
+                                Image( systemName: "heart.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 18 , height: 18)
+                                
+                            }.frame(width: 55 , height: 55)
+                                
+                            
+                            Text("お気に入りの曲")
+                                .font(.footnote)
+                                .fontWeight(.medium)
+                            
+                            Spacer()
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(Color(UIColor.secondarySystemBackground))
+                        .cornerRadius(4)
+                        
+                        
+                        
                     }
-                    .frame(maxWidth: .infinity)
-                    .background(Color(UIColor.secondarySystemBackground))
-                    .cornerRadius(4)
+                    .padding(.vertical , 12)
                     
                     
                     
-                }
-                .padding(.vertical , 12)
-                
-                
-                
-                
-                
-                section("自分のプレイレスト") {
                     
-                    playlist_1("ユイカ" , image: "yuika-suki")
                     
-                    playlist_1("HeyHeyHey" , image: "2")
+                    section("自分のプレイレスト") {
+                        
+                        playlist_1("ユイカ" , image: "yuika-suki")
+                        
+                        playlist_1("HeyHeyHey" , image: "2")
+                        
+                        playlist_1("Yourshika" , image: "yorushika")
+                        
+                       
+                    }
                     
-                    playlist_1("Yourshika" , image: "yorushika")
+                    section("インターネット発音楽力ルチャー") {
+                        
+                        playlist_2("ヨルシカ" , image: "yorushika")
+                        
+                        playlist_2("ユイカ" , image: "yuika-suki")
+                        
+                        playlist_2("ヨルシカ" , image: "yorushika")
+                        
+                        playlist_2("ユイカ" , image: "yuika-suki")
+                        
+                        playlist_2("ヨルシカ" , image: "yorushika")
+                        
+                        playlist_2("ユイカ" , image: "yuika-suki")
+                        
+                    }
                     
-                   
-                }
-                
-                section("インターネット発音楽力ルチャー") {
                     
-                    playlist_2("ヨルシカ" , image: "yorushika")
-                    
-                    playlist_2("ユイカ" , image: "yuika-suki")
-                    
-                    playlist_2("ヨルシカ" , image: "yorushika")
-                    
-                    playlist_2("ユイカ" , image: "yuika-suki")
-                    
-                    playlist_2("ヨルシカ" , image: "yorushika")
-                    
-                    playlist_2("ユイカ" , image: "yuika-suki")
-                    
-                }
-                
-                
-                section("人気のアーティスト") {
-                    
-                    playlist_3( "綾波麗" , image: "1")
-                    
-                    playlist_3( "FIFTY FIFTY" , image: "5050")
-                    
-                    playlist_3( "角卷綿芽" , image: "watame")
+                    section("人気のアーティスト") {
+                        
+                        playlist_3( "綾波麗" , image: "1")
+                        
+                        playlist_3( "FIFTY FIFTY" , image: "5050")
+                        
+                        playlist_3( "角卷綿芽" , image: "watame")
+                        
+                    }
                     
                 }
-                
             }
+            .preferredColorScheme(.dark)
+            .padding(.horizontal)
+            .padding(.vertical, 1)
+
         }
-        .preferredColorScheme(.dark)
-        .padding(.horizontal)
-        .padding(.vertical, 1)
     }
     
     @ViewBuilder func playlist_1( _ title : String , image : String ) -> some View {

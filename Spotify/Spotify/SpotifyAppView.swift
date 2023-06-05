@@ -8,17 +8,19 @@
 import SwiftUI
 
 enum Tab : String , View , CaseIterable {
-    case Home
+    case Home, Mylibrary
     
-    var body : some View {
+    @ViewBuilder var body : some View {
         switch self {
-            case .Home : return HomePage()
+            case .Home :  HomePage()
+            case .Mylibrary :  MyLibrary()
         }
     }
         
     @ViewBuilder var tabItem : some View {
         switch self {
             case .Home : VStack { Image(systemName: "house.fill"); Text("ホーム").font(.footnote).padding(.top, 2 ) }
+            case .Mylibrary : VStack { Image(systemName: "books.vertical.fill"); Text("マイライブラリ").font(.footnote).padding(.top, 2 ) }
         }
     }
 }
@@ -45,7 +47,7 @@ struct SpotifyAppView: View {
                     shouldShowPlayMusicPage.toggle()
                 }
             
-            HStack {
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 3 )) {
                 ForEach(Tab.allCases, id:\.rawValue) { t in
                     Button { tab = t; } label: { t.tabItem }
                 }
