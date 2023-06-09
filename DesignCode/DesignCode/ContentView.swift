@@ -35,6 +35,11 @@ struct ContentView: View {
                 .tabItem {
                     Label("Five", image: "")
                 }
+            
+            Sheet()
+                .tabItem {
+                    Label("Sheet", image: "")
+                }
         }
     }
     
