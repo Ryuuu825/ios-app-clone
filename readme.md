@@ -24,4 +24,4 @@ I am trying to clone some IOS application to learn how to build IOS application.
 
 5. DesignCode [Youtube](https://www.youtube.com/watch?v=XzjxqS0xAu0)
 
-    <img src="./assets/designcode/1.png" width="200" height="400" /> <img src="./assets/designcode/2.png" width="200" height="400" /> <img src="./assets/designcode/3.png" width="200" height="400" /> <img src="./assets/designcode/4.png" width="200" height="400" /> <img src="./assets/designcode/5.png" width="200" height="400" />
+    <img src="./assets/designcode/1.png" width="200" height="400" /> <img src="./assets/designcode/2.png" width="200" height="400" /> <img src="./assets/designcode/3.png" width="200" height="400" /> <img src="./assets/designcode/4.png" width="200" height="400" /> <img src="./assets/designcode/5.png" width="200" height="400" /> <img src="./assets/designcode/6.png" width="200" height="400" />
