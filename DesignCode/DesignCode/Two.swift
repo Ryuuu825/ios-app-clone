@@ -1,26 +1,24 @@
 //
-//  ContentView.swift
+//  Two.swift
 //  DesignCode
 //
-//  Created by Ryu on 8/6/2023.
+//  Created by Ryu on 9/6/2023.
 //
 
 import SwiftUI
 
 
-struct ContentView: View {
+struct Two : View {
     var body: some View {
         NavigationStack {
-            VStack {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible()) , count: 2)) {
+            ScrollView {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()) , count: 1)) {
                     ForEach(1..<5) { _ in
                         ZStack {
                             
                             Image("ayanami")
                                 .resizable()
-                                .scaledToFit()
-                                .scaleEffect(1.5)
-                                .frame( height: 280 )
+                                .frame( height: 380 )
                                 
                             VStack(spacing: 4) {
                                 
@@ -35,16 +33,16 @@ struct ContentView: View {
                                     .lineLimit(2)
                                 
                             }
-                            .padding(.horizontal)
+                            .padding(.horizontal, 20)
                             .padding(.vertical , 12)
                             .frame(maxWidth: .infinity , maxHeight: 120 , alignment: .leading)
-                            .blurBackground()
-                            .padding(.top , 160)
+                            .blurBackground([Color(red: 0.4, green: 0.4, blue: 0.4)])
+                            .padding(.top , 260)
 
                         }
                         .clipedCornerRadius(20)
                         .foregroundColor(.white)
-                        .frame(height: 280)
+                        .frame(height: 380)
                         .padding(.vertical, 12)
                         .padding(.horizontal, 4)
                     }
@@ -62,10 +60,9 @@ struct ContentView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
+
+struct Two_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            ContentView()
-        }
+        Two()
     }
 }

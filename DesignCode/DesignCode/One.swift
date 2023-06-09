@@ -1,17 +1,31 @@
 //
-//  ContentView.swift
+//  One.swift
 //  DesignCode
 //
-//  Created by Ryu on 8/6/2023.
+//  Created by Ryu on 9/6/2023.
 //
 
 import SwiftUI
 
+extension View {
+    func blurBackground(_ colors : [Color] = [Color(red: 0.2, green: 0.2, blue: 0.2)]) -> some View {
+        return background {
+            LinearGradient(colors: colors , startPoint: .top, endPoint: .bottom)
+                .opacity(0.9)
+                .blur(radius: 24, opaque: true)
+        }
+    }
+    
+    func clipedCornerRadius( _ radius : CGFloat ) -> some View {
+        clipped()
+        .cornerRadius(radius)
+    }
+}
 
-struct ContentView: View {
+struct One : View {
     var body: some View {
         NavigationStack {
-            VStack {
+            ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()) , count: 2)) {
                     ForEach(1..<5) { _ in
                         ZStack {
@@ -62,10 +76,9 @@ struct ContentView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
+
+struct One_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            ContentView()
-        }
+        One()
     }
 }
