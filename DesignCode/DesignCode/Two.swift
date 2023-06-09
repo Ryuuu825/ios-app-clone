@@ -14,48 +14,56 @@ struct Two : View {
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()) , count: 1)) {
                     ForEach(1..<5) { _ in
-                        ZStack {
-                            
-                            Image("ayanami")
-                                .resizable()
-                                .frame( height: 380 )
-                                
-                            VStack(spacing: 4) {
-                                
-                                Text("Human Interface Guidelines")
-                                    .font(.title3)
-                                    .bold()
-                                    
-                                
-                                Text("The HIG contains guidance and best practices that can help you design a great experience for any Apple platform.")
-                                    .font(.callout)
-                                    .foregroundColor(Color(red: 0.8, green: 0.8, blue: 0.8))
-                                    .lineLimit(2)
-                                
-                            }
-                            .padding(.horizontal, 20)
-                            .padding(.vertical , 12)
-                            .frame(maxWidth: .infinity , maxHeight: 120 , alignment: .leading)
-                            .blurBackground([Color(red: 0.4, green: 0.4, blue: 0.4)])
-                            .padding(.top , 260)
-
-                        }
-                        .clipedCornerRadius(20)
-                        .foregroundColor(.white)
-                        .frame(height: 380)
-                        .padding(.vertical, 12)
-                        .padding(.horizontal, 4)
+                        card()
                     }
                 }
-                .padding()
-                .navigationTitle("Explore")
-                
-                Spacer()
             }
-            
+            .padding()
+            .navigationTitle("Explore")
         }
     }
     
+    
+    func card(
+        title: String = "Human Interface Guidelines",
+        description : String = "The HIG contains guidance and best practices that can help you design a great experience for any Apple platform."
+    ) -> some View {
+        
+        let height : CGFloat = 380
+        
+        return ZStack {
+            
+            Image("ayanami")
+                .resizable()
+                .frame( height: height )
+                
+            VStack(spacing: 4) {
+                
+                Text(title)
+                    .font(.title3)
+                    .bold()
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                Text(description)
+                    .font(.callout)
+                    .foregroundColor(Color(red: 0.8, green: 0.8, blue: 0.8))
+                    .lineLimit(2)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+            }
+            .padding(.horizontal, 20)
+            .padding(.bottom , 12)
+            .frame(maxWidth: .infinity , maxHeight: 100 , alignment: .leading)
+            .blurBackground([Color(red: 0.4, green: 0.4, blue: 0.4)])
+            .padding(.top , height - 100)
+
+        }
+        .clipedCornerRadius(20)
+        .foregroundColor(.white)
+        .frame(height: height)
+        .padding(.vertical, 12)
+        .padding(.horizontal, 4)
+    }
     
     
 }

@@ -11,23 +11,21 @@ struct Four: View {
     var body: some View {
         NavigationView {
             GeometryReader { proxy in
-                VStack {
-                    ScrollView {
-                        HStack(alignment: .top , spacing: 16) {
-                            ForEach(1..<3) { _ in
-                                VStack {
-                                    ForEach(1..<10) { _ in
-                                        image
-                                    }
+                ScrollView {
+                    HStack(alignment: .top , spacing: 16) {
+                        ForEach(1..<3) { _ in
+                            VStack {
+                                ForEach(1..<10) { _ in
+                                    image
                                 }
-                                .frame(width: proxy.size.width * 0.45 )
                             }
-                            
+                            .frame(width: proxy.size.width * 0.45 )
                         }
-                        .padding(.horizontal)
-                        .navigationTitle("Explore")
                         
                     }
+                    .padding(.horizontal)
+                    .navigationTitle("Explore")
+                    
                 }
                 .padding(.vertical)
             }
@@ -38,8 +36,8 @@ struct Four: View {
         Image("ayanami")
             .resizable()
             .frame(height: CGFloat(Int.random(in: 100..<350)))
-            .clipped()
             .cornerRadius(24)
+            .clipped()
     }
 }
 
