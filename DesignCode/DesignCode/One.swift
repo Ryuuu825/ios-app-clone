@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func blurBackground(_ colors : [Color] = [Color(red: 0.2, green: 0.2, blue: 0.2)]) -> some View {
+    func blurBackground(_ colors : [Color] = [Color(red: 0.5, green: 0.5, blue: 0.5)]) -> some View {
         return background {
             LinearGradient(colors: colors , startPoint: .top, endPoint: .bottom)
                 .opacity(0.9)
@@ -24,10 +24,10 @@ extension View {
 
 struct One : View {
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()) , count: 2)) {
-                    ForEach(1..<5) { _ in
+                    ForEach(1..<12) { _ in
                         ZStack {
                             
                             Image("ayanami")

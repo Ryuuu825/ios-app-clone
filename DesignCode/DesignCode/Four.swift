@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Four: View {
     var body: some View {
-        NavigationStack {
+        NavigationView {
             GeometryReader { proxy in
                 VStack {
                     ScrollView {

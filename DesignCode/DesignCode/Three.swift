@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Three: View {
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ScrollView {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()) , count: 1)) {
                     ForEach(1..<5) { _ in

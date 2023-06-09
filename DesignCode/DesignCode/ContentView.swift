@@ -10,51 +10,31 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationStack {
-            VStack {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible()) , count: 2)) {
-                    ForEach(1..<5) { _ in
-                        ZStack {
-                            
-                            Image("ayanami")
-                                .resizable()
-                                .scaledToFit()
-                                .scaleEffect(1.5)
-                                .frame( height: 280 )
-                                
-                            VStack(spacing: 4) {
-                                
-                                Text("Human Interface Guidelines")
-                                    .font(.title3)
-                                    .bold()
-                                    
-                                
-                                Text("The HIG contains guidance and best practices that can help you design a great experience for any Apple platform.")
-                                    .font(.callout)
-                                    .foregroundColor(Color(red: 0.8, green: 0.8, blue: 0.8))
-                                    .lineLimit(2)
-                                
-                            }
-                            .padding(.horizontal)
-                            .padding(.vertical , 12)
-                            .frame(maxWidth: .infinity , maxHeight: 120 , alignment: .leading)
-                            .blurBackground()
-                            .padding(.top , 160)
-
-                        }
-                        .clipedCornerRadius(20)
-                        .foregroundColor(.white)
-                        .frame(height: 280)
-                        .padding(.vertical, 12)
-                        .padding(.horizontal, 4)
-                    }
+        TabView {
+            One()
+                .tabItem {
+                    Label("One", image: "")
                 }
-                .padding()
-                .navigationTitle("Explore")
-                
-                Spacer()
-            }
             
+            Two()
+                .tabItem {
+                    Label("Two", image: "")
+                }
+            
+            Three()
+                .tabItem {
+                    Label("Three", image: "")
+                }
+            
+            Four()
+                .tabItem {
+                    Label("Four", image: "")
+                }
+            
+            Five()
+                .tabItem {
+                    Label("Five", image: "")
+                }
         }
     }
     
