@@ -189,9 +189,14 @@ struct ContentView: View {
                                 
                                 Spacer()
                                 
-                                Text("View All")
-                                    .fontWeight(.light)
-                                    .font(.subheadline)
+                                NavigationLink(destination: NewsPageView()) {
+                                    Text("View All")
+                                        .fontWeight(.light)
+                                        .font(.subheadline)
+                                }
+                                
+                                
+
                             }
                             
                             TabView {
@@ -199,10 +204,11 @@ struct ContentView: View {
                                     VStack {
                                         Image("ayanami")
                                             .resizable()
+                                            .border(Color.mainColor, width: 8)
                                         
                                         
                                         VStack(spacing: 24) {
-                                            Text("三gor 有payme⚡️")
+                                            Text("三哥有payme⚡️")
                                                 .fontWeight(.medium)
                                                 .frame(maxWidth: .infinity , alignment: .leading)
                                             
@@ -217,14 +223,14 @@ struct ContentView: View {
                                     
                                         
                                     }
-                                    .frame(maxWidth: .infinity)
+                                    .frame(maxWidth: .infinity, maxHeight: 430)
                                     .background(Color.white)
                                     .cornerRadius(12)
-                                    .padding(.horizontal)
+                                    .padding(.horizontal, 24)
                                     
                                 }
                             }
-                            .frame(width: .infinity , height: 400)
+                            .frame(width: .infinity , height: 440)
                             .tabViewStyle(.page)
 
                             Spacer(minLength: 70)
