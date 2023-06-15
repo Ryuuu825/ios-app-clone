@@ -37,6 +37,7 @@ struct Five: View {
                 }
                 .padding()
             }
+            .navigationBarTitleDisplayMode(.automatic)
             .navigationTitle("Explore")
         }
     }
