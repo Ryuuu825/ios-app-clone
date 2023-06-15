@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		424323442A3AD3F7001945DB /* StorePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424323432A3AD3F7001945DB /* StorePageView.swift */; };
 		424323462A3AE317001945DB /* SettingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424323452A3AE317001945DB /* SettingPageView.swift */; };
+		424323482A3AEEB3001945DB /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424323472A3AEEB3001945DB /* HomePageView.swift */; };
 		4278030A2A361BEE006773CD /* TamJaiSamGorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427803092A361BEE006773CD /* TamJaiSamGorApp.swift */; };
 		4278030C2A361BEE006773CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278030B2A361BEE006773CD /* ContentView.swift */; };
 		4278030E2A361BF0006773CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4278030D2A361BF0006773CD /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		424323432A3AD3F7001945DB /* StorePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePageView.swift; sourceTree = "<group>"; };
 		424323452A3AE317001945DB /* SettingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingPageView.swift; sourceTree = "<group>"; };
+		424323472A3AEEB3001945DB /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		427803062A361BEE006773CD /* TamJaiSamGor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamJaiSamGor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		427803092A361BEE006773CD /* TamJaiSamGorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamJaiSamGorApp.swift; sourceTree = "<group>"; };
 		4278030B2A361BEE006773CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				42D709B52A36D0E800357215 /* InboxPageView.swift */,
 				424323432A3AD3F7001945DB /* StorePageView.swift */,
 				424323452A3AE317001945DB /* SettingPageView.swift */,
+				424323472A3AEEB3001945DB /* HomePageView.swift */,
 			);
 			path = Screeen;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				42D709B82A36D4A200357215 /* RewardRedmptionPageView.swift in Sources */,
 				4278030A2A361BEE006773CD /* TamJaiSamGorApp.swift in Sources */,
 				424323462A3AE317001945DB /* SettingPageView.swift in Sources */,
+				424323482A3AEEB3001945DB /* HomePageView.swift in Sources */,
 				424323442A3AD3F7001945DB /* StorePageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
