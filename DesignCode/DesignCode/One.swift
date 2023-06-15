@@ -10,9 +10,10 @@ import SwiftUI
 extension View {
     func blurBackground(_ colors : [Color] = [Color(red: 0.5, green: 0.5, blue: 0.5)]) -> some View {
         return background {
-            LinearGradient(colors: colors , startPoint: .top, endPoint: .bottom)
-                .opacity(0.9)
-                .blur(radius: 24, opaque: true)
+            background {
+                Color.black.opacity(0.2)
+            }
+            .background( .thinMaterial )
         }
     }
     
@@ -62,13 +63,16 @@ struct One : View {
                 Text(description)
                     .font(.subheadline)
                     .lineLimit(2)
-                    .foregroundColor(Color(red: 0.8, green: 0.8, blue: 0.8))
+                    
                 
             }
             .padding(.horizontal)
             .padding(.bottom , 12)
             .frame(maxWidth: .infinity , maxHeight: 120 , alignment: .leading)
-            .blurBackground()
+            .background {
+                Color.black.opacity(0.2)
+            }
+            .background( .thinMaterial )
             .padding(.top , 160)
 
         }

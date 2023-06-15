@@ -35,7 +35,8 @@ struct Four: View {
     var image : some View {
         Image("ayanami")
             .resizable()
-            .frame(height: CGFloat(Int.random(in: 100..<350)))
+            .scaledToFill()
+            .frame(width: 200 , height: CGFloat(Int.random(in: 100..<350)) )
             .cornerRadius(24)
             .clipped()
     }

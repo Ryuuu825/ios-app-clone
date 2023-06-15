@@ -46,7 +46,8 @@ struct Five: View {
             
             Image("ayanami")
                 .resizable()
-                .frame( height: 380 )
+                .scaledToFill()
+                .frame( width: 200 , height: 380 )
                 
             VStack(spacing: 4) {
                 
@@ -57,13 +58,13 @@ struct Five: View {
                 
                 Text("The HIG contains guidance and best practices that can help you design a great experience for any Apple platform.")
                     .font(.callout)
-                    .foregroundColor(Color(red: 0.8, green: 0.8, blue: 0.8))
+                    .foregroundColor(Color(red: 0.9, green: 0.9, blue: 0.9))
                     .lineLimit(2)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
             }
             .padding(.horizontal)
-            .padding(.bottom , 12)
+            .padding(.vertical , 12)
             .frame(maxWidth: .infinity , maxHeight: 130 , alignment: .leading)
             .blurBackground()
             .padding(.top , 260)

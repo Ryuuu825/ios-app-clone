@@ -46,7 +46,6 @@ struct Two : View {
                     
                 Text(description)
                     .font(.callout)
-                    .foregroundColor(Color(red: 0.8, green: 0.8, blue: 0.8))
                     .lineLimit(2)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
