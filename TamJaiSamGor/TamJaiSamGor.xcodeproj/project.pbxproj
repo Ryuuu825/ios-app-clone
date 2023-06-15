@@ -7,20 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		424323442A3AD3F7001945DB /* StorePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 424323432A3AD3F7001945DB /* StorePageView.swift */; };
 		4278030A2A361BEE006773CD /* TamJaiSamGorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427803092A361BEE006773CD /* TamJaiSamGorApp.swift */; };
 		4278030C2A361BEE006773CD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4278030B2A361BEE006773CD /* ContentView.swift */; };
 		4278030E2A361BF0006773CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4278030D2A361BF0006773CD /* Assets.xcassets */; };
 		427803112A361BF0006773CD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 427803102A361BF0006773CD /* Preview Assets.xcassets */; };
 		42D709B42A36C94400357215 /* NewsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D709B32A36C94400357215 /* NewsPageView.swift */; };
+		42D709B62A36D0E800357215 /* InboxPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D709B52A36D0E800357215 /* InboxPageView.swift */; };
+		42D709B82A36D4A200357215 /* RewardRedmptionPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D709B72A36D4A200357215 /* RewardRedmptionPageView.swift */; };
+		42D709BB2A36DE3500357215 /* RewardDetailsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D709BA2A36DE3500357215 /* RewardDetailsPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		424323432A3AD3F7001945DB /* StorePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorePageView.swift; sourceTree = "<group>"; };
 		427803062A361BEE006773CD /* TamJaiSamGor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TamJaiSamGor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		427803092A361BEE006773CD /* TamJaiSamGorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamJaiSamGorApp.swift; sourceTree = "<group>"; };
 		4278030B2A361BEE006773CD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4278030D2A361BF0006773CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		427803102A361BF0006773CD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42D709B32A36C94400357215 /* NewsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPageView.swift; sourceTree = "<group>"; };
+		42D709B52A36D0E800357215 /* InboxPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxPageView.swift; sourceTree = "<group>"; };
+		42D709B72A36D4A200357215 /* RewardRedmptionPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardRedmptionPageView.swift; sourceTree = "<group>"; };
+		42D709BA2A36DE3500357215 /* RewardDetailsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardDetailsPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +81,21 @@
 		42D709B22A36C93600357215 /* Screeen */ = {
 			isa = PBXGroup;
 			children = (
+				42D709B92A36DE2100357215 /* Reward */,
 				42D709B32A36C94400357215 /* NewsPageView.swift */,
+				42D709B52A36D0E800357215 /* InboxPageView.swift */,
+				424323432A3AD3F7001945DB /* StorePageView.swift */,
 			);
 			path = Screeen;
+			sourceTree = "<group>";
+		};
+		42D709B92A36DE2100357215 /* Reward */ = {
+			isa = PBXGroup;
+			children = (
+				42D709B72A36D4A200357215 /* RewardRedmptionPageView.swift */,
+				42D709BA2A36DE3500357215 /* RewardDetailsPageView.swift */,
+			);
+			path = Reward;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +170,11 @@
 			files = (
 				42D709B42A36C94400357215 /* NewsPageView.swift in Sources */,
 				4278030C2A361BEE006773CD /* ContentView.swift in Sources */,
+				42D709B62A36D0E800357215 /* InboxPageView.swift in Sources */,
+				42D709BB2A36DE3500357215 /* RewardDetailsPageView.swift in Sources */,
+				42D709B82A36D4A200357215 /* RewardRedmptionPageView.swift in Sources */,
 				4278030A2A361BEE006773CD /* TamJaiSamGorApp.swift in Sources */,
+				424323442A3AD3F7001945DB /* StorePageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

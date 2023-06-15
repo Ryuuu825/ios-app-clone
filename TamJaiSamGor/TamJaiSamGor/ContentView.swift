@@ -20,6 +20,8 @@ struct RoundedCorner: Shape {
 
 extension Color {
     static let mainColor : Color = Color(red: 0.5490637422, green: 0.09403692931, blue: 0.08240876347)
+    static let secondaryColor : Color = Color(red: 0.964710772, green: 0.9411751628, blue: 0.9215704799)
+    static let gold : Color = Color(red: 0.7058998227, green: 0.6274454474, blue: 0.4941292882)
 }
 
 struct ContentView: View {
