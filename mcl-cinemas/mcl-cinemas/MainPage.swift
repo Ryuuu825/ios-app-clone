@@ -56,17 +56,21 @@ struct MainPage: View {
     var body: some View {
         VStack(spacing: 0) {
             ZStack {
-                VStack {
-                    Text("MCL")
-                        .font(.title2)
-                        .fontWeight(.heavy)
-                        .italic()
-                    
-                    Text("CINEMAS")
-                        .font(.system(size: 10))
-                        .fontWeight(.bold)
-                }
-                .foregroundColor(.mainColor)
+                LinearGradient(colors: [.mainColor, .secColor], startPoint: .leading, endPoint: .trailing)
+                    .mask {
+                        VStack {
+                            Text("MCL")
+                                .font(.title2)
+                                .fontWeight(.heavy)
+                                .italic()
+                            
+                            Text("CINEMAS")
+                                .font(.system(size: 10))
+                                .fontWeight(.bold)
+                        }
+                        .foregroundColor(.mainColor)
+                    }
+                    .frame(height: 50)
                 
                 Image(systemName: "gearshape")
                     .font(.headline)
@@ -136,22 +140,34 @@ struct MainPage: View {
                        
                         Color.cbgColor
                         
-                        Circle()
-                            .foregroundColor(Color.cbgColor2)
-                            .offset(x: -30 , y: 80)
                         
-                        Circle()
-                            .foregroundColor(Color.cbgColor2)
-                            .offset(x: 30 , y: 70)
+                        Group {
+                            Circle()
+                                .offset(x: -30 , y: 100)
+                            
+                            Circle()
+                                .offset(x: -30 , y: 80)
+        
+                            Circle()
+                                .offset(x: 5 , y: 55)
+                            
+                            
+                            Circle()
+                                .offset(x: 30 , y: 70)
+                            
+                            
+                            Circle()
+                                .scale(3)
+                                .offset(x: 260 , y: 0)
+                        }
+                        .foregroundColor(Color.cbgColor2)
                         
-                        Circle()
-                            .foregroundColor(Color.cbgColor2)
-                            .offset(x: 90 , y: 50)
-                        
-                        Circle()
-                            .scale(2)
-                            .foregroundColor(Color.cbgColor2)
-                            .offset(x: 260 , y: 0)
+                        Group {
+                            Circle()
+                                .scale(1.3)
+                                .offset(x: 53 , y: -110)
+                        }
+                        .foregroundColor(Color.cbgColor)
                             
                         
                         
