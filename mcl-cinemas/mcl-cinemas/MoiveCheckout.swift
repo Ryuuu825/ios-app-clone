@@ -128,6 +128,7 @@ extension String {
     }
 }
 
+
 struct MoiveCheckout: View {
     
     @State var movieId : Int
@@ -183,12 +184,10 @@ struct MoiveCheckout: View {
                                             session = false
                                         }
                                 }
-                                .frame(width: .infinity, height: 55)
+                                .frame(width: .infinity, height: 50)
                                 .background(Color.cbgColor)
                                 
                             
-                                
-                                
                                 if session {
                                     let s = sessionInfo
                                     
@@ -204,6 +203,7 @@ struct MoiveCheckout: View {
 
                                                             Text(DF.toDate(str: sd).formatted(.dateTime.weekday()))
                                                         }
+                                                        .font(.system(size: 16))
                                                         .padding(.horizontal , 4)
                                                         .padding(.top, 20)
                                                         .foregroundColor( DF.isSameDay(d: selectedDay , str: sd) ? .white : .gray)
@@ -340,11 +340,12 @@ struct MoiveCheckout: View {
                                         .font(.system(size: 14))
                                         .frame(maxWidth: .infinity, alignment: .leading)
                                         
-                                        
-
+                                       
                                         Text(m.i.replacingOccurrences(of: "<\\w+[^>]*>|<\\/\\w+>", with: "", options: .regularExpression))
                                             .font(.system(size: 14))
-                                            .padding(.top)
+                                        .padding(.top)
+                                        
+
                                     }
                                     .padding(24)
                                     .padding(.trailing, 12)
