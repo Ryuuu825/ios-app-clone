@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42B15A4A2B35DC0000424C4F /* MoiveCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B15A492B35DC0000424C4F /* MoiveCheckout.swift */; };
 		42F071652B35375800D1E898 /* mcl_cinemasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F071642B35375800D1E898 /* mcl_cinemasApp.swift */; };
 		42F071672B35375800D1E898 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F071662B35375800D1E898 /* ContentView.swift */; };
 		42F071692B35375900D1E898 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42F071682B35375900D1E898 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42B15A492B35DC0000424C4F /* MoiveCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoiveCheckout.swift; sourceTree = "<group>"; };
 		42F071612B35375800D1E898 /* mcl-cinemas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mcl-cinemas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F071642B35375800D1E898 /* mcl_cinemasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mcl_cinemasApp.swift; sourceTree = "<group>"; };
 		42F071662B35375800D1E898 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				42F071682B35375900D1E898 /* Assets.xcassets */,
 				42F0716A2B35375900D1E898 /* Preview Content */,
 				42F071722B3537D200D1E898 /* MainPage.swift */,
+				42B15A492B35DC0000424C4F /* MoiveCheckout.swift */,
 			);
 			path = "mcl-cinemas";
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B15A4A2B35DC0000424C4F /* MoiveCheckout.swift in Sources */,
 				42F071672B35375800D1E898 /* ContentView.swift in Sources */,
 				42F071652B35375800D1E898 /* mcl_cinemasApp.swift in Sources */,
 				42F071732B3537D200D1E898 /* MainPage.swift in Sources */,
