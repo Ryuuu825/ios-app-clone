@@ -2,6 +2,10 @@
 
 ## Updates
 
+- commit `90767ab` - add payment page
+
+    ![90767ab](./update/90767ab.gif)
+
 - commit `4f8035d` - add select seating plan page
 
-    ![](./update/4f8035d.png)
+    ![4f8035d](./update/4f8035d.png)
