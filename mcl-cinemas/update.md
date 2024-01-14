@@ -2,6 +2,10 @@
 
 ## Updates
 
+- commit `32fcc06c` - add purchase record page
+
+    ![32fcc06c](./update/32fcc06c.png)
+
 - commit `90767ab` - add payment page
 
     ![90767ab](./update/90767ab.gif)
