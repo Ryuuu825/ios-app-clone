@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4222180F2B4D8D7600799747 /* PplCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4222180E2B4D8D7600799747 /* PplCheckout.swift */; };
+		42960EFC2B53DA000058432B /* SelectSeat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42960EFB2B53DA000058432B /* SelectSeat.swift */; };
+		42960EFE2B53DC3D0058432B /* Payment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42960EFD2B53DC3D0058432B /* Payment.swift */; };
 		42B15A4A2B35DC0000424C4F /* MoiveCheckout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B15A492B35DC0000424C4F /* MoiveCheckout.swift */; };
 		42F071652B35375800D1E898 /* mcl_cinemasApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F071642B35375800D1E898 /* mcl_cinemasApp.swift */; };
 		42F071672B35375800D1E898 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F071662B35375800D1E898 /* ContentView.swift */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		4222180E2B4D8D7600799747 /* PplCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PplCheckout.swift; sourceTree = "<group>"; };
+		42960EFB2B53DA000058432B /* SelectSeat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSeat.swift; sourceTree = "<group>"; };
+		42960EFD2B53DC3D0058432B /* Payment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payment.swift; sourceTree = "<group>"; };
 		42B15A492B35DC0000424C4F /* MoiveCheckout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoiveCheckout.swift; sourceTree = "<group>"; };
 		42F071612B35375800D1E898 /* mcl-cinemas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mcl-cinemas.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		42F071642B35375800D1E898 /* mcl_cinemasApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mcl_cinemasApp.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 				42B15A492B35DC0000424C4F /* MoiveCheckout.swift */,
 				42FA5F002B3F150800E97AC6 /* SeatingPlan.swift */,
 				4222180E2B4D8D7600799747 /* PplCheckout.swift */,
+				42960EFB2B53DA000058432B /* SelectSeat.swift */,
+				42960EFD2B53DC3D0058432B /* Payment.swift */,
 			);
 			path = "mcl-cinemas";
 			sourceTree = "<group>";
@@ -149,11 +155,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42960EFC2B53DA000058432B /* SelectSeat.swift in Sources */,
 				42FA5F012B3F150800E97AC6 /* SeatingPlan.swift in Sources */,
 				42B15A4A2B35DC0000424C4F /* MoiveCheckout.swift in Sources */,
 				42F071672B35375800D1E898 /* ContentView.swift in Sources */,
 				42F071652B35375800D1E898 /* mcl_cinemasApp.swift in Sources */,
 				4222180F2B4D8D7600799747 /* PplCheckout.swift in Sources */,
+				42960EFE2B53DC3D0058432B /* Payment.swift in Sources */,
 				42F071732B3537D200D1E898 /* MainPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

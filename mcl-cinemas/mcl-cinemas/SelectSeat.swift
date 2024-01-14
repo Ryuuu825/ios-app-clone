@@ -1,5 +1,5 @@
 //
-//  SeatingPlan.swift
+//  SelectSeat.swift
 //  mcl-cinemas
 //
 //  Created by Ryu on 29/12/2023.
@@ -8,29 +8,7 @@
 import SwiftUI
 
 
-struct HtmlText : UIViewRepresentable {
-    let htmlStr : String
-    
-    func updateUIView(_ uiView: UITextView, context: UIViewRepresentableContext<Self>) {
-        DispatchQueue.main.async {
-            let data = Data(self.htmlStr.utf8)
-            if let attString = try? NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil) {
-                uiView.isEditable = false
-                uiView.attributedText = attString
-                
-            }
-        }
-    }
-    
-    func makeUIView(context: UIViewRepresentableContext<Self> ) -> UITextView {
-        let label = UITextView()
-        return label
-    }
-}
-
-
-
-struct SeatingPlan: View {
+struct SelectSeat: View {
     
     let movieId : String
     
@@ -328,7 +306,7 @@ struct SeatingPlan: View {
                         }
                         
                             
-                        Text("會員")
+                        Text("下一步")
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
                             .background {
@@ -364,7 +342,7 @@ struct SeatingPlan: View {
 }
 
 
-extension SeatingPlan {
+extension SelectSeat {
     
     @ViewBuilder
     func fakeSeatingPlan() -> some View {
@@ -425,16 +403,20 @@ extension SeatingPlan {
                     
                     HStack(spacing: 4) {
                         ForEach(8..<19 , id:\.hashValue) { i in
-                            Text((19+8 - i).description)
-                                .numberBox()
+                            Seat {
+                                Text((19+8 - i).description)
+                            }
                         }
                     }
                    
                     
                     HStack(spacing: 4) {
                         ForEach(3..<7 , id:\.hashValue) { i in
-                            Text((7+4 - i).description)
-                                .numberBox()
+                            Seat {
+                                Text((7+4 - i).description)
+                            }
+                            
+                               
                         }
                     }
                     .padding(.leading, 32)
@@ -455,23 +437,28 @@ extension SeatingPlan {
     }
 }
 
-extension View {
-    func numberBox() -> some View {
-        font(.system(size: 8))
-        .frame(width: 14 , height: 14)
-        .foregroundColor(.white)
-        .fontWeight(.medium)
-        .overlay {
-            RoundedRectangle(cornerRadius: 2)
-                .stroke(.gray, lineWidth: 0.5)
-        }
+struct Seat<Content: View>: View {
+    @State var isSelected = false;
+    @ViewBuilder var bodyCtx : Content
+    
+    var body : some View {
+        bodyCtx
+            .numberBox()
+            .onTapGesture {
+                isSelected.toggle()
+            }
+            .background {
+                isSelected ? Color.mainColor : Color.clear
+            }
     }
 }
 
-struct SeatingPlan_Previews: PreviewProvider {
+
+
+struct SelectSeat_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SeatingPlan(movieId: "13137")
+            SelectSeat(movieId: "13137")
         }
     }
 }
