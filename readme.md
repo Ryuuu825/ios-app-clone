@@ -8,7 +8,7 @@ I am trying to clone some IOS application to learn how to build IOS application.
 
 ## Demo
 
-<table>
+<table width="100%">
 <tr>
 <td>
 
