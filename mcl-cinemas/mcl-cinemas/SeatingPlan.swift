@@ -31,6 +31,7 @@ struct HtmlText : UIViewRepresentable {
 
 struct PurchaseModel {
 //sessionDetail: .init(si: 12345, sn: "星期二, 1月16日, 04:00 PM, 3院 $65", r: 92), cinema: "K11 ART HOUSE (尖東站)"
+    var movieName : String = "The first slam dunk 日語版"
     var sessionDetail : SessionDetail
     var cinemaName : String
     var cinemaId : String
@@ -383,6 +384,8 @@ struct SeatingPlan: View {
                         guard let d = d else { return }
                         let s = [MovieDetails].self
                         movieDetail = try? JSONDecoder().decode( s , from: d ).first
+                        
+                        purchase.movieName = movieDetail?.mn ?? ""
                         
                         
                         

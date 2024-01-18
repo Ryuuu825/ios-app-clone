@@ -38,7 +38,7 @@ struct Payment: View {
                     .padding(.trailing , 32)
 
                     VStack(spacing: 8) {
-                        Text("青春豬頭少年不會夢到紅書包女孩")
+                        Text(purchaseModel.movieName)
                             .font(.title)
                             .fontWeight(.medium)
                             .frame(maxWidth: .infinity , alignment: .leading)
@@ -413,6 +413,7 @@ struct Payment: View {
                                 .cornerRadius(.infinity)
                                 .padding()
                         }
+                        .accentColor(.white)
 
                         
                     }

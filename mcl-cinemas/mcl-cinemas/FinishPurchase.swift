@@ -41,7 +41,7 @@ struct FinishPurchase: View {
                     
                     VStack(alignment: .leading, spacing: 12) {
                         
-                        Text("The first slam dunk 日語版")
+                        Text(purchaseModel.movieName)
                             .foregroundColor(Color.secColor)
                             .fontWeight(.black)
                             .textCase(.uppercase)

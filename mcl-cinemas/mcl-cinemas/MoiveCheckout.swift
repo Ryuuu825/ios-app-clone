@@ -376,7 +376,6 @@ struct MoiveCheckout: View {
                 URLSession.shared.dataTask(with: URLRequest(url: url)) { d , r , e in
 
                     guard let d = d else { return }
-                    print(String(data:d, encoding:.utf8))
                     
                     let s = [SessionD].self
                     sessionInfo = try! JSONDecoder().decode( s , from: d )

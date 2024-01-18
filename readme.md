@@ -31,3 +31,7 @@ I am trying to clone some IOS application to learn how to build IOS application.
 6. TamJai SamGor [AppStore](https://apps.apple.com/hk/app/%E8%AD%9A%E4%BB%94%E4%B8%89%E5%93%A5%E7%B1%B3%E7%B7%9A-tamjai-samgor-mixian/id1623985775?l=en)
 
     ![TamJai SamGor](./assets/tamjaisamgor/tamjaisamgor.gif)
+
+7. MCL Cinemas [AppStore](https://apps.apple.com/hk/app/mcl-cinemas-ticketing/id807365065?l=en-GB)
+
+    ![MCL Cinemas](./assets/mcl-cinemas/mcl-cinemas.gif)
