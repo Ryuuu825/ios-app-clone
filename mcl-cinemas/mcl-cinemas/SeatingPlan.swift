@@ -29,13 +29,42 @@ struct HtmlText : UIViewRepresentable {
 }
 
 
+struct PurchaseModel {
+//sessionDetail: .init(si: 12345, sn: "星期二, 1月16日, 04:00 PM, 3院 $65", r: 92), cinema: "K11 ART HOUSE (尖東站)"
+    var sessionDetail : SessionDetail
+    var cinemaName : String
+    var cinemaId : String
+    var priceList : [Price] = []
+    var selectedSeat : [String] = []
+    
+    var totalTicketBuy : Int {
+        var total = 0
+        for p in priceList {
+            total += p.count
+        }
+        return total
+    }
+    
+    var totalTax : Int {
+        return 10 * totalTicketBuy
+    }
+     
+    var totalPriceIncludedTax : Int {
+        var total = 0
+        for p in priceList {
+            total += p.count * Int(p.p)!
+        }
+        return total + totalTax
+    }
+}
 
 struct SeatingPlan: View {
     
     let movieId : String
     
     @State var movieDetail : MovieDetails? = nil
-    
+    @State var purchase : PurchaseModel
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -76,7 +105,7 @@ struct SeatingPlan: View {
                                 
                                 HStack {
                                     Group {
-                                        Text("MOIVE TOWN（新城市廣場）")
+                                        Text(purchase.cinemaName)
                                         
                                         Text(m.b.mrt)
                                         Text("分鐘")
@@ -99,20 +128,23 @@ struct SeatingPlan: View {
                                         .frame(width: 3, height: 40)
                                     
                                     VStack(alignment: .leading) {
-                                        Text("01月09日（即日）, 09:00 PM")
+                                        let isToday = DF.isSameDay(d: Date.now, str: String(purchase.sessionDetail.sn.split(separator: ",")[1]), dateFor: "mm月dd日")
+                                        let weekStr = isToday ? "即日" : String(purchase.sessionDetail.sn.split(separator: ",")[0])
+                                        Text("\(String(purchase.sessionDetail.sn.split(separator: ",")[1]))（\(weekStr)）, \(String(purchase.sessionDetail.sn.split(separator: ",")[2]))")
                                             .font(.subheadline)
                                             .fontWeight(.medium)
                                         
-                                        Text("House FX 4, 2D 全景聲")
+                                        let ws = String(purchase.sessionDetail.sn.split(separator: ",")[3]).split(separator: " ")[0]
+                                        Text("\(String(ws)), 2D 全景聲")
                                             .font(.system(size: 12))
                                     }
                                     
                                     
                                     Spacer()
                                     
-                                    Image(systemName: "chevron.down")
-                                        .padding(.trailing , 12)
-                                        .foregroundColor(.gray)
+//                                    Image(systemName: "chevron.down")
+//                                        .padding(.trailing , 12)
+//                                        .foregroundColor(.gray)
                                     
                                     
                                 }
@@ -328,14 +360,19 @@ struct SeatingPlan: View {
                         }
                         
                             
-                        Text("會員")
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background {
-                                LinearGradient(colors:[Color.mainColor , Color.secColor] , startPoint: .leading, endPoint: .trailing)
-                            }
-                            .cornerRadius(.infinity)
-                            .padding()
+                        NavigationLink(destination:
+                            PplCheckout(movieId: movieId, purchase: purchase)
+                        ) {
+                            Text("會員")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 50)
+                                .background {
+                                    LinearGradient(colors:[Color.mainColor , Color.secColor] , startPoint: .leading, endPoint: .trailing)
+                                }
+                                .cornerRadius(.infinity)
+                                .padding()
+                        }
+                        .accentColor(.white)
                     }
                     
                 }
@@ -471,7 +508,7 @@ extension View {
 struct SeatingPlan_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SeatingPlan(movieId: "13137")
+            SeatingPlan(movieId: "13295", purchase : .init(sessionDetail: .init(si: 12345, sn: "星期二, 1月16日, 04:00 PM, 3院 $65", r: 92), cinemaName: "K11 ART HOUSE (尖東站)", cinemaId: "017"))
         }
     }
 }

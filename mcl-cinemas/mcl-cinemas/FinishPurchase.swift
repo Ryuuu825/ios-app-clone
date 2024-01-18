@@ -9,11 +9,17 @@ import SwiftUI
 import CoreImage.CIFilterBuiltins
 
 struct FinishPurchase: View {
+    
     let ctx = CIContext()
     let filter = CIFilter.qrCodeGenerator()
     @State var img : UIImage? = nil
     
-        
+    
+    @State var purchaseModel : PurchaseModel
+    
+    @EnvironmentObject var navigationCoordinator: NavigationCoordinator
+    
+    
     var body: some View {
         NavigationStack {
             VStack {
@@ -41,7 +47,7 @@ struct FinishPurchase: View {
                             .textCase(.uppercase)
                             .padding(.top)
                         
-                        Text("MCL德福戲院")
+                        Text(purchaseModel.cinemaName)
                             .foregroundColor(SwiftUI.Color(red: 0.4198863506, green: 0.4198863506, blue: 0.4198863506))// #colorLiteral(red: 0.4198863506, green: 0.4198863506, blue: 0.4198863506, alpha: 1)
                      
                        
@@ -51,7 +57,8 @@ struct FinishPurchase: View {
                                 .foregroundColor(SwiftUI.Color(red: 0.5648300052, green: 0.5648300052, blue: 0.5648300052))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             // #colorLiteral(red: 0.5648300052, green: 0.5648300052, blue: 0.5648300052, alpha: 1)
-                            Text("4院")
+                            let stra = purchaseModel.sessionDetail.sn.split(separator: ",")[3].split(separator: " ")
+                            Text(String(stra[0]))
                                 .foregroundColor(.black)
                                 .bold()
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -73,7 +80,9 @@ struct FinishPurchase: View {
                                 .foregroundColor(SwiftUI.Color(red: 0.5648300052, green: 0.5648300052, blue: 0.5648300052))
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             // #colorLiteral(red: 0.5648300052, green: 0.5648300052, blue: 0.5648300052, alpha: 1)
-                            Text("2024年01月12日（週五）")
+                            let stra = purchaseModel.sessionDetail.sn.split(separator: ",")
+                            let weekday = String(stra[0].last!)
+                            Text("2024年\(String(stra[1]))（週\(weekday)）")
                                 .foregroundColor(.black)
                                 .bold()
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -85,7 +94,10 @@ struct FinishPurchase: View {
                                     .foregroundColor(SwiftUI.Color(red: 0.5648300052, green: 0.5648300052, blue: 0.5648300052))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 // #colorLiteral(red: 0.5648300052, green: 0.5648300052, blue: 0.5648300052, alpha: 1)
-                                Text("下午 09:35")
+                                let stra = purchaseModel.sessionDetail.sn.split(separator: ",")
+                                let timeStr = stra[2].split(separator: " ")
+                                let amPmStr = String(timeStr[1]).lowercased() == "pm" ? "下午" : "上午";
+                                Text("\(String(amPmStr)) \(String(timeStr[0]))")
                                     .foregroundColor(.black)
                                     .bold()
                                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -96,10 +108,17 @@ struct FinishPurchase: View {
                                     .foregroundColor(SwiftUI.Color(red: 0.5648300052, green: 0.5648300052, blue: 0.5648300052))
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 // #colorLiteral(red: 0.5648300052, green: 0.5648300052, blue: 0.5648300052, alpha: 1)
-                                Text("E10, E11, E12")
-                                    .foregroundColor(.black)
-                                    .bold()
-                                    .frame(maxWidth: .infinity, alignment: .leading)
+//                                Text("E10, E11, E12")
+//                                    .foregroundColor(.black)
+//                                    .bold()
+//                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                HStack {
+                                    ForEach(purchaseModel.selectedSeat, id:\.hashValue) { i in
+                                        Text(i)
+                                            .foregroundColor(.black)
+                                            .bold()
+                                    }
+                                }.frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
                         
@@ -156,7 +175,7 @@ struct FinishPurchase: View {
                     .padding(.horizontal , 24)
                     .font(.system(size: 18))
                     .onAppear {
-                        filter.message = Data("Hello World".utf8)
+                        filter.message = Data("Hello World! You know the rule and so do i".utf8)
                         
                         if let outImage = filter.outputImage {
                             if let cgimg = ctx.createCGImage(outImage, from: outImage.extent) {
@@ -194,6 +213,10 @@ struct FinishPurchase: View {
                     }
                     .cornerRadius(.infinity)
                     .padding()
+                    .onTapGesture {
+                        navigationCoordinator.popToRoot()
+                    }
+                   
                 
                 
             }
@@ -202,11 +225,13 @@ struct FinishPurchase: View {
                 Color.bgColor
                     .ignoresSafeArea(edges: .bottom)
             }
+           
         }
         
         .preferredColorScheme(.dark)
         .navigationTitle("賺票")
         .navigationBarTitleDisplayMode(.inline)
+        
         
     }
 }
@@ -214,7 +239,7 @@ struct FinishPurchase: View {
 struct FinishPurchase_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            FinishPurchase()
+            FinishPurchase(purchaseModel: .init(sessionDetail: .init(si: 62999, sn: "星期二, 1月16日, 04:00 PM, 3院 $65", r: 92), cinemaName: "K11 ART HOUSE (尖東站)", cinemaId: "017", priceList: [.init(n: "學生", p: "100", count: 3), .init(n: "會員9折", p: "100", count: 0)] , selectedSeat: ["F4" , "H4"]))
         }
     }
 }

@@ -13,6 +13,9 @@ struct SelectSeat: View {
     let movieId : String
     
     @State var movieDetail : MovieDetails? = nil
+    @State var purchaseModel : PurchaseModel
+    @State var selectedSeatCount : Int = 0
+
     
     var body: some View {
         NavigationStack {
@@ -150,6 +153,29 @@ struct SelectSeat: View {
                         
                         
                         Spacer()
+                        
+                        HStack {
+                            ForEach(purchaseModel.selectedSeat , id:\.hashValue) { e in
+                                HStack {
+                                    Text(e)
+                                    
+                                    Image(systemName: "xmark")
+                                        .onTapGesture {
+                                            selectedSeatCount-=1
+                                            purchaseModel.selectedSeat.remove( at: purchaseModel.selectedSeat.firstIndex(of: e)! )
+                                        }
+                                        .font(.system(size: 10))
+                                }
+                                .padding(3)
+                                .padding(.horizontal,6)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 6)
+                                        .stroke(Color.mainColor , lineWidth: 1)
+                                }
+                            }
+                        }
+                        .frame(maxWidth: .infinity , alignment: .leading)
+                        .padding(.leading , 30)
                         
                         
                         VStack {
@@ -305,15 +331,24 @@ struct SelectSeat: View {
                             .frame(width: .infinity)
                         }
                         
+                        
+                        
                             
-                        Text("下一步")
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background {
-                                LinearGradient(colors:[Color.mainColor , Color.secColor] , startPoint: .leading, endPoint: .trailing)
-                            }
-                            .cornerRadius(.infinity)
-                            .padding()
+                        NavigationLink {
+                            Payment(purchaseModel: purchaseModel)
+                        } label: {
+                            Text("下一步")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 50)
+                                .background {
+                                    LinearGradient(colors:[Color.mainColor , Color.secColor] , startPoint: .leading, endPoint: .trailing)
+                                }
+                                .cornerRadius(.infinity)
+                                .padding()
+                        }
+                        .accentColor(.white)
+                        .disabled(purchaseModel.totalTicketBuy != purchaseModel.selectedSeat.count)
+
                     }
                     
                 }
@@ -347,7 +382,7 @@ extension SelectSeat {
     @ViewBuilder
     func fakeSeatingPlan() -> some View {
         VStack(spacing:3) {
-           
+        
             HStack {
                 Text("A")
                     .font(.system(size: 10))
@@ -392,10 +427,10 @@ extension SelectSeat {
                     .frame(width: 15)
             }
             
-            ForEach(1..<13, id:\.hashValue) { i in
+            ForEach(1..<13, id:\.hashValue) { j in
                 HStack {
                     
-                    Text(String(UnicodeScalar(UInt8(65 + i))))
+                    Text(String(UnicodeScalar(UInt8(65 + j))))
                         .font(.system(size: 10))
                         .frame(width: 15)
             
@@ -403,20 +438,49 @@ extension SelectSeat {
                     
                     HStack(spacing: 4) {
                         ForEach(8..<19 , id:\.hashValue) { i in
-                            Seat {
-                                Text((19+8 - i).description)
+                            Seat(bodyCtx: Text((19+8 - i).description)) { isSelected in
+                                var str = String(UnicodeScalar(UInt8(65 + j)))
+                                str.append(String(((19+8 - i).description)))
+                                
+                                if !isSelected {
+                                    if selectedSeatCount >= purchaseModel.totalTicketBuy {
+                                        return false
+                                    } else {
+                                        selectedSeatCount+=1
+                                        
+                                        purchaseModel.selectedSeat.append( str )
+                                        return true
+                                    }
+                                } else {
+                                    selectedSeatCount-=1
+                                    if let i = purchaseModel.selectedSeat.firstIndex(of: str) {
+                                        purchaseModel.selectedSeat.remove( at: i )
+                                    }
+                                   
+                                    return true
+                                }
                             }
+                            
                         }
                     }
                    
                     
                     HStack(spacing: 4) {
                         ForEach(3..<7 , id:\.hashValue) { i in
-                            Seat {
-                                Text((7+4 - i).description)
-                            }
                             
-                               
+                            Seat(bodyCtx: Text((7+4 - i).description)) { isSelected in
+                                if !isSelected {
+                                    if selectedSeatCount >= purchaseModel.totalTicketBuy {
+                                        return false
+                                    } else {
+                                        selectedSeatCount+=1
+                                        return true
+                                    }
+                                } else {
+                                    selectedSeatCount-=1
+                                    return true
+                                }
+                            }
                         }
                     }
                     .padding(.leading, 32)
@@ -424,7 +488,7 @@ extension SelectSeat {
                     
                     Spacer()
                     
-                    Text(String(UnicodeScalar(UInt8(65 + i))))
+                    Text(String(UnicodeScalar(UInt8(65 + j))))
                         .font(.system(size: 10))
                         .frame(width: 15)
                     
@@ -441,11 +505,21 @@ struct Seat<Content: View>: View {
     @State var isSelected = false;
     @ViewBuilder var bodyCtx : Content
     
+    var onClick: (Bool) -> Bool;
+    
+    init( bodyCtx :  Content , onClick : @escaping (Bool) -> Bool) {
+        self.bodyCtx = bodyCtx
+        self.onClick = onClick
+    }
+    
     var body : some View {
         bodyCtx
             .numberBox()
             .onTapGesture {
-                isSelected.toggle()
+                if onClick(isSelected) {
+                    isSelected.toggle()
+                }
+                
             }
             .background {
                 isSelected ? Color.mainColor : Color.clear
@@ -458,7 +532,7 @@ struct Seat<Content: View>: View {
 struct SelectSeat_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            SelectSeat(movieId: "13137")
+            SelectSeat(movieId: "13137", purchaseModel: .init(sessionDetail: .init(si: 62999, sn: "星期二, 1月16日, 04:00 PM, 3院 $65", r: 92), cinemaName: "K11 ART HOUSE (尖東站)", cinemaId: "017", priceList: [.init(n: "abc", p: "100", count: 1)]))
         }
     }
 }

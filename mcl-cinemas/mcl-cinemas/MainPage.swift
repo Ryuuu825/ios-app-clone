@@ -42,6 +42,12 @@ struct MoveDetails : Codable {
     let t  : String
 }
 
+struct DataObject: Identifiable, Hashable {
+    let id = UUID()
+    let name: String
+}
+
+
 
 struct MainPage: View {
     
@@ -50,6 +56,7 @@ struct MainPage: View {
     
     @State var cinema : [CinemaDetail] = []
     @State var moives : MovieD? = nil
+    
     
     
     
@@ -71,7 +78,7 @@ struct MainPage: View {
                             }
                             .foregroundColor(.mainColor)
                         }
-                        .frame(height: 50)
+                        .frame(height: 40)
                     
                     Image(systemName: "gearshape")
                         .font(.headline)
@@ -81,7 +88,7 @@ struct MainPage: View {
                 .padding(.bottom)
                 .frame(maxWidth: .infinity)
                 .background(Color(red: 0.04416629672, green: 0.0659404695, blue: 0.1134429052))
-                
+               
                 ScrollView {
                     VStack(spacing: 4) {
                         
@@ -198,25 +205,29 @@ struct MainPage: View {
                             HStack {
                                 if moives != nil {
                                     ForEach(moives!.movies, id:\.id) { str in
-                                        VStack(alignment: .leading) {
-                                            AsyncImage(url: URL(string:"https://www.mclcinema.com/Images/\(str.t == "S" ? "Movies" : "Group")/\(str.t == "S" ? "V" : "GI-M")-\(str.id).jpg")) { image in
-                                                image
-                                                    .resizable()
-                                                    .frame(width: 120 , height: 180)
-                                                
-                                                Text(str.mn)
-                                                    .frame(width: 120, height: 30, alignment: .topLeading)
-                                                    .font(.system(size:12))
-                                                
-                                            } placeholder: {
-                                                
+                                        NavigationLink(destination: MoiveCheckout(movieId: Int(str.id)!) ) {
+                                            VStack(alignment: .leading) {
+                                                AsyncImage(url: URL(string:"https://www.mclcinema.com/Images/\(str.t == "S" ? "Movies" : "Group")/\(str.t == "S" ? "V" : "GI-M")-\(str.id).jpg")) { image in
+                                                    image
+                                                        .resizable()
+                                                        .frame(width: 120 , height: 180)
+    
+                                                    Text(str.mn)
+                                                        .frame(width: 120, height: 30, alignment: .topLeading)
+                                                        .font(.system(size:12))
+    
+                                                } placeholder: {
+    
+                                                }
+    
                                             }
-                                            
+                                            .frame(width:120, height: 230, alignment: .leading)
+                                            .foregroundColor(.white)
+                                            .padding(.trailing, 3)
                                         }
-                                        .frame(width:120, height: 230, alignment: .leading)
-                                        .foregroundColor(.white)
-                                        .padding(.trailing, 3)
+                                       
                                     }
+                                                                      
                                 }
                             }
                             .onAppear {
@@ -291,6 +302,8 @@ struct MainPage: View {
                                     guard let data = d else { return }
                                     cinema = try! JSONDecoder().decode([CinemaDetail].self, from: data)
                                     
+                                    
+                                    
                                    
                                 }
                                 .resume()
@@ -307,11 +320,16 @@ struct MainPage: View {
             }
             .background(Color.bgColor)
         }
+        
+      
     }
 }
 
 struct MainPage_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
         MainPage()
+            
     }
 }

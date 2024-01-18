@@ -12,6 +12,8 @@ struct Payment: View {
     @State var minTimeRemain = 9
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    @State var purchaseModel : PurchaseModel
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -52,7 +54,7 @@ struct Payment: View {
                                     .frame(maxWidth: .infinity , alignment: .leading)
                                     .foregroundColor(.mainColor)
 
-                                Text("康怡戲院（太古站）")
+                                Text("\(purchaseModel.cinemaName)")
                                     .frame(maxWidth: .infinity , alignment: .leading)
                             }
                             .frame(width: 250)
@@ -62,7 +64,8 @@ struct Payment: View {
                                     .frame(maxWidth: .infinity , alignment: .leading)
                                     .foregroundColor(.mainColor)
 
-                                Text("5院")
+                                let stra = purchaseModel.sessionDetail.sn.split(separator: ",")[3].split(separator: " ")
+                                Text(String(stra[0]))
                                     .frame(maxWidth: .infinity , alignment: .leading)
                             }
 
@@ -74,8 +77,9 @@ struct Payment: View {
                                 Text("日期")
                                     .frame(maxWidth: .infinity , alignment: .leading)
                                     .foregroundColor(.mainColor)
-
-                                Text("星期日，1月14日下午08:05")
+         
+                                let stra = purchaseModel.sessionDetail.sn.split(separator: ",")
+                                Text("\(String(stra[0])),\(String(stra[1]))\(String(stra[2]))")
                                     .frame(maxWidth: .infinity , alignment: .leading)
                             }
                             .frame(width: 250)
@@ -84,9 +88,14 @@ struct Payment: View {
                                 Text("座位")
                                     .frame(maxWidth: .infinity , alignment: .leading)
                                     .foregroundColor(.mainColor)
+                                
+                                HStack {
+                                    ForEach(purchaseModel.selectedSeat, id:\.hashValue) { i in
+                                        Text(i)
+                                            
+                                    }
+                                }.frame(maxWidth: .infinity , alignment: .leading)
 
-                                Text("F4")
-                                    .frame(maxWidth: .infinity , alignment: .leading)
                             }
 
                         }
@@ -114,17 +123,23 @@ struct Payment: View {
                             .foregroundColor(Color.mainColor)
                             .fontWeight(.medium)
 
-                        HStack {
-                            Text("學生")
-                                .frame(width: 170, alignment: .leading)
+                        ForEach(purchaseModel.priceList, id:\.n) { price in
+                            if price.count > 0 {
+                                HStack {
+                                    Text(price.n)
+                                        .frame(width: 170, alignment: .leading)
 
 
-                            Text("1")
-                                .frame(width: 70, alignment: .center)
-                            Text("$45.00")
-                                .frame(width: 90, alignment: .center)
+                                    Text(String(price.count))
+                                        .frame(width: 70, alignment: .center)
+                                    
+                                    Text("$\(String( Int(price.p)! * price.count )).00")
+                                        .frame(width: 90, alignment: .center)
+                                }
+
+                            }
                         }
-
+                        
                         Text("手續費")
                             .frame(maxWidth: .infinity , alignment: .leading)
                             .foregroundColor(Color.mainColor)
@@ -135,9 +150,9 @@ struct Payment: View {
                                 .frame(width: 170, alignment: .leading)
 
 
-                            Text("1")
+                            Text(String(purchaseModel.totalTicketBuy))
                                 .frame(width: 70, alignment: .center)
-                            Text("$45.00")
+                            Text("$\(purchaseModel.totalTax).00")
                                 .frame(width: 90, alignment: .center)
                         }
 
@@ -168,7 +183,7 @@ struct Payment: View {
 
                             Spacer()
 
-                            Text("$55.00")
+                            Text("$\(purchaseModel.totalPriceIncludedTax).00")
                                 .foregroundColor(Color.white)
                                 .fontWeight(.bold)
                                 .font(.system(size:22))
@@ -386,14 +401,19 @@ struct Payment: View {
    
                         }
                         
-                        Text("付款＄55.00")
-                            .frame(maxWidth: .infinity)
-                            .frame(height: 50)
-                            .background {
-                                LinearGradient(colors:[Color.mainColor , Color.secColor] , startPoint: .leading, endPoint: .trailing)
-                            }
-                            .cornerRadius(.infinity)
-                            .padding()
+                        NavigationLink {
+                            FinishPurchase(purchaseModel: purchaseModel)
+                        } label: {
+                            Text("付款 $\(purchaseModel.totalPriceIncludedTax).00")
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 50)
+                                .background {
+                                    LinearGradient(colors:[Color.mainColor , Color.secColor] , startPoint: .leading, endPoint: .trailing)
+                                }
+                                .cornerRadius(.infinity)
+                                .padding()
+                        }
+
                         
                     }
                     
@@ -418,7 +438,7 @@ struct Payment: View {
 struct Payment_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            Payment()
+            Payment(purchaseModel: .init(sessionDetail: .init(si: 62999, sn: "星期二, 1月16日, 04:00 PM, 3院 $65", r: 92), cinemaName: "K11 ART HOUSE (尖東站)", cinemaId: "017", priceList: [.init(n: "學生", p: "100", count: 3), .init(n: "會員9折", p: "100", count: 0)] , selectedSeat: ["F4" , "H4"]))
         }
     }
 }
