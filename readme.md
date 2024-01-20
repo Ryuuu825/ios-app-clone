@@ -1,6 +1,6 @@
 # IOS Application Clone
 
-[latest update](./mcl-cinemas/update.md)
+[latest update](./Instagram/update.md)
 
 ## Description
 
