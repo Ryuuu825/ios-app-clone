@@ -271,7 +271,32 @@ struct StoryPage: View {
                         timeLeft -= 1
                     }
                 }
-
+            
+            HStack {
+                GeometryReader { proxy in
+                    Color.black.opacity(0.05)
+                        .frame(width: proxy.size.width / 2, height: proxy.size.height)
+                        .onTapGesture {
+                            timeLeft = StoryPage.storyAllowTime
+                            if (currentStoryIndex > 0 ) {
+                                currentStoryIndex = (currentStoryIndex - 1) % bodyCtxs.count
+                            } else {
+                                currentStoryIndex = 0
+                            }
+                        }
+                    
+                    Color.black.opacity(0.05)
+                        .frame(width: proxy.size.width / 2, height: proxy.size.height)
+                        .offset(x: proxy.size.width / 2)
+                        .onTapGesture {
+                            timeLeft = StoryPage.storyAllowTime
+                            currentStoryIndex = (currentStoryIndex + 1) % bodyCtxs.count
+                        }
+                    
+                    
+                    
+                }
+            }
 
             // The Information Bar on the top
             VStack(spacing: 6) {
@@ -281,7 +306,7 @@ struct StoryPage: View {
                         ZStack {
                             let color : Color = currentStoryIndex != i ? (currentStoryIndex > i ? Color.white : Color.gray) : .gray
                             let length : Int = 360 / (bodyCtxs.count)
-                            let plength : Int = (length) - (length / StoryPage.storyAllowTime) * timeLeft
+                            let plength : Int = ( length / StoryPage.storyAllowTime ) * (StoryPage.storyAllowTime - timeLeft)
 
                             Rectangle()
                                 .frame(width: 360 / CGFloat(bodyCtxs.count), height:2)
