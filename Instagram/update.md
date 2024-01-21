@@ -1,6 +1,7 @@
 # Instagram
 
-`b22ebd2` - story 
+`b22ebd2` - story
+
 ![story](./update/b22ebd2.gif)
 
 `f7bc688` - story page, fixed some font size
