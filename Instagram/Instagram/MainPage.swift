@@ -20,18 +20,16 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
     var body: some View {
         NavigationStack {
             ZStack {
+                
                 ScrollView {
                     Header()
-                    
-                    Story()
-                    
+
+                    StoryIcon()
+
                     Rectangle()
                         .frame(height: 0.4)
                         .foregroundColor(.gray)
-                        
-                    
-    //                Posts
-                    
+
                     ScrollView(.vertical) {
                         VStack(spacing: 20) {
                             ImagePost(postText: dummyPostText)
@@ -41,88 +39,6 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
 
                 }
                 
-                // Story
-                ZStack {
-                    Color.black.ignoresSafeArea()
-                    
-                    GeometryReader { proxy in
-                        ZStack {
-                            Image("posts2")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: proxy.size.width, height: proxy.size.height)
-                            
-                            HStack {
-                                Image(systemName: "mappin")
-                                Text("草千里")
-                            }
-                            .padding(.horizontal,4)
-                            .padding(.vertical,2)
-                            .background(.black)
-                            .cornerRadius(4)
-                            .offset(x: 130 , y: 120)
-                            
-                        }
-                        
-                    }
-                    
-                    VStack(spacing: 12) {
-                        HStack(spacing:4) {
-                            ForEach(0..<4) { i in
-                                Rectangle()
-                                    .frame(width: 370 / 4, height:2)
-                                    .cornerRadius(.infinity)
-                                    
-                            }
-                        }
-                        
-                        HStack {
-                            Image("user1")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 35, height: 35)
-                                .cornerRadius(.infinity)
-                                .padding(4)
-                            
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("whiz_cat")
-                                        .font(.system(size: 15))
-                                        .fontWeight(.semibold)
-                                    
-                                    Text("3m")
-                                        .foregroundColor(.gray)
-                                }
-                                
-                                HStack {
-                                    Image(systemName: "message.fill")
-                                        .scaleEffect(CGSize(width: -1, height: 1))
-                                        .font(.system(size: 12))
-                                        
-                                    Text("See translation")
-                                        .fontWeight(.semibold)
-                                    
-                                    Image(systemName: "chevron.right")
-                                        .font(.system(size: 10))
-                                        
-                                }
-                            }
-                            .font(.system(size: 14))
-                            
-                            Spacer()
-                            
-                            Image(systemName: "ellipsis")
-                            Image(systemName: "xmark")
-                                .font(.system(size: 28))
-                            
-                        }
-                        
-                    }
-                    .padding(.horizontal,8)
-                    .offset(y: -360)
-                    
-                }
-                .frame(width: 370)
             }
         }
         .preferredColorScheme(.dark)
@@ -167,7 +83,7 @@ extension MainPage {
     }
     
     @ViewBuilder
-    func Story() -> some View {
+    func StoryIcon() -> some View {
         ScrollView(.horizontal) {
             
             HStack {
@@ -203,7 +119,7 @@ extension MainPage {
                 
                 HStack(spacing: 10) {
                     UserStoryIcon("user1" , "whiz_cat" , haveStory: true)
-                    UserStoryIcon("user2" , "sumo.ryu")
+                    UserStoryIcon("user2" , "sumo.ryu" , haveStory: true, isCloseFriend: true)
                     UserStoryIcon("user3" , "sam_sulek")
 
                 }
@@ -212,10 +128,10 @@ extension MainPage {
     }
     
     @ViewBuilder
-    func UserStoryIcon(_ iconName : String , _ username : String, haveStory : Bool = false , width: CGFloat = 75) -> some View {
+    func UserStoryIcon(_ iconName : String , _ username : String, haveStory : Bool = false, isCloseFriend : Bool = false , width: CGFloat = 75) -> some View {
         VStack(spacing: 2) {
 
-            UserIcon(iconName , username , haveStory: haveStory , width: width)
+            UserIcon(iconName , username , haveStory: haveStory , isCloseFriend : isCloseFriend , width: width)
            
             
             Text(username)
@@ -225,7 +141,7 @@ extension MainPage {
     }
     
     @ViewBuilder
-    func UserIcon(_ iconName : String , _ username : String, haveStory : Bool = false , width: CGFloat = 30) -> some View {
+    func UserIcon(_ iconName : String , _ username : String, haveStory : Bool = false , isCloseFriend : Bool = false , width: CGFloat = 30) -> some View {
 
 
             Image(iconName)
@@ -237,8 +153,17 @@ extension MainPage {
                 .overlay {
                     
                     if haveStory {
-                        Circle()
-                            .stroke(LinearGradient(colors: [.yellow , Color.mainColor], startPoint: .bottomLeading, endPoint: .topTrailing) , lineWidth: width > 45 ? 3 : 1.8)
+                       
+                        if isCloseFriend {
+                            Circle()
+                                .stroke( Color.green  , lineWidth: width > 45 ? 3 : 1.8)
+                            
+                        } else {
+                            Circle()
+                                .stroke(  LinearGradient(colors: [.yellow, Color.mainColor], startPoint: .bottomLeading, endPoint: .topTrailing)  , lineWidth: width > 45 ? 3 : 1.8)
+                           
+                        }
+                        
                     } else {
                         Circle()
                             .stroke(.gray , lineWidth: 1)

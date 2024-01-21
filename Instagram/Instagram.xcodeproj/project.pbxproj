@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		422AC47B2B5CF16400043335 /* StoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422AC47A2B5CF16400043335 /* StoryPage.swift */; };
 		42B9E25C2B5BC96B008357A6 /* InstagramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B9E25B2B5BC96B008357A6 /* InstagramApp.swift */; };
 		42B9E25E2B5BC96B008357A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B9E25D2B5BC96B008357A6 /* ContentView.swift */; };
 		42B9E2602B5BC96C008357A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B9E25F2B5BC96C008357A6 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		422AC47A2B5CF16400043335 /* StoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPage.swift; sourceTree = "<group>"; };
 		42B9E2582B5BC96B008357A6 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B9E25B2B5BC96B008357A6 /* InstagramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramApp.swift; sourceTree = "<group>"; };
 		42B9E25D2B5BC96B008357A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				42B9E25F2B5BC96C008357A6 /* Assets.xcassets */,
 				42B9E2612B5BC96C008357A6 /* Preview Content */,
 				42B9E2692B5BCA30008357A6 /* MainPage.swift */,
+				422AC47A2B5CF16400043335 /* StoryPage.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422AC47B2B5CF16400043335 /* StoryPage.swift in Sources */,
 				42B9E25E2B5BC96B008357A6 /* ContentView.swift in Sources */,
 				42B9E25C2B5BC96B008357A6 /* InstagramApp.swift in Sources */,
 				42B9E26A2B5BCA30008357A6 /* MainPage.swift in Sources */,
