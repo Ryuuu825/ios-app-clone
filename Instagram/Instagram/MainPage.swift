@@ -6,17 +6,26 @@
 //
 
 import SwiftUI
+import Giffy
 
 extension Color {
     static let mainColor = Color(red: 0.9284570813, green: 0, blue: 0.8171131611)
 }
 
-
+enum MainPageShowViewStatus {
+    case Nth
+    case Story
+    case Comment
+}
 
 struct MainPage: View {
     let dummyPostText  = """
 Having no enemies can be tough, i swore an oath I wouldn't have any enemies a long while back. Despite this having no enemies has lead to a lot of bottled up emotions and I have learned that just because you have no enemies doesn't mean you can't disagree. Everyone should have their own opinions and thought and be respected for that. For anyone who has read this whole comment, thank you for reading😊
 """
+    
+    @State var showStatus : MainPageShowViewStatus = .Comment
+    
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -39,6 +48,90 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
 
                 }
                 
+                if showStatus == .Story {
+                    StoryPage {
+                        showStatus = .Nth
+                    }
+                        .background(.black)
+                        .animation(.spring(), value: showStatus)
+                }
+                
+                if showStatus == .Comment {
+                    Color.black.opacity(0.7)
+                    
+                }
+            }
+            .background(.black)
+            .sheet(isPresented: .constant(true)) {
+                VStack {
+                    
+                    Color.clear.frame(height: 20)
+                    
+                    ZStack {
+                        Text("Comments")
+                        
+                        Image(systemName: "paperplane")
+                            .resizable()
+                            .frame(width: 19, height: 22)
+                            .rotationEffect(.degrees(25))
+                            .offset(x: 160)
+                        
+                    }
+                    
+                    ScrollView(.vertical) {
+                        VStack(spacing: 12) {
+
+                            CommentRow("whiz_cat" , "user1" , commentCtx: {
+                                AnyView(
+                                    Text("Real ( I miss her)")
+                                    .font(.system(size:14))
+                                    .fontWeight(.medium)
+                                )
+                            })
+                            
+                            CommentRow("whiz_cat" , "user1" , commentCtx: {
+                                AnyView(
+                                    AsyncGiffy(url: URL(string: "https://media.giphy.com/media/nsVlZjIycpxkWiNt9l/giphy.gif")!) { phase in
+                                        switch phase {
+                                        case .loading:
+                                            ProgressView()
+                                        case .error:
+                                            Text("Failed to load GIF")
+                                        case .success(let giffy):
+                                            giffy
+                                                
+                                        }
+                                    }
+                                    .frame(width: 200, height: 150)
+                                    .cornerRadius(1)
+                                )
+                            })
+                            
+                            CommentRow("whiz_cat" , "user1" , commentCtx: {
+                                AnyView(
+                                    AsyncGiffy(url: URL(string: "https://media.giphy.com/media/l3q2tzon8OCC7BqmY/giphy.gif")!) { phase in
+                                        switch phase {
+                                        case .loading:
+                                            ProgressView()
+                                        case .error:
+                                            Text("Failed to load GIF")
+                                        case .success(let giffy):
+                                            giffy
+                                                
+                                        }
+                                    }
+                                    .frame(width: 200, height: 150)
+                                    .cornerRadius(1)
+                                )
+                            })
+  
+                        }
+                        
+                    }
+                    Spacer()
+                }
+                .preferredColorScheme(.dark)
+                .presentationDetents([.medium, .large])
             }
         }
         .preferredColorScheme(.dark)
@@ -137,6 +230,9 @@ extension MainPage {
             Text(username)
                 .fontWeight(.regular)
                 .font(.subheadline)
+        }
+        .onTapGesture {
+            showStatus = .Story
         }
     }
     
@@ -297,7 +393,61 @@ extension MainPage {
         }
         .frame(maxWidth: .infinity)
     }
-    
+   
+    @ViewBuilder
+    func CommentRow(_ username : String , _ userIconname : String, likes : Int = 701, commentCtx : @escaping () -> AnyView ) -> some View {
+        HStack(alignment: .top) {
+            UserIcon(userIconname, "", width: 20)
+            
+            VStack(alignment: .leading) {
+                HStack(spacing: 4) {
+                    Text(username)
+                        .fontWeight(.semibold)
+                        
+                    Text("3d")
+                        .fontWeight(.light)
+                        .font(.system(size:11))
+                    
+                }
+                .font(.system(size:13))
+                
+                
+                commentCtx()
+                
+                
+                Text("Reply")
+                    .font(.system(size:12))
+                    .foregroundColor(.gray)
+                    .offset(y: 5)
+                
+                HStack {
+                    
+                    Rectangle()
+                        .frame(width: 22 , height: 0.6)
+                        .foregroundColor(.gray)
+                    
+                    Text("View 7 more replies")
+                        .font(.system(size:12))
+                        .foregroundColor(.gray)
+                        .padding(.top , 1)
+                        
+                }
+            }
+            
+            Spacer()
+            
+            VStack(spacing: 8) {
+                Image(systemName: "heart")
+                    .font(.system(size:16))
+                
+                Text(String(likes))
+                    .font(.system(size:11))
+            }
+            .padding(.vertical , 12)
+            
+        }
+        .padding(.horizontal, 12)
+    }
 }
 
 struct ExpanablePostText : View {

@@ -317,7 +317,7 @@ struct StoryPage: View {
     @State var timeLeft = storyAllowTime
     @State var timer = Timer.publish(every: time, on: .main, in: .common).autoconnect()
     
-    
+    let dismiss : () -> Void
     
     var body: some View {
         
@@ -328,8 +328,9 @@ struct StoryPage: View {
             bodyCtxs[currentStoryIndex]
                 .onReceive(timer) { r in
                     if timeLeft <= 0 {
-                        timeLeft = StoryPage.storyAllowTime
-                        currentStoryIndex = (currentStoryIndex + 1) % bodyCtxs.count
+                        // timeLeft = StoryPage.storyAllowTime
+                        // currentStoryIndex = (currentStoryIndex + 1) % bodyCtxs.count
+                        dismiss()
                     } else {
                         timeLeft -= 1
                     }
@@ -341,6 +342,8 @@ struct StoryPage: View {
                         .frame(width: proxy.size.width / 2, height: proxy.size.height)
                         .onTapGesture {
                             timeLeft = StoryPage.storyAllowTime
+                            
+                            
                             if (currentStoryIndex > 0 ) {
                                 currentStoryIndex = (currentStoryIndex - 1) % bodyCtxs.count
                             } else {
@@ -354,6 +357,9 @@ struct StoryPage: View {
                         .onTapGesture {
                             timeLeft = StoryPage.storyAllowTime
                             currentStoryIndex = (currentStoryIndex + 1) % bodyCtxs.count
+                            if (currentStoryIndex == 0) {
+                                dismiss()
+                            }
                         }
                     
                     
@@ -487,7 +493,9 @@ struct StoryPage: View {
 
 struct StoryPage_Previews: PreviewProvider {
     static var previews: some View {
-        StoryPage()
+        StoryPage {
+            
+        }
             
     }
 }
