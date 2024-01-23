@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Giffy
+import AVKit
 
 extension Color {
     static let mainColor = Color(red: 0.9284570813, green: 0, blue: 0.8171131611)
@@ -23,7 +24,8 @@ struct MainPage: View {
 Having no enemies can be tough, i swore an oath I wouldn't have any enemies a long while back. Despite this having no enemies has lead to a lot of bottled up emotions and I have learned that just because you have no enemies doesn't mean you can't disagree. Everyone should have their own opinions and thought and be respected for that. For anyone who has read this whole comment, thank you for reading😊
 """
     
-    @State var showStatus : MainPageShowViewStatus = .Comment
+    @State var showStatus : MainPageShowViewStatus = .Nth
+    @State var t = false
     
     
     var body: some View {
@@ -39,12 +41,14 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                         .frame(height: 0.4)
                         .foregroundColor(.gray)
 
-                    ScrollView(.vertical) {
-                        VStack(spacing: 20) {
-                            ImagePost(postText: dummyPostText)
-                            ImagePost(postImageNames: ["posts2"], postText: "What a beautiful place")
-                        }
+                
+                    VStack(spacing: 20) {
+                        ReelPost(postText: "ayo" )
+                        ImagePost(postText: dummyPostText)
+                        ImagePost(postImageNames: ["posts2"], postText: "What a beautiful place")
+                        SponsoredImagePost("user3" , "247 Fitness" , postImageNames: ["ad1"] , postText: "Let's get started! ")
                     }
+                    
 
                 }
                 
@@ -62,7 +66,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                 }
             }
             .background(.black)
-            .sheet(isPresented: .constant(true)) {
+            .sheet(isPresented: .constant(showStatus == .Comment)) {
                 VStack {
                     
                     Color.clear.frame(height: 20)
@@ -132,6 +136,9 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                 }
                 .preferredColorScheme(.dark)
                 .presentationDetents([.medium, .large])
+                .onDisappear {
+                    showStatus = .Nth
+                }
             }
         }
         .preferredColorScheme(.dark)
@@ -222,7 +229,7 @@ extension MainPage {
     
     @ViewBuilder
     func UserStoryIcon(_ iconName : String , _ username : String, haveStory : Bool = false, isCloseFriend : Bool = false , width: CGFloat = 75) -> some View {
-        VStack(spacing: 2) {
+        VStack(spacing: 6) {
 
             UserIcon(iconName , username , haveStory: haveStory , isCloseFriend : isCloseFriend , width: width)
            
@@ -345,6 +352,9 @@ extension MainPage {
                         .resizable()
                         .frame(width: 21, height: 22)
                         .scaleEffect(CGSize(width: -1, height: 1))
+                        .onTapGesture {
+                            showStatus = .Comment
+                        }
                     
                     Image(systemName: "paperplane")
                         .resizable()
@@ -384,7 +394,257 @@ extension MainPage {
                 }
                 .font(.system(size: 13))
                 
-                ExpanablePostText(postText: postText)
+                ExpanablePostText(userName: userName , postText: postText)
+                
+                
+            }
+            .padding(.horizontal , 12)
+            .padding(.top , 8)
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    @ViewBuilder
+    func ReelPost(_ userIcon : String = "user2" , _ userName: String = "sumo.ryu", _ haveStory : Bool = true, postText : String) -> some View {
+        
+        
+        VStack {
+            ZStack {
+                
+                ReelContent {
+                    
+                    t.toggle()
+                }
+                
+                
+                if t {
+                    Color.black.opacity(0.8)
+                        
+                    VStack(spacing: 16) {
+                        HStack {
+                            Image(systemName: "video")
+                            Text("Watch more reels")
+                                .font(.system(size:14))
+                        }
+                        .foregroundColor(.black)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 10)
+                        .background(.white)
+                        .cornerRadius(.infinity)
+                        
+                        Text("Watch again")
+                            .font(.system(size:14))
+                    }
+                    .fontWeight(.medium)
+                }
+                
+               
+
+                
+                HStack {
+                    UserIcon(userIcon, userName, haveStory: haveStory)
+                    
+                    VStack(alignment: .leading) {
+                        Text(userName)
+                            .font(.system(size:14))
+                            .fontWeight(.medium)
+                        
+                        Text("\(userName)݀ · Original audio")
+                            .font(.system(size:12))
+                    }
+                    
+                    Spacer()
+                    
+                    Image(systemName: "ellipsis")
+                }
+                .padding(.top , 4)
+                .padding(.horizontal, 4)
+                .offset(y: -150)
+                
+                
+            }
+            .frame(height: 350)
+            
+            VStack(spacing: 4) {
+                HStack(spacing: 12) {
+                    Image(systemName: "heart")
+                        .resizable()
+                        .frame(width: 25, height: 22)
+                    
+                    Image(systemName: "message")
+                        .resizable()
+                        .frame(width: 21, height: 22)
+                        .scaleEffect(CGSize(width: -1, height: 1))
+                        .onTapGesture {
+                            showStatus = .Comment
+                        }
+                    
+                    Image(systemName: "paperplane")
+                        .resizable()
+                        .frame(width: 19, height: 22)
+                        .rotationEffect(.degrees(25))
+                        .offset(y:-2)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "bookmark")
+                        .resizable()
+                        .frame(width: 20, height: 22)
+                }
+                .fontWeight(.regular)
+            
+                
+                HStack {
+                    
+                    UserIconGroup()
+                    
+                    HStack(spacing: 4) {
+                        Text("Liked by")
+                        
+                        Text("sum_sulek")
+                            .fontWeight(.semibold)
+                            .font(.system(size: 14))
+                        
+                        Text("and")
+                        
+                        Text("5501 others")
+                            .fontWeight(.semibold)
+                            .font(.system(size: 14))
+                    }
+                    
+                    Spacer()
+                    
+                }
+                .font(.system(size: 13))
+                
+                ExpanablePostText(userName: userName , postText: postText)
+                
+                
+            }
+            .padding(.horizontal , 12)
+            .padding(.top , 8)
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    
+    @ViewBuilder
+    func SponsoredImagePost(_ userIcon : String = "user2" , _ userName: String = "sumo.ryu", _ haveStory : Bool = true, postImageNames : [String] = ["posts1", "posts2"] , postText : String) -> some View {
+        VStack {
+            HStack {
+                UserIcon(userIcon, userName, haveStory: haveStory)
+                
+                VStack(alignment: .leading) {
+                    Text(userName)
+                        .font(.system(size:14))
+                        .fontWeight(.medium)
+                    
+                    Text("Sponsored")
+                        .font(.system(size:12))
+                }
+                
+                Spacer()
+                
+                Image(systemName: "ellipsis")
+            }
+            .padding(.top , 4)
+            .padding(.horizontal, 4)
+            
+            ZStack {
+                if postImageNames.count > 1 {
+                    TabView {
+                        ForEach(postImageNames, id:\.hashValue) { i in
+                            Image(i)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 393, height: 300)
+                        }
+                    }
+                    .frame(height: 300)
+                    .tabViewStyle(.page)
+                    .cornerRadius(0)
+                    
+                } else {
+                    Image(postImageNames[0])
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 393, height: 300)
+                        .cornerRadius(0)
+                }
+                
+                HStack(alignment: .center) {
+                    Text("Try Now")
+                    
+                    Spacer()
+                    
+                    Image(systemName: "chevron.right")
+                        
+                }
+                .font(.system(size: 14))
+                .fontWeight(.semibold)
+                .padding(.vertical, 12)
+                .padding(.horizontal)
+                .frame(maxWidth: .infinity)
+                .background(.blue)
+                .offset(y: 135)
+                
+            }
+            .cornerRadius(0)
+        
+
+            VStack(spacing: 4) {
+                HStack(spacing: 12) {
+                    Image(systemName: "heart")
+                        .resizable()
+                        .frame(width: 25, height: 22)
+                    
+                    Image(systemName: "message")
+                        .resizable()
+                        .frame(width: 21, height: 22)
+                        .scaleEffect(CGSize(width: -1, height: 1))
+                        .onTapGesture {
+                            showStatus = .Comment
+                        }
+                    
+                    Image(systemName: "paperplane")
+                        .resizable()
+                        .frame(width: 19, height: 22)
+                        .rotationEffect(.degrees(25))
+                        .offset(y:-2)
+                    
+                    Spacer()
+                    
+                    Image(systemName: "bookmark")
+                        .resizable()
+                        .frame(width: 20, height: 22)
+                }
+                .fontWeight(.regular)
+            
+                
+                HStack {
+                    
+                    UserIconGroup()
+                    
+                    HStack(spacing: 4) {
+                        Text("Followed by")
+                        
+                        Text("sum_sulek")
+                            .fontWeight(.semibold)
+                            .font(.system(size: 14))
+                        
+                        Text("and")
+                        
+                        Text("5501 others")
+                            .fontWeight(.semibold)
+                            .font(.system(size: 14))
+                    }
+                    
+                    Spacer()
+                    
+                }
+                .font(.system(size: 13))
+                
+                ExpanablePostText(userName: userName , postText: postText)
                 
                 
             }
@@ -451,7 +711,10 @@ extension MainPage {
 }
 
 struct ExpanablePostText : View {
+    
+    let userName : String
     let postText : String
+    
     @State var isExpand : Bool = false
     
     var body: some View {
@@ -459,13 +722,13 @@ struct ExpanablePostText : View {
             
             if postText.count > 10 {
                 if isExpand {
-                    Text("**sumo.ryu** \(String(postText))" )
+                    Text("**\(userName)** \(String(postText))" )
                 } else {
                     let truncatedText = postText.prefix(50)
-                    Text("**sumo.ryu** \(String(truncatedText))... " ) + Text("more").foregroundColor(.gray)
+                    Text("**\(userName)** \(String(truncatedText))... " ) + Text("more").foregroundColor(.gray)
                 }
             } else {
-                Text("**sumo.ryu** \(postText)")
+                Text("**\(userName)** \(postText)")
             }
             
         }
@@ -477,6 +740,37 @@ struct ExpanablePostText : View {
     }
 }
 
+
+struct ReelContent : View {
+    
+    @State var player = AVPlayer()
+ 
+    let dismiss : () -> Void
+    
+    var body: some View {
+        VStack {
+            
+            VideoPlayer(player: player)
+                .frame(width: 393, height: 300)
+                .scaledToFill()
+                
+        }
+        .onAppear {
+            var playerItem = AVPlayerItem(url: Bundle.main.url(forResource: "a", withExtension: "mp4")!)
+            
+            player = AVPlayer(url: Bundle.main.url(forResource: "a", withExtension: "mp4")!)
+            player.play()
+            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { _ in
+                print("d")
+                dismiss()
+            }
+        }
+        .onDisappear {
+            player.pause()
+            NotificationCenter.default.removeObserver(self)
+        }
+    }
+}
 struct MainPage_Previews: PreviewProvider {
     static var previews: some View {
         MainPage()

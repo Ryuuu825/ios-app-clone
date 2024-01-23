@@ -66,6 +66,9 @@
 		42B9E25A2B5BC96B008357A6 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				4299EDAD2B5D4DBE00717BB2 /* a.mp4 */,
+				42FE36662B5FA8AD00787890 /* IMG_7201.MOV */,
+				42FE366A2B5FAC2F00787890 /* test.mp4 */,
 				422AC4822B5D1CC700043335 /* Info.plist */,
 				42B9E25B2B5BC96B008357A6 /* InstagramApp.swift */,
 				42B9E25D2B5BC96B008357A6 /* ContentView.swift */,
@@ -74,7 +77,6 @@
 				42B9E2692B5BCA30008357A6 /* MainPage.swift */,
 				422AC47A2B5CF16400043335 /* StoryPage.swift */,
 				4299EDB32B5D62C900717BB2 /* ProfilePage.swift */,
-				42FE366C2B5FB18B00787890 /* VIdeo */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -85,16 +87,6 @@
 				42B9E2622B5BC96C008357A6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		42FE366C2B5FB18B00787890 /* VIdeo */ = {
-			isa = PBXGroup;
-			children = (
-				4299EDAD2B5D4DBE00717BB2 /* a.mp4 */,
-				42FE36662B5FA8AD00787890 /* IMG_7201.MOV */,
-				42FE366A2B5FAC2F00787890 /* test.mp4 */,
-			);
-			path = VIdeo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
