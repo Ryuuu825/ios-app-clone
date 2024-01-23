@@ -2,7 +2,7 @@
 
 `577b902` - reels post
 
-![reels](./update/577b902.png)
+![reels](./update/577b902.gif)
 
 `79bd2c4` - add comment page
 
