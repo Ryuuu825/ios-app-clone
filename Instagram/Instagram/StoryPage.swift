@@ -236,7 +236,69 @@ struct DummyStory4: View  {
     
 }
 
-
+struct DummyStory5: View  {
+    
+    @State var scaleEffectValue : CGFloat = 0
+    
+    var body: some View {
+           
+        GeometryReader { proxy in
+            
+            DynamicBackgroundColor("myposts1" , width: proxy.size.width, height: 710)
+            
+            Image("myposts1")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 400, height: 700)
+                .cornerRadius(0)
+            
+            Text("@sandwich_cat.hk".uppercased())
+                .foregroundColor(Color.mainColor)
+                .fontWeight(.medium)
+                .frame(height: 30)
+                .padding(.vertical , 2)
+                .padding(.horizontal , 8)
+                .background(.white)
+                .cornerRadius(4)
+                .rotationEffect(.degrees(5))
+                .offset(x: 50 , y: 500)
+            
+            VStack {
+                Text("Sleeping cat")
+                    .foregroundColor(.black)
+                    .font(.system(size: 12))
+                
+                ZStack {
+                    Rectangle()
+                        .foregroundColor(.gray)
+                        .frame(height: 2)
+                        .cornerRadius(.infinity)
+                    
+                    Text("😍")
+                        .frame(maxWidth: .infinity , alignment: .leading)
+                        .scaleEffect(scaleEffectValue)
+                        .animation(.spring() , value: scaleEffectValue)
+                        .onAppear {
+                            scaleEffectValue = 1
+                        }
+                        
+                }
+                .frame(width: 100)
+            }
+            .padding(.vertical , 12)
+            .frame(width: 150)
+            .background(.white)
+            .cornerRadius(4)
+            .rotationEffect(.degrees(5))
+            .offset(x: 70 , y: 410)
+            
+            
+            
+        }
+        
+    }
+    
+}
 
 
 
@@ -244,7 +306,8 @@ struct DummyStory4: View  {
 struct StoryPage: View {
     
     // storys
-    let bodyCtxs : [AnyView] = [AnyView(DummyStory1()) , AnyView(DummyStory2()), AnyView(DummyStory3()), AnyView(DummyStory4()) ]
+    let bodyCtxs : [AnyView] = [AnyView(DummyStory1()) , AnyView(DummyStory2()), AnyView(DummyStory3()), AnyView(DummyStory4()) , AnyView(DummyStory5())]
+//    let bodyCtxs : [AnyView] = [AnyView(DummyStory5()) ]
     @State var currentStoryIndex : Int = 0
     
     
