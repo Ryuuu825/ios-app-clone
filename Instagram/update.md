@@ -1,5 +1,10 @@
 # Instagram
 
+`42ac18b` - add one more story, profile page
+
+![story](./update/42ac18b_1.png)
+![story](./update/42ac18b_2.png)
+
 `b22ebd2` - story
 
 ![story](./update/b22ebd2.gif)
