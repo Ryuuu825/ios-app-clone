@@ -43,10 +43,11 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
 
                 
                     VStack(spacing: 20) {
-                        ReelPost(postText: "ayo" )
+                        
                         ImagePost(postText: dummyPostText)
                         ImagePost(postImageNames: ["posts2"], postText: "What a beautiful place")
                         SponsoredImagePost("user3" , "247 Fitness" , postImageNames: ["ad1"] , postText: "Let's get started! ")
+                        ReelPost(postText: "ayo" )
                     }
                     
 
@@ -422,13 +423,13 @@ extension MainPage {
                         
                     VStack(spacing: 16) {
                         HStack {
-                            Image(systemName: "video")
+                            Image(systemName: "video.fill")
                             Text("Watch more reels")
-                                .font(.system(size:14))
+                                .font(.system(size:13))
                         }
                         .foregroundColor(.black)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 10)
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 12)
                         .background(.white)
                         .cornerRadius(.infinity)
                         
@@ -459,7 +460,7 @@ extension MainPage {
                 }
                 .padding(.top , 4)
                 .padding(.horizontal, 4)
-                .offset(y: -150)
+                .offset(y: -156)
                 
                 
             }
@@ -744,6 +745,7 @@ struct ExpanablePostText : View {
 struct ReelContent : View {
     
     @State var player = AVPlayer()
+    @State var playerItem = AVPlayerItem(url: Bundle.main.url(forResource: "a", withExtension: "mp4")!)
  
     let dismiss : () -> Void
     
@@ -753,17 +755,14 @@ struct ReelContent : View {
             VideoPlayer(player: player)
                 .frame(width: 393, height: 300)
                 .scaledToFill()
+                .onAppear {
+                    player.replaceCurrentItem(with: playerItem)
+                    player.play()
+                    NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: playerItem, queue: .main) { _ in
+                        dismiss()
+                    }
+                }
                 
-        }
-        .onAppear {
-            var playerItem = AVPlayerItem(url: Bundle.main.url(forResource: "a", withExtension: "mp4")!)
-            
-            player = AVPlayer(url: Bundle.main.url(forResource: "a", withExtension: "mp4")!)
-            player.play()
-            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: player.currentItem, queue: .main) { _ in
-                print("d")
-                dismiss()
-            }
         }
         .onDisappear {
             player.pause()

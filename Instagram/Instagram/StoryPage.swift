@@ -186,8 +186,6 @@ struct DummyStory4: View  {
                     ZStack {
                         VideoPlayer(player: player)
                            
-                            
-                        
                         Color.black.opacity(0.1)
                             .frame(width: 300, height: 350)
                     }
@@ -328,9 +326,8 @@ struct StoryPage: View {
             bodyCtxs[currentStoryIndex]
                 .onReceive(timer) { r in
                     if timeLeft <= 0 {
-                        // timeLeft = StoryPage.storyAllowTime
-                        // currentStoryIndex = (currentStoryIndex + 1) % bodyCtxs.count
-                        dismiss()
+                        timeLeft = StoryPage.storyAllowTime
+                        
                     } else {
                         timeLeft -= 1
                     }

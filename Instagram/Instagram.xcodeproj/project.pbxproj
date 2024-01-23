@@ -16,6 +16,7 @@
 		42B9E2632B5BC96C008357A6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B9E2622B5BC96C008357A6 /* Preview Assets.xcassets */; };
 		42B9E26A2B5BCA30008357A6 /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B9E2692B5BCA30008357A6 /* MainPage.swift */; };
 		42BB47AB2B5FB988009B6A39 /* Giffy in Frameworks */ = {isa = PBXBuildFile; productRef = 42BB47AA2B5FB988009B6A39 /* Giffy */; };
+		42BB47AD2B5FFC7C009B6A39 /* MessagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB47AC2B5FFC7C009B6A39 /* MessagePage.swift */; };
 		42FE36672B5FA8AD00787890 /* IMG_7201.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 42FE36662B5FA8AD00787890 /* IMG_7201.MOV */; };
 		42FE366B2B5FAC2F00787890 /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 42FE366A2B5FAC2F00787890 /* test.mp4 */; };
 /* End PBXBuildFile section */
@@ -31,6 +32,7 @@
 		42B9E25F2B5BC96C008357A6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		42B9E2622B5BC96C008357A6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		42B9E2692B5BCA30008357A6 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
+		42BB47AC2B5FFC7C009B6A39 /* MessagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePage.swift; sourceTree = "<group>"; };
 		42FE36662B5FA8AD00787890 /* IMG_7201.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_7201.MOV; sourceTree = "<group>"; };
 		42FE366A2B5FAC2F00787890 /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +79,7 @@
 				42B9E2692B5BCA30008357A6 /* MainPage.swift */,
 				422AC47A2B5CF16400043335 /* StoryPage.swift */,
 				4299EDB32B5D62C900717BB2 /* ProfilePage.swift */,
+				42BB47AC2B5FFC7C009B6A39 /* MessagePage.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			files = (
 				422AC47B2B5CF16400043335 /* StoryPage.swift in Sources */,
 				42B9E25E2B5BC96B008357A6 /* ContentView.swift in Sources */,
+				42BB47AD2B5FFC7C009B6A39 /* MessagePage.swift in Sources */,
 				4299EDB42B5D62C900717BB2 /* ProfilePage.swift in Sources */,
 				42B9E25C2B5BC96B008357A6 /* InstagramApp.swift in Sources */,
 				42B9E26A2B5BCA30008357A6 /* MainPage.swift in Sources */,
