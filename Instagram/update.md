@@ -1,5 +1,9 @@
 # Instagram
 
+`79bd2c4` - add comment page
+
+![comment](./update/79bd2c4.png)
+
 `42ac18b` - add one more story, profile page
 
 ![story](./update/42ac18b_1.png)
