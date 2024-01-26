@@ -41,6 +41,7 @@ struct MessagePage: View {
                 Spacer()
                 MessagePageTrailingNavigationBar()
             }
+            .padding(.horizontal, 12)
             
             ScrollView(.vertical) {
                 HStack {
@@ -225,83 +226,12 @@ struct MessagePage: View {
                 .padding(.vertical, 12)
                 .padding(.horizontal, 12)
                 
-                HStack {
-                    Image("user1")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 50, height: 50)
-                        .cornerRadius(.infinity)
-                        .padding(4)
-                        
-                        .overlay {
-                            Circle()
-                                .stroke(.gray)
-                        }
-                        
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("lan")
-                        Text("4+ new messages").bold() + Text(" ᐧ 2h").foregroundColor(.gray).fontWeight(.light)
-                        
-                    }
-                    .font(.system(size: 15.3))
-                    .fontWeight(.medium)
-                    .padding(.leading, 4)
-                    
-                    Spacer()
-                    
-                    Circle()
-                        .frame(width: 10)
-                        .foregroundColor(Color(uiColor: .link))
-                    
-                    Image(systemName: "camera")
-                        .resizable()
-                        .frame(width: 24, height: 20)
-                        .fontWeight(.bold)
-                        .padding(.leading , 12)
-                    
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal)
+                UnreeadMessageRow("Ian" , "user1")
+                ReadedMessageRow("Ryu" , "user2")
+                ReadedMessageRow("Sandwich" , "highlight1" , message: "Seen last week")
+                ReadedMessageRow("祝君安好" , "" , message: "Active 12m ago")
                 
-                HStack {
-                    Image("user2")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 55, height: 55)
-                        .cornerRadius(.infinity)
-                        .padding(4)
-                        
-                        .overlay {
-                            Circle()
-                                .stroke(.gray)
-                        }
-                        
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Ryu")
-                        Text("Sent 1h ago").foregroundColor(.gray)
-                        
-                    }
-                    .font(.system(size: 15.3))
-                    .fontWeight(.medium)
-                    .padding(.leading, 4)
-                    
-                    Spacer()
-                    
-                    Circle()
-                        .frame(width: 10)
-                        .foregroundColor(Color(uiColor: .link))
-                        .hidden()
-                    
-                    Image(systemName: "camera")
-                        .resizable()
-                        .frame(width: 24, height: 20)
-                        .fontWeight(.bold)
-                        .padding(.leading , 12)
-                        .foregroundColor(.gray)
-                    
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal)
+                
                 
                 HStack {
                     Image("user3")
@@ -342,86 +272,7 @@ struct MessagePage: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.horizontal)
-                
-                HStack {
-                    Image("highlight1")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 55, height: 55)
-                        .cornerRadius(.infinity)
-                        .padding(4)
-                        
-                        .overlay {
-                            Circle()
-                                .stroke(.gray)
-                        }
-                        
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("Sandwich")
-                        Text("Seen last week").foregroundColor(.gray)
-                        
-                    }
-                    .font(.system(size: 15.3))
-                    .fontWeight(.medium)
-                    .padding(.leading, 4)
-                    
-                    Spacer()
-                    
-                    Circle()
-                        .frame(width: 10)
-                        .foregroundColor(Color(uiColor: .link))
-                        .hidden()
-                    
-                    Image(systemName: "camera")
-                        .resizable()
-                        .frame(width: 24, height: 20)
-                        .fontWeight(.bold)
-                        .padding(.leading , 12)
-                        .foregroundColor(.gray)
-                    
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal)
-                
-                HStack {
-                    Image("posts")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 55, height: 55)
-                        .cornerRadius(.infinity)
-                        .padding(4)
-                        
-                        .overlay {
-                            Circle()
-                                .stroke(.gray)
-                        }
-                        
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text("祝君安好")
-                        Text("Active 12m ago").foregroundColor(.gray)
-                        
-                    }
-                    .font(.system(size: 15.3))
-                    .fontWeight(.medium)
-                    .padding(.leading, 4)
-                    
-                    Spacer()
-                    
-                    Circle()
-                        .frame(width: 10)
-                        .foregroundColor(Color(uiColor: .link))
-                        .hidden()
-                    
-                    Image(systemName: "camera")
-                        .resizable()
-                        .frame(width: 24, height: 20)
-                        .fontWeight(.bold)
-                        .padding(.leading , 12)
-                        .foregroundColor(.gray)
-                    
-                }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal)
+
                
             }
             .frame(maxWidth: .infinity)
@@ -430,6 +281,92 @@ struct MessagePage: View {
         
         
         
+    }
+}
+
+extension MessagePage {
+    @ViewBuilder
+    func UnreeadMessageRow(_ username : String , _ userIcon : String , unreadMessageCount : Int = 4 , lastSeen : Int = 2 ) -> some View {
+        HStack {
+            Image(userIcon)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 50, height: 50)
+                .cornerRadius(.infinity)
+                .padding(4)
+            
+                .overlay {
+                    Circle()
+                        .stroke(.gray)
+                }
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text("\(username)").fontWeight(.semibold)
+                Text("\(unreadMessageCount)+ new messages").bold() + Text(" ᐧ \(lastSeen)h").foregroundColor(.gray).fontWeight(.light)
+                
+            }
+            .font(.system(size: 15.3))
+            .fontWeight(.medium)
+            .padding(.leading, 4)
+            
+            Spacer()
+            
+            Circle()
+                .frame(width: 10)
+                .foregroundColor(Color(uiColor: .link))
+            
+            Image(systemName: "camera")
+                .resizable()
+                .frame(width: 24, height: 20)
+                .fontWeight(.bold)
+                .padding(.leading , 12)
+            
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    func ReadedMessageRow(_ username : String , _ userIcon : String , message : String = "Sent 1h ago") -> some View {
+        HStack {
+            Image(userIcon)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 55, height: 55)
+                .cornerRadius(.infinity)
+                .padding(4)
+                
+                .overlay {
+                    Circle()
+                        .stroke(.gray)
+                }
+                
+            VStack(alignment: .leading, spacing: 2) {
+                Text(username)
+                Text(message).foregroundColor(.gray)
+                
+            }
+            .font(.system(size: 15.3))
+            .fontWeight(.regular)
+            .padding(.leading, 4)
+            
+            Spacer()
+            
+            Circle()
+                .frame(width: 10)
+                .foregroundColor(Color(uiColor: .link))
+                .hidden()
+            
+            Image(systemName: "camera")
+                .resizable()
+                .frame(width: 24, height: 20)
+                .fontWeight(.bold)
+                .padding(.leading , 12)
+                .foregroundColor(.gray)
+            
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal)
     }
 }
 
