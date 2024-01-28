@@ -48,307 +48,311 @@ struct PrivateMessagePage: View {
                 .padding(.horizontal, 12)
                 
                 ScrollView(showsIndicators: false) {
-                    VStack(spacing: 12) {
+                    ScrollViewReader { reader in
                         
-            
-                        VStack(alignment: .trailing, spacing: 4) {
+                        VStack(spacing: 12) {
                             
-                            
-                            
-                            
-                            VStack {
-                                Text("You replied")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 14))
+                
+                            VStack(alignment: .trailing, spacing: 4) {
                                 
-                                HStack {
-                                    ZStack {
-                                        
-                                        Image("posts1")
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 100, height: 70)
-                                        
-                                        Text("Training back because i want her back")
-                                            .font(.system(size: 8))
-                                            .offset(y:-50)
-                                        
-                                        Text("(Real)")
-                                            .font(.system(size: 8))
-                                            .offset(y:50)
-                                        
-                                        Text("(I miss her smile)")
-                                            .font(.system(size: 8))
-                                            .offset(y:60)
-                                            
-                                    }
-                                    .frame(width: 100, height: 170)
-                                    .cornerRadius(0)
-                                    
-                                    Rectangle()
-                                        .frame(width: 5)
-                                        .cornerRadius(.infinity)
-                                        .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
-                                }
-                            }
-                            Text("Bro")
-                                .padding(.vertical , 12)
-                                .padding(.horizontal , 12)
-                                .background(Color.MessageColor)
-                                .cornerRadius(24)
-                            
-                            Text("So depressed in these few days")
-                                .padding(.vertical , 12)
-                                .padding(.horizontal , 12)
-                                .background(Color.MessageColor)
-                                .cornerRadius(24)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        
-                        VStack(alignment: .trailing, spacing: 4) {
-                            VStack {
-                                Text("You replied")
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 14))
-                                
-                                HStack {
-                                    ZStack {
-                                        
-                                        Image("posts2")
-                                            .resizable()
-                                            .scaledToFill()
-                                            .frame(width: 100, height: 70)
-                                        
-                                        Text("I don't want to work. I want to raise sheepp with my homie")
-                                            .font(.system(size: 6))
-                                            .offset(y:-50)
-                                            .foregroundColor(.black)
-                                        
-                                       
-                                            
-                                    }
-                                    .frame(width: 100, height: 170)
-                                    .background(.white)
-                                    .cornerRadius(12)
-                                    
-                                    Rectangle()
-                                        .frame(width: 5)
-                                        .cornerRadius(.infinity)
-                                        .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
-                                }
-                            }
-                            Text("True")
-                                .padding(.vertical , 12)
-                                .padding(.horizontal , 12)
-                                .background(Color.MessageColor)
-                                .cornerRadius(24)
-                            
-                            Text("0 motivation abt life")
-                                .padding(.vertical , 12)
-                                .padding(.horizontal , 12)
-                                .background(Color.MessageColor)
-                                .cornerRadius(24)
-                        }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        
-                        HStack(alignment: .bottom) {
-                            
-                            Image("user2")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 30, height: 30)
-                                .cornerRadius(.infinity)
-                                .padding(4)
-                            
-                            VStack(alignment: .leading, spacing: 4) {
-                                VStack(alignment: .leading) {
-                                    Text("Replied to you")
+                                VStack {
+                                    Text("You replied")
                                         .foregroundColor(.gray)
                                         .font(.system(size: 14))
                                     
                                     HStack {
-                                        
-                                        Rectangle()
-                                            .frame(width: 5)
-                                            .cornerRadius(.infinity)
-                                            .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
-                                        
-                                        Text("So depressed in these few days")
-                                            .padding(.vertical , 12)
-                                            .padding(.horizontal , 12)
-                                            .background(Color.ReplyMessageColor)
-                                            .cornerRadius(24)
-                                            .font(.system(size: 14))
-                                    }
-                                    
-                                }
-                                .padding(.bottom, 8)
-                                
-                                Text("What happen bro ??")
-                                    .padding(.vertical , 12)
-                                    .padding(.horizontal , 12)
-                                    .background(Color.MessageColor2)
-                                    .cornerRadius(24)
-                                
-                               
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                        }
-                        .padding(.leading, 12)
-                        
-                        
-                        VStack(alignment: .trailing, spacing: 4) {
-                            ForEach(1..<4, id:\.hashValue) { _ in
-                                HStack {
-                                    Image(systemName: "play.fill")
-                                    
-                                    HStack(spacing: 3) {
-                                        ForEach(1..<30, id: \.hashValue) { i in
-                                            Rectangle()
-                                                .frame(width: 3, height: CGFloat.random(in: 5..<35))
-                                                .cornerRadius(.infinity)
-                                        }
-                                    }
-                                    
-                                    Text("0:05")
-                                        .font(.system(size: 12))
-                                        .bold()
-                                }
-                                .padding(.vertical , 16)
-                                .padding(.horizontal , 20)
-                                .background(Color.MessageColor)
-                                .cornerRadius(24)
-                                .frame(maxWidth: .infinity, alignment: .trailing)
-                            }
-                            
-                        }
-                        
-     
-                        HStack(alignment: .bottom) {
-                            
-                            Image("user2")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 30, height: 30)
-                                .cornerRadius(.infinity)
-                                .padding(4)
-                            
-                            VStack(alignment: .leading, spacing: 4) {
-                                
-                                
-                                Text("Damn")
-                                    .padding(.vertical , 12)
-                                    .padding(.horizontal , 12)
-                                    .background(Color.MessageColor2)
-                                    .cornerRadius(24)
-                                
-                                Text("I'll send you my ball pic as consolation")
-                                    .padding(.vertical , 12)
-                                    .padding(.horizontal , 12)
-                                    .background(Color.MessageColor2)
-                                    .cornerRadius(24)
-                               
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                        }
-                        .padding(.leading, 12)
-                        
-                        HStack(alignment: .bottom) {
-                            
-                            Image("user2")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 30, height: 30)
-                                .cornerRadius(.infinity)
-                                .padding(4)
-                            
-                            VStack(alignment: .leading, spacing: 4) {
-                                
-                                
-                                HStack {
-                                    Image(systemName: "play.fill")
-                                    Text("Photo")
-                                }
-                                .foregroundColor(Color.gray)
-                                .padding(.vertical , 12)
-                                .padding(.horizontal , 16)
-                                .background(Color.MessageColor2)
-                                .cornerRadius(24)
-                               
-                            }
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            
-                        }
-                        .padding(.leading, 12)
-                        
-                        VStack(alignment: .trailing, spacing: 4) {
-                           
-                            Text("Hell no")
-                                .padding(.vertical , 12)
-                                .padding(.horizontal , 12)
-                                .background(Color.MessageColor)
-                                .cornerRadius(24)
-
-                        }
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                        
-                        HStack(alignment: .bottom) {
-                            
-                            Image("user2")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 30, height: 30)
-                                .cornerRadius(.infinity)
-                                .padding(4)
-                            
-                            VStack(alignment: .leading, spacing: 4) {
-                                VStack(alignment: .leading) {
-                                    Text("Mentioned you in their story")
-                                        .foregroundColor(.gray)
-                                        .font(.system(size: 14))
-                                    
-                                    HStack {
-                                        
-                                        Rectangle()
-                                            .frame(width: 5)
-                                            .cornerRadius(.infinity)
-                                            .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
-                                        
                                         ZStack {
-                                            Image("story1")
+                                            
+                                            Image("posts1")
                                                 .resizable()
                                                 .scaledToFill()
-                                                .frame(width: 150, height: 250)
-                                                .cornerRadius(0)
+                                                .frame(width: 100, height: 70)
                                             
-                                            Text("Add to your story")
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 14))
-                                                .fontWeight(.medium)
-                                                .padding(.vertical , 8)
-                                                .padding(.horizontal, 12)
-                                                .background(Color(uiColor: .secondarySystemBackground))
-                                                .cornerRadius(12)
-                                                .offset(y: 100)
+                                            Text("Training back because i want her back")
+                                                .font(.system(size: 8))
+                                                .offset(y:-50)
+                                            
+                                            Text("(Real)")
+                                                .font(.system(size: 8))
+                                                .offset(y:50)
+                                            
+                                            Text("(I miss her smile)")
+                                                .font(.system(size: 8))
+                                                .offset(y:60)
+                                                
                                         }
-                                        .cornerRadius(12)
+                                        .frame(width: 100, height: 170)
+                                        .cornerRadius(0)
+                                        
+                                        Rectangle()
+                                            .frame(width: 5)
+                                            .cornerRadius(.infinity)
+                                            .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
                                     }
-                                    
                                 }
-                                .padding(.bottom, 8)
+                                Text("Bro")
+                                    .padding(.vertical , 12)
+                                    .padding(.horizontal , 12)
+                                    .background(Color.MessageColor)
+                                    .cornerRadius(24)
                                 
-                               
-                                
-                               
+                                Text("So depressed in these few days")
+                                    .padding(.vertical , 12)
+                                    .padding(.horizontal , 12)
+                                    .background(Color.MessageColor)
+                                    .cornerRadius(24)
                             }
-                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            
+                            VStack(alignment: .trailing, spacing: 4) {
+                                VStack {
+                                    Text("You replied")
+                                        .foregroundColor(.gray)
+                                        .font(.system(size: 14))
+                                    
+                                    HStack {
+                                        ZStack {
+                                            
+                                            Image("posts2")
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 100, height: 70)
+                                            
+                                            Text("I don't want to work. I want to raise sheepp with my homie")
+                                                .font(.system(size: 6))
+                                                .offset(y:-50)
+                                                .foregroundColor(.black)
+                                            
+                                           
+                                                
+                                        }
+                                        .frame(width: 100, height: 170)
+                                        .background(.white)
+                                        .cornerRadius(12)
+                                        
+                                        Rectangle()
+                                            .frame(width: 5)
+                                            .cornerRadius(.infinity)
+                                            .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                                    }
+                                }
+                                Text("True")
+                                    .padding(.vertical , 12)
+                                    .padding(.horizontal , 12)
+                                    .background(Color.MessageColor)
+                                    .cornerRadius(24)
+                                
+                                Text("0 motivation abt life")
+                                    .padding(.vertical , 12)
+                                    .padding(.horizontal , 12)
+                                    .background(Color.MessageColor)
+                                    .cornerRadius(24)
+                            }
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            
+                            HStack(alignment: .bottom) {
+                                
+                                Image("user2")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(.infinity)
+                                    .padding(4)
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    VStack(alignment: .leading) {
+                                        Text("Replied to you")
+                                            .foregroundColor(.gray)
+                                            .font(.system(size: 14))
+                                        
+                                        HStack {
+                                            
+                                            Rectangle()
+                                                .frame(width: 5)
+                                                .cornerRadius(.infinity)
+                                                .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                                            
+                                            Text("So depressed in these few days")
+                                                .padding(.vertical , 12)
+                                                .padding(.horizontal , 12)
+                                                .background(Color.ReplyMessageColor)
+                                                .cornerRadius(24)
+                                                .font(.system(size: 14))
+                                        }
+                                        
+                                    }
+                                    .padding(.bottom, 8)
+                                    
+                                    Text("What happen bro ??")
+                                        .padding(.vertical , 12)
+                                        .padding(.horizontal , 12)
+                                        .background(Color.MessageColor2)
+                                        .cornerRadius(24)
+                                    
+                                   
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .padding(.leading, 12)
+                            
+                            
+                            VStack(alignment: .trailing, spacing: 4) {
+                                ForEach(1..<4, id:\.hashValue) { _ in
+                                    HStack {
+                                        Image(systemName: "play.fill")
+                                        
+                                        HStack(spacing: 3) {
+                                            ForEach(1..<30, id: \.hashValue) { i in
+                                                Rectangle()
+                                                    .frame(width: 3, height: CGFloat.random(in: 5..<35))
+                                                    .cornerRadius(.infinity)
+                                            }
+                                        }
+                                        
+                                        Text("0:05")
+                                            .font(.system(size: 12))
+                                            .bold()
+                                    }
+                                    .padding(.vertical , 16)
+                                    .padding(.horizontal , 20)
+                                    .background(Color.MessageColor)
+                                    .cornerRadius(24)
+                                    .frame(maxWidth: .infinity, alignment: .trailing)
+                                }
+                                
+                            }
+                            
+         
+                            HStack(alignment: .bottom) {
+                                
+                                Image("user2")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(.infinity)
+                                    .padding(4)
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    
+                                    
+                                    Text("Damn")
+                                        .padding(.vertical , 12)
+                                        .padding(.horizontal , 12)
+                                        .background(Color.MessageColor2)
+                                        .cornerRadius(24)
+                                    
+                                    Text("I'll send you my ball pic as consolation")
+                                        .padding(.vertical , 12)
+                                        .padding(.horizontal , 12)
+                                        .background(Color.MessageColor2)
+                                        .cornerRadius(24)
+                                   
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                            }
+                            .padding(.leading, 12)
+                            
+                            HStack(alignment: .bottom) {
+                                
+                                Image("user2")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(.infinity)
+                                    .padding(4)
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    
+                                    
+                                    HStack {
+                                        Image(systemName: "play.fill")
+                                        Text("Photo")
+                                    }
+                                    .foregroundColor(Color.gray)
+                                    .padding(.vertical , 12)
+                                    .padding(.horizontal , 16)
+                                    .background(Color.MessageColor2)
+                                    .cornerRadius(24)
+                                   
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                
+                            }
+                            .padding(.leading, 12)
+                            
+                            VStack(alignment: .trailing, spacing: 4) {
+                               
+                                Text("Hell no")
+                                    .padding(.vertical , 12)
+                                    .padding(.horizontal , 12)
+                                    .background(Color.MessageColor)
+                                    .cornerRadius(24)
+
+                            }
+                            .frame(maxWidth: .infinity, alignment: .trailing)
+                            
+                            HStack(alignment: .bottom) {
+                                
+                                Image("user2")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 30, height: 30)
+                                    .cornerRadius(.infinity)
+                                    .padding(4)
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    VStack(alignment: .leading) {
+                                        Text("Mentioned you in their story")
+                                            .foregroundColor(.gray)
+                                            .font(.system(size: 14))
+                                        
+                                        HStack {
+                                            
+                                            Rectangle()
+                                                .frame(width: 5)
+                                                .cornerRadius(.infinity)
+                                                .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                                            
+                                            ZStack {
+                                                Image("story1")
+                                                    .resizable()
+                                                    .scaledToFill()
+                                                    .frame(width: 150, height: 250)
+                                                    .cornerRadius(0)
+                                                
+                                                Text("Add to your story")
+                                                    .foregroundColor(.white)
+                                                    .font(.system(size: 14))
+                                                    .fontWeight(.medium)
+                                                    .padding(.vertical , 8)
+                                                    .padding(.horizontal, 12)
+                                                    .background(Color(uiColor: .secondarySystemBackground))
+                                                    .cornerRadius(12)
+                                                    .offset(y: 100)
+                                            }
+                                            .cornerRadius(12)
+                                        }
+                                        
+                                    }
+                                    .padding(.bottom, 8)
+                                    
+                                   
+                                    
+                                   
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .padding(.leading, 12)
+                            .id(0)
+                            .onAppear {
+                                reader.scrollTo(0)
+                            }
+                           
+                            
                         }
-                        .padding(.leading, 12)
-                       
-                        
+                        .fontWeight(.regular)
                     }
-                    .fontWeight(.regular)
                 }
                 .frame(maxWidth: .infinity)
                 
