@@ -24,7 +24,8 @@ struct MainPage: View {
 Having no enemies can be tough, i swore an oath I wouldn't have any enemies a long while back. Despite this having no enemies has lead to a lot of bottled up emotions and I have learned that just because you have no enemies doesn't mean you can't disagree. Everyone should have their own opinions and thought and be respected for that. For anyone who has read this whole comment, thank you for reading😊
 """
     
-    @State var showStatus : MainPageShowViewStatus = .Nth
+    @State var showStatus : MainPageShowViewStatus = .Comment
+    
     @State var t = false
     
     
@@ -63,6 +64,9 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                 
                 if showStatus == .Comment {
                     Color.black.opacity(0.7)
+                        .onTapGesture {
+                            showStatus = .Nth
+                        }
                     
                 }
             }
@@ -74,7 +78,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                     
                     ZStack {
                         Text("Comments")
-                        
+                            .fontWeight(.semibold)
                         Image(systemName: "paperplane")
                             .resizable()
                             .frame(width: 19, height: 22)
@@ -133,7 +137,52 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                         }
                         
                     }
-                    Spacer()
+                    
+                    LazyVGrid(columns: Array(repeating: GridItem(), count: 8)) {
+                        Text("❤️")
+                        Text("🙌")
+                        Text("🔥")
+                        Text("👏")
+                        Text("😢")
+                        Text("😍")
+                        Text("😮")
+                        Text("😂")
+                    }
+                    .font(.system(size: 24))
+                    .padding(.horizontal, 8)
+                    
+                    HStack {
+                        Circle()
+                            .frame(width: 30)
+                            .foregroundColor(.black)
+                        
+                        HStack {
+                            Text("Add a comment for sumo.ryu")
+                                .foregroundColor(.gray)
+                                .font(.system(size: 13))
+                            
+                            Spacer()
+                            
+                            Text("GIF")
+                                .font(.system(size: 12))
+                                .bold()
+                                .padding(.vertical, 4)
+                                .padding(.horizontal, 2)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 2)
+                                        .stroke(.white, lineWidth: 2)
+                                }
+                        }
+                        .frame(width: 300)
+                        .padding(.vertical, 10)
+                        .padding(.horizontal)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: .infinity)
+                                .stroke(.gray, lineWidth: 0.6)
+                        }
+                    }
+                    .frame(height: 30)
+                    .padding(.top, 12)
                 }
                 .preferredColorScheme(.dark)
                 .presentationDetents([.medium, .large])
