@@ -2,29 +2,29 @@
     {
         "name": "ryu.lkp",
         "icon": "http://127.0.0.1:9999/me.jpeg",
-        "isCloseFriend" : true,
-        "haveStory" : false,
+        "isCloseFriend": true,
+        "haveStory": false,
         "id": 0
     },
-  {
-    "name": "sumo.ryu",
-    "icon": "http://127.0.0.1:9999/user1.png",
-    "isCloseFriend" : true,
-    "haveStory" : true,
-    "id": 1
-  },
-  {
-    "name": "whiz_cat",
-    "icon": "http://127.0.0.1:9999/user2.jpg",
-    "isCloseFriend" : false,
-    "haveStory" : true,
-    "id": 2
-  },
-  {
-    "name": "sam_sulek",
-    "icon": "http://127.0.0.1:9999/user3.jpg",
-    "isCloseFriend" : true,
-    "haveStory" : false,
-    "id": 3
-  }
+    {
+        "name": "sumo.ryu",
+        "icon": "http://127.0.0.1:9999/user1.png",
+        "isCloseFriend": true,
+        "haveStory": true,
+        "id": 1
+    },
+    {
+        "name": "whiz_cat",
+        "icon": "http://127.0.0.1:9999/user2.jpg",
+        "isCloseFriend": false,
+        "haveStory": true,
+        "id": 2
+    },
+    {
+        "name": "sam_sulek",
+        "icon": "http://127.0.0.1:9999/user3.jpg",
+        "isCloseFriend": true,
+        "haveStory": false,
+        "id": 3
+    }
 ]

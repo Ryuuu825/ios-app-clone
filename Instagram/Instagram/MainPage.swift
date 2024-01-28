@@ -70,7 +70,7 @@ struct DF {
         formatter.unitsStyle = .short
         formatter.allowedUnits = [.year, .month, .weekOfMonth, .day, .hour, .minute]
         
-        return formatter.string(from: d.timeIntervalSinceNow)!.split(separator: ",")[0].replacingOccurrences(of: "-", with: "") + " ago"
+        return formatter.string(from: d.timeIntervalSinceNow)!.split(separator: " ")[0].replacingOccurrences(of: "-", with: "") + " ago"
     }
 
 }

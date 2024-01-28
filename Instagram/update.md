@@ -1,5 +1,9 @@
 # Instagram
 
+`bd12cad` - display the reply of comment
+
+![reply](./update/bd12cad.png)
+
 `7c74382` - explore page
 
 ![explore](./update/7c74382.png)
