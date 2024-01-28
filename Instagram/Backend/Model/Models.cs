@@ -19,18 +19,28 @@ public class Me : User
     public User[] followed { get; set; }
 }
 
-public class UserComment : ModelBase 
+public class Comment : ModelBase 
 {
     [ForeignKey("id")]
     public User user { get; set; }
-
-    [ForeignKey("id")]
-    public Post post { get; set; }
 
     public string value { get; set; }
     public string type { get; set; }
     public string date { get; set; }
 
+}
+
+public class UserComment : Comment 
+{
+    [ForeignKey("id")]
+    public Post post { get; set; }
+
+    [ForeignKey("id")]
+    public UserCommentComment[] comments { get; set; }
+}
+
+public class UserCommentComment : Comment 
+{
 }
 
 public class Post : ModelBase 

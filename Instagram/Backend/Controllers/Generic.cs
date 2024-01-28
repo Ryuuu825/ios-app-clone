@@ -6,4 +6,5 @@ namespace Backend.Controllers;
 public class UserController : APIControllerBase<User> {}
 public class MeController : APIControllerBase<Me> {}
 public class UserCommentController : APIControllerBase<UserComment> {}
+public class UserCommentCommentController : APIControllerBase<UserCommentComment> {}
 public class PostController : APIControllerBase<Post> {}

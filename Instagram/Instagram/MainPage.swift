@@ -20,11 +20,11 @@ enum MainPageShowViewStatus {
 }
 
 struct PostModel : Codable {
-    let author : UserModel
+    let author : UserModel?
     let image : [String]
     let text : String
-    let likes : [UserModel]
-    let comments : [UserComment]
+    let likes : [UserModel]?
+    let comments : [UserComment]?
     let date : String
     let id : Int
 }
@@ -53,6 +53,7 @@ struct UserComment : Codable {
     let value : String
     let type : String
     let date : String
+    let comments : [UserCommentComment]?
     let id : Int
 }
 
@@ -62,6 +63,16 @@ struct DF {
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
         return dateFormatter.date(from: str)!
     }
+    
+    static func sinceTimeString(str: String) -> String {
+        let d = DF.toDate(str: str)
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .short
+        formatter.allowedUnits = [.year, .month, .weekOfMonth, .day, .hour, .minute]
+        
+        return formatter.string(from: d.timeIntervalSinceNow)!.split(separator: ",")[0].replacingOccurrences(of: "-", with: "") + " ago"
+    }
+
 }
 struct MainPage: View {
     let dummyPostText  = """
@@ -94,7 +105,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                         
                         if (postsData != nil) {
                             ForEach(postsData! , id:\.id) { post in
-                                ImagePost(post.author.icon , post.author.name , post : post)
+                                ImagePost(post.author!.icon , post.author!.name , post : post)
                             }
                         }
                         
@@ -133,123 +144,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
             }
             .background(.black)
             .sheet(isPresented: .constant(showStatus == .Comment)) {
-                VStack {
-                    
-                    Color.clear.frame(height: 20)
-                    
-                    ZStack {
-                        Text("Comments")
-                            .fontWeight(.semibold)
-                        Image(systemName: "paperplane")
-                            .resizable()
-                            .frame(width: 19, height: 22)
-                            .rotationEffect(.degrees(25))
-                            .offset(x: 160)
-                        
-                    }
-                    
-                    ScrollView(.vertical) {
-                        VStack(spacing: 12) {
-
-                            CommentRow("whiz_cat" , "user1" , commentCtx: {
-                                AnyView(
-                                    Text("Real ( I miss her)")
-                                    .font(.system(size:14))
-                                    .fontWeight(.medium)
-                                )
-                            })
-                            
-                            CommentRow("whiz_cat" , "user1" , commentCtx: {
-                                AnyView(
-                                    AsyncGiffy(url: URL(string: "https://media.giphy.com/media/nsVlZjIycpxkWiNt9l/giphy.gif")!) { phase in
-                                        switch phase {
-                                        case .loading:
-                                            ProgressView()
-                                        case .error:
-                                            Text("Failed to load GIF")
-                                        case .success(let giffy):
-                                            giffy
-                                                
-                                        }
-                                    }
-                                    .frame(width: 200, height: 150)
-                                    .cornerRadius(1)
-                                )
-                            })
-                            
-                            CommentRow("whiz_cat" , "user1" , commentCtx: {
-                                AnyView(
-                                    AsyncGiffy(url: URL(string: "https://media.giphy.com/media/l3q2tzon8OCC7BqmY/giphy.gif")!) { phase in
-                                        switch phase {
-                                        case .loading:
-                                            ProgressView()
-                                        case .error:
-                                            Text("Failed to load GIF")
-                                        case .success(let giffy):
-                                            giffy
-                                                
-                                        }
-                                    }
-                                    .frame(width: 200, height: 150)
-                                    .cornerRadius(1)
-                                )
-                            })
-  
-                        }
-                        
-                    }
-                    
-                    LazyVGrid(columns: Array(repeating: GridItem(), count: 8)) {
-                        Text("❤️")
-                        Text("🙌")
-                        Text("🔥")
-                        Text("👏")
-                        Text("😢")
-                        Text("😍")
-                        Text("😮")
-                        Text("😂")
-                    }
-                    .font(.system(size: 24))
-                    .padding(.horizontal, 8)
-                    
-                    HStack {
-                        Circle()
-                            .frame(width: 30)
-                            .foregroundColor(.black)
-                        
-                        HStack {
-                            Text("Add a comment for sumo.ryu")
-                                .foregroundColor(.gray)
-                                .font(.system(size: 13))
-                            
-                            Spacer()
-                            
-                            Text("GIF")
-                                .font(.system(size: 12))
-                                .bold()
-                                .padding(.vertical, 4)
-                                .padding(.horizontal, 2)
-                                .overlay {
-                                    RoundedRectangle(cornerRadius: 2)
-                                        .stroke(.white, lineWidth: 2)
-                                }
-                        }
-                        .frame(width: 300)
-                        .padding(.vertical, 10)
-                        .padding(.horizontal)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: .infinity)
-                                .stroke(.gray, lineWidth: 0.6)
-                        }
-                    }
-                    .frame(height: 30)
-                    .padding(.top, 12)
-                }
-                .preferredColorScheme(.dark)
-                .presentationDetents([.medium, .large])
-                .onDisappear {
-                    showStatus = .Nth
-                }
+                CommentPage()
             }
             
         }
@@ -375,49 +270,10 @@ extension MainPage {
         }
     }
     
-    @ViewBuilder
-    func UserIcon(_ iconName : String , _ username : String, haveStory : Bool = false , isCloseFriend : Bool = false , width: CGFloat = 30) -> some View {
-            
-        AsyncImage(url: URL(string: iconName)) { image in
-            image
-                .resizable()
-                .scaledToFill()
-                .frame(width: width, height: width)
-                .cornerRadius(.infinity)
-                .padding(4)
-                .overlay {
-                    
-                    if haveStory {
-                       
-                        if isCloseFriend {
-                            Circle()
-                                .stroke( Color.green  , lineWidth: width > 45 ? 3 : 1.8)
-                            
-                        } else {
-                            Circle()
-                                .stroke(  LinearGradient(colors: [.yellow, Color.mainColor], startPoint: .bottomLeading, endPoint: .topTrailing)  , lineWidth: width > 45 ? 3 : 1.8)
-                           
-                        }
-                        
-                    } else {
-                        Circle()
-                            .stroke(.gray , lineWidth: 1)
-                            
-                    }
-                    
-                   
-                }
-
-        } placeholder: {
-            
-        }
-
-        
-                
-    }
+    
     
     func filterFollowerLikedPost(post: PostModel) -> [UserModel] {
-        return post.likes.filter { d in
+        return post.likes!.filter { d in
             guard let me = me?.first else {
                 return false
             }
@@ -533,7 +389,7 @@ extension MainPage {
                 .fontWeight(.regular)
             
                 
-                if post.likes.count > 0 {
+                if post.likes!.count > 0 {
                     HStack {
                         
                         UserIconGroup(post: post)
@@ -541,15 +397,15 @@ extension MainPage {
                         HStack(spacing: 4) {
                             Text("Liked by")
                             
-                            if post.likes.count > 1 {
-                                Text(String(post.likes.randomElement()!.name))
+                            if post.likes!.count > 1 {
+                                Text(String(post.likes!.randomElement()!.name))
                                     .fontWeight(.semibold)
                                     .font(.system(size: 14))
                                 
                                 Text("and")
                             }
                             
-                            Text("\(String(post.likes.count)) others")
+                            Text("\(String(post.likes!.count)) others")
                                 .fontWeight(.semibold)
                                 .font(.system(size: 14))
                         }
@@ -565,8 +421,8 @@ extension MainPage {
                 ExpanablePostText(userName: userName , postText: post.text)
                 
                 
-                if post.comments.count > 0 {
-                    Text("View all \(post.comments.count) comments")
+                if post.comments!.count > 0 {
+                    Text("View all \(post.comments!.count) comments")
                         .font(.system(size: 13.5))
                         .foregroundColor(.gray)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -588,18 +444,12 @@ extension MainPage {
                 }
                 .padding(.vertical, 8)
                 
-//                "date": "2024-01-28T21:09:22.083195+08:00"
-                let d = DF.toDate(str: post.date)
-                let formatter = DateComponentsFormatter()
-                let _ = formatter.unitsStyle = .full
-                let _ =  formatter.allowedUnits = [.year, .month, .weekOfMonth, .day, .hour, .minute]
-                
-                if let timeString = formatter.string(from: d.timeIntervalSinceNow) {
-                    Text("\(timeString.replacingOccurrences(of: "-", with: "")) ago")
-                        .font(.system(size: 12))
-                        .foregroundColor(.gray)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
+//
+                Text( DF.sinceTimeString(str: post.date))
+                    .font(.system(size: 12))
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+               
                 
             }
             .padding(.horizontal , 12)
@@ -885,59 +735,49 @@ extension MainPage {
         .frame(maxWidth: .infinity)
     }
    
+    
+}
+
+extension View {
     @ViewBuilder
-    func CommentRow(_ username : String , _ userIconname : String, likes : Int = 701, commentCtx : @escaping () -> AnyView ) -> some View {
-        HStack(alignment: .top) {
-            UserIcon(userIconname, "", width: 20)
+    func UserIcon(_ iconName : String , _ username : String, haveStory : Bool = false , isCloseFriend : Bool = false , width: CGFloat = 30) -> some View {
             
-            VStack(alignment: .leading) {
-                HStack(spacing: 4) {
-                    Text(username)
-                        .fontWeight(.semibold)
+        AsyncImage(url: URL(string: iconName)) { image in
+            image
+                .resizable()
+                .scaledToFill()
+                .frame(width: width, height: width)
+                .cornerRadius(.infinity)
+                .padding(4)
+                .overlay {
+                    
+                    if haveStory {
+                       
+                        if isCloseFriend {
+                            Circle()
+                                .stroke( Color.green  , lineWidth: width > 45 ? 3 : 1.8)
+                            
+                        } else {
+                            Circle()
+                                .stroke(  LinearGradient(colors: [.yellow, Color.mainColor], startPoint: .bottomLeading, endPoint: .topTrailing)  , lineWidth: width > 45 ? 3 : 1.8)
+                           
+                        }
                         
-                    Text("3d")
-                        .fontWeight(.light)
-                        .font(.system(size:11))
+                    } else {
+                        Circle()
+                            .stroke(.gray , lineWidth: 1)
+                            
+                    }
                     
+                   
                 }
-                .font(.system(size:13))
-                
-                
-                commentCtx()
-                
-                
-                Text("Reply")
-                    .font(.system(size:12))
-                    .foregroundColor(.gray)
-                    .offset(y: 5)
-                
-                HStack {
-                    
-                    Rectangle()
-                        .frame(width: 22 , height: 0.6)
-                        .foregroundColor(.gray)
-                    
-                    Text("View 7 more replies")
-                        .font(.system(size:12))
-                        .foregroundColor(.gray)
-                        .padding(.top , 1)
-                        
-                }
-            }
-            
-            Spacer()
-            
-            VStack(spacing: 8) {
-                Image(systemName: "heart")
-                    .font(.system(size:16))
-                
-                Text(String(likes))
-                    .font(.system(size:11))
-            }
-            .padding(.vertical , 12)
+
+        } placeholder: {
             
         }
-        .padding(.horizontal, 12)
+
+        
+                
     }
 }
 
