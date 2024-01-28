@@ -1,5 +1,9 @@
 # Instagram
 
+`bbda31b` - add one more type of message in pm page
+
+![pm](./update/bbda31b.png)
+
 `4b330acf` - pm page
 
 ![pm](./update/4b330acf.gif)
