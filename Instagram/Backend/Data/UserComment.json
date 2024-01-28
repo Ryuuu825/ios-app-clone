@@ -1,0 +1,10 @@
+[
+    {
+        "user" : 1,
+        "post" : 1,
+        "value" : "This is a comment",
+        "type" : "comment",
+        "date" : "2019-01-01 00:00:00",
+        "id" : 1
+    }
+]

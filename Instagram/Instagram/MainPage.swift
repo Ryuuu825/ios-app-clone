@@ -19,6 +19,50 @@ enum MainPageShowViewStatus {
     case Comment
 }
 
+struct PostModel : Codable {
+    let author : UserModel
+    let image : [String]
+    let text : String
+    let likes : [UserModel]
+    let comments : [UserComment]
+    let date : String
+    let id : Int
+}
+ 
+
+struct UserModel : Codable {
+    let name : String
+    let icon : String
+    let isCloseFriend : Bool
+    let haveStory : Bool
+    let id : Int
+}
+
+struct MeUserModel : Codable {
+    let name : String
+    let icon : String
+    let isCloseFriend : Bool
+    let haveStory : Bool
+    let id : Int
+    let followed : [UserModel]
+}
+
+struct UserComment : Codable {
+    let user : UserModel?
+    let post : PostModel?
+    let value : String
+    let type : String
+    let date : String
+    let id : Int
+}
+
+struct DF {
+    static func toDate(str : String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+        return dateFormatter.date(from: str)!
+    }
+}
 struct MainPage: View {
     let dummyPostText  = """
 Having no enemies can be tough, i swore an oath I wouldn't have any enemies a long while back. Despite this having no enemies has lead to a lot of bottled up emotions and I have learned that just because you have no enemies doesn't mean you can't disagree. Everyone should have their own opinions and thought and be respected for that. For anyone who has read this whole comment, thank you for reading😊
@@ -28,6 +72,9 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
     
     @State var t = false
     
+    @State var me: [MeUserModel]? = nil
+    @State var users : [UserModel]? = nil
+    @State var postsData : [PostModel]? = nil
     
     var body: some View {
         NavigationStack {
@@ -45,10 +92,23 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                 
                     VStack(spacing: 20) {
                         
-                        ImagePost(postText: dummyPostText)
-                        ImagePost(postImageNames: ["posts2"], postText: "What a beautiful place")
+                        if (postsData != nil) {
+                            ForEach(postsData! , id:\.id) { post in
+                                ImagePost(post.author.icon , post.author.name , post : post)
+                            }
+                        }
+                        
+                        
                         SponsoredImagePost("user3" , "247 Fitness" , postImageNames: ["ad1"] , postText: "Let's get started! ")
                         ReelPost(postText: "ayo" )
+                    }
+                    .onAppear {
+                        let url = URL(string: "http://localhost:5022/api/post")!
+                        URLSession.shared.dataTask(with: URLRequest(url: url)) { d, r, _ in
+                            guard let d = d else {return} ;
+                            postsData = try? JSONDecoder().decode([PostModel].self , from: d)
+                            
+                        }.resume()
                     }
                     
 
@@ -191,8 +251,18 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                     showStatus = .Nth
                 }
             }
+            
         }
         .preferredColorScheme(.dark)
+        .onAppear {
+            let url = URL(string: "http://localhost:5022/api/me")!
+            URLSession.shared.dataTask(with: URLRequest(url: url)) { d, r, _ in
+                
+                guard let d = d else {return}
+                me = try? JSONDecoder().decode([MeUserModel].self, from:d)
+                
+            }.resume()
+        }
     }
 }
 
@@ -235,46 +305,57 @@ extension MainPage {
     
     @ViewBuilder
     func StoryIcon() -> some View {
+  
         ScrollView(.horizontal) {
             
             HStack {
-                VStack(spacing: 10) {
-                    
-                    ZStack {
+                if me != nil {
+                    VStack(spacing: 6) {
                         
-                        Circle()
-                            .frame(width: 80)
-                            .foregroundColor(.black)
-                            .overlay {
-                                Circle()
-                                    .stroke(.gray , lineWidth: 1)
-                                    .padding(.top , 1)
-                            }
+                        ZStack {
+                            
+                            let firstProfile = me!.first!
+                            
+                            UserIcon(firstProfile.icon , firstProfile.name , haveStory: firstProfile.haveStory , isCloseFriend : firstProfile.isCloseFriend, width: 75)
+                            
+                            Image(systemName: "plus")
+                                .fontWeight(.medium)
+                                .padding(4)
+                                .background {
+                                    Circle()
+                                        .foregroundColor(.blue)
+                                }
+                                .offset(x: 30, y: 25)
+                        }
                         
-                        Image(systemName: "plus")
+                        Text("Your story")
+                            .foregroundColor(.gray)
                             .fontWeight(.medium)
-                            .padding(4)
-                            .background {
-                                Circle()
-                                    .foregroundColor(.blue)
-                            }
-                            .offset(x: 30, y: 25)
+                            .font(.subheadline)
                     }
-                    
-                    Text("Your story")
-                        .foregroundColor(.gray)
-                        .fontWeight(.medium)
-                        .font(.subheadline)
+                    .padding(.horizontal, 15)
                 }
-                .padding(.horizontal, 15)
                 
                 HStack(spacing: 10) {
-                    UserStoryIcon("user1" , "whiz_cat" , haveStory: true)
-                    UserStoryIcon("user2" , "sumo.ryu" , haveStory: true, isCloseFriend: true)
-                    UserStoryIcon("user3" , "sam_sulek")
-
+                    
+                    if users != nil {
+                        ForEach(users!, id:\.id) { user in
+                            UserStoryIcon(user.icon , user.name , haveStory: user.haveStory , isCloseFriend: user.isCloseFriend)
+                        }
+                    }
+                }
+                .onAppear {
+                    let url = URL(string: "http://localhost:5022/api/user")!
+                    URLSession.shared.dataTask(with: URLRequest(url: url)) { d, r, _ in
+                        
+                        guard let d = d else {return}
+                        users = try? JSONDecoder().decode([UserModel].self, from:d)
+                        users = users?.filter{ $0.id != me?.first?.id }
+                        
+                    }.resume()
                 }
             }
+            .padding(.top , 4)
         }
     }
     
@@ -296,9 +377,9 @@ extension MainPage {
     
     @ViewBuilder
     func UserIcon(_ iconName : String , _ username : String, haveStory : Bool = false , isCloseFriend : Bool = false , width: CGFloat = 30) -> some View {
-
-
-            Image(iconName)
+            
+        AsyncImage(url: URL(string: iconName)) { image in
+            image
                 .resizable()
                 .scaledToFill()
                 .frame(width: width, height: width)
@@ -327,38 +408,61 @@ extension MainPage {
                    
                 }
 
-    }
-    
-    @ViewBuilder
-    func UserIconGroup(_ iconNames : [String] = ["user1" , "user2" , "user3"] ) -> some View {
-
-        ZStack {
-            
-            ForEach(iconNames.indices , id:\.hashValue) { i in
-                
-                Image(iconNames[i])
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 18, height: 18)
-                    .cornerRadius(.infinity)
-                    .padding(4)
-                    .background {
-                        
-                        Circle()
-                            .frame(width: 25)
-                            .foregroundColor(.black)
-                        
-                    }
-                    .offset(x: CGFloat(i == 0 ? CGFloat(0) : CGFloat(15 + 10 * (i-1))))
-                    .zIndex(Double(iconNames.count - i))
-            }
+        } placeholder: {
             
         }
-        .frame(width: CGFloat(15 + 10 * (iconNames.count)), alignment: .leading)
+
+        
+                
+    }
+    
+    func filterFollowerLikedPost(post: PostModel) -> [UserModel] {
+        return post.likes.filter { d in
+            guard let me = me?.first else {
+                return false
+            }
+            return me.followed.contains { follower in
+                return follower.id == d.id
+            }
+        }
+    }
+    @ViewBuilder
+    func UserIconGroup(post : PostModel ) -> some View {
+        
+        let filtered = filterFollowerLikedPost(post: post)
+        let _ = print(filtered)
+        
+        ZStack {
+            
+            ForEach(filtered.indices , id:\.hashValue) { i in
+                
+                AsyncImage(url: URL(string: filtered[i].icon)) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 18, height: 18)
+                        .cornerRadius(.infinity)
+                        .padding(4)
+                        .background {
+                            
+                            Circle()
+                                .frame(width: 25)
+                                .foregroundColor(.black)
+                            
+                        }
+                        .offset(x: CGFloat(i == 0 ? CGFloat(0) : CGFloat(15 + 10 * (i-1))))
+                        .zIndex(Double(filtered.count - i))
+                } placeholder: {
+                    
+                }
+                
+            }
+        }
+        .frame(width: CGFloat(15 + 10 * (filtered.count)), alignment: .leading)
     }
     
     @ViewBuilder
-    func ImagePost(_ userIcon : String = "user2" , _ userName: String = "sumo.ryu", _ haveStory : Bool = true, postImageNames : [String] = ["posts1", "posts2"] , postText : String) -> some View {
+    func ImagePost(_ userIcon : String = "user2" , _ userName: String = "sumo.ryu", _ haveStory : Bool = true, post : PostModel) -> some View {
         VStack {
             HStack {
                 UserIcon(userIcon, userName, haveStory: haveStory)
@@ -374,9 +478,9 @@ extension MainPage {
             .padding(.top , 4)
             .padding(.horizontal, 4)
             
-            if postImageNames.count > 1 {
+            if post.image.count > 1 {
                 TabView {
-                    ForEach(postImageNames, id:\.hashValue) { i in
+                    ForEach(post.image, id:\.hashValue) { i in
                         Image(i)
                             .resizable()
                             .scaledToFill()
@@ -386,10 +490,17 @@ extension MainPage {
                 .frame(height: 300)
                 .tabViewStyle(.page)
             } else {
-                Image(postImageNames[0])
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 390, height: 300)
+                
+                AsyncImage(url: URL(string: post.image[0])) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 390, height: 300)
+                } placeholder: {
+                    
+                }
+
+                    
             }
         
 
@@ -422,35 +533,44 @@ extension MainPage {
                 .fontWeight(.regular)
             
                 
-                HStack {
-                    
-                    UserIconGroup()
-                    
-                    HStack(spacing: 4) {
-                        Text("Liked by")
+                if post.likes.count > 0 {
+                    HStack {
                         
-                        Text("sum_sulek")
-                            .fontWeight(.semibold)
-                            .font(.system(size: 14))
+                        UserIconGroup(post: post)
                         
-                        Text("and")
+                        HStack(spacing: 4) {
+                            Text("Liked by")
+                            
+                            if post.likes.count > 1 {
+                                Text(String(post.likes.randomElement()!.name))
+                                    .fontWeight(.semibold)
+                                    .font(.system(size: 14))
+                                
+                                Text("and")
+                            }
+                            
+                            Text("\(String(post.likes.count)) others")
+                                .fontWeight(.semibold)
+                                .font(.system(size: 14))
+                        }
                         
-                        Text("5501 others")
-                            .fontWeight(.semibold)
-                            .font(.system(size: 14))
+                        Spacer()
+                        
                     }
-                    
-                    Spacer()
-                    
+                    .font(.system(size: 13))
+                } else {
+                    Color.clear.frame(height: 2)
                 }
-                .font(.system(size: 13))
                 
-                ExpanablePostText(userName: userName , postText: postText)
+                ExpanablePostText(userName: userName , postText: post.text)
                 
-                Text("View all 5 comments")
-                    .font(.system(size: 13.5))
-                    .foregroundColor(.gray)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                if post.comments.count > 0 {
+                    Text("View all \(post.comments.count) comments")
+                        .font(.system(size: 13.5))
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
                 
                 HStack {
                     Circle()
@@ -468,11 +588,19 @@ extension MainPage {
                 }
                 .padding(.vertical, 8)
                 
+//                "date": "2024-01-28T21:09:22.083195+08:00"
+                let d = DF.toDate(str: post.date)
+                let formatter = DateComponentsFormatter()
+                let _ = formatter.unitsStyle = .full
+                let _ =  formatter.allowedUnits = [.year, .month, .weekOfMonth, .day, .hour, .minute]
                 
-                Text("29 minutes ago")
-                    .font(.system(size: 12))
-                    .foregroundColor(.gray)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                if let timeString = formatter.string(from: d.timeIntervalSinceNow) {
+                    Text("\(timeString.replacingOccurrences(of: "-", with: "")) ago")
+                        .font(.system(size: 12))
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
             }
             .padding(.horizontal , 12)
             .padding(.top , 8)
@@ -572,7 +700,7 @@ extension MainPage {
                 
                 HStack {
                     
-                    UserIconGroup()
+                    // UserIconGroup()
                     
                     HStack(spacing: 4) {
                         Text("Liked by")
@@ -726,7 +854,7 @@ extension MainPage {
                 
                 HStack {
                     
-                    UserIconGroup()
+                   //  UserIconGroup()
                     
                     HStack(spacing: 4) {
                         Text("Followed by")
@@ -873,7 +1001,10 @@ struct ReelContent : View {
     }
 }
 struct MainPage_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
         MainPage()
+            
     }
 }

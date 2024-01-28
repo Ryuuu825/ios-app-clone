@@ -1,7 +1,8 @@
 namespace Backend.Models;
 
+using System.Text.Json;
+
 public class ModelBase
 {
-    public int Id { get; set; }
-    
+    public int id { get; set; }
 }

@@ -1,0 +1,30 @@
+[
+    {
+        "author": 3,
+        "image": [
+            "http://127.0.0.1:9999/posts1.jpg"
+        ],
+        "text": "Having no enemies can be tough, i swore an oath I wouldn't have any enemies a long while back. Despite this having no enemies has lead to a lot of bottled up emotions and I have learned that just because you have no enemies doesn't mean you can't disagree. Everyone should have their own opinions and thought and be respected for that. For anyone who has read this whole comment, thank you for reading😊",
+        "likes": [
+            1,
+            2
+        ],
+        "comments" : [
+            1
+        ],
+        "date": "2024-01-28T21:09:22.083195+08:00",
+        "id": 1
+    },
+    {
+        "author": 2,
+        "image": [
+            "http://127.0.0.1:9999/posts2.png"
+        ],
+        "likes": [
+        ],
+        "comments" : [],
+        "text": "What a beautiful place!",
+        "date": "2024-01-28T21:09:22.083195+08:00",
+        "id": 2
+    }
+]
