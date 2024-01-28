@@ -52,6 +52,10 @@ struct PrivateMessagePage: View {
                         
             
                         VStack(alignment: .trailing, spacing: 4) {
+                            
+                            
+                            
+                            
                             VStack {
                                 Text("You replied")
                                     .foregroundColor(.gray)
@@ -288,7 +292,60 @@ struct PrivateMessagePage: View {
 
                         }
                         .frame(maxWidth: .infinity, alignment: .trailing)
+                        
+                        HStack(alignment: .bottom) {
                             
+                            Image("user2")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 30, height: 30)
+                                .cornerRadius(.infinity)
+                                .padding(4)
+                            
+                            VStack(alignment: .leading, spacing: 4) {
+                                VStack(alignment: .leading) {
+                                    Text("Mentioned you in their story")
+                                        .foregroundColor(.gray)
+                                        .font(.system(size: 14))
+                                    
+                                    HStack {
+                                        
+                                        Rectangle()
+                                            .frame(width: 5)
+                                            .cornerRadius(.infinity)
+                                            .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                                        
+                                        ZStack {
+                                            Image("story1")
+                                                .resizable()
+                                                .scaledToFill()
+                                                .frame(width: 150, height: 250)
+                                                .cornerRadius(0)
+                                            
+                                            Text("Add to your story")
+                                                .foregroundColor(.white)
+                                                .font(.system(size: 14))
+                                                .fontWeight(.medium)
+                                                .padding(.vertical , 8)
+                                                .padding(.horizontal, 12)
+                                                .background(Color(uiColor: .secondarySystemBackground))
+                                                .cornerRadius(12)
+                                                .offset(y: 100)
+                                        }
+                                        .cornerRadius(12)
+                                    }
+                                    
+                                }
+                                .padding(.bottom, 8)
+                                
+                               
+                                
+                               
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding(.leading, 12)
+                       
                         
                     }
                     .fontWeight(.regular)
@@ -321,7 +378,7 @@ struct PrivateMessagePage: View {
             .font(.system(size: 22))
             .frame(maxWidth: .infinity, maxHeight: 20)
             .padding(.trailing)
-            .padding(.leading, 8)
+            .padding(.leading, 4)
             .padding(.vertical, 12)
             .background(.thinMaterial)
             .cornerRadius(.infinity)
