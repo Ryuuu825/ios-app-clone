@@ -24,7 +24,7 @@ struct MainPage: View {
 Having no enemies can be tough, i swore an oath I wouldn't have any enemies a long while back. Despite this having no enemies has lead to a lot of bottled up emotions and I have learned that just because you have no enemies doesn't mean you can't disagree. Everyone should have their own opinions and thought and be respected for that. For anyone who has read this whole comment, thank you for reading😊
 """
     
-    @State var showStatus : MainPageShowViewStatus = .Comment
+    @State var showStatus : MainPageShowViewStatus = .Nth
     
     @State var t = false
     
@@ -64,6 +64,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                 
                 if showStatus == .Comment {
                     Color.black.opacity(0.7)
+                        .frame(height: 750)
                         .onTapGesture {
                             showStatus = .Nth
                         }
@@ -446,7 +447,32 @@ extension MainPage {
                 
                 ExpanablePostText(userName: userName , postText: postText)
                 
+                Text("View all 5 comments")
+                    .font(.system(size: 13.5))
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
+                HStack {
+                    Circle()
+                        .frame(height: 25)
+                        .foregroundColor(.black)
+                        .overlay {
+                            Circle()
+                                .stroke(.white, lineWidth: 0.5)
+                        }
+                    
+                    Text("Add a comment...")
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.vertical, 8)
+                
+                
+                Text("29 minutes ago")
+                    .font(.system(size: 12))
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.horizontal , 12)
             .padding(.top , 8)
@@ -568,6 +594,33 @@ extension MainPage {
                 .font(.system(size: 13))
                 
                 ExpanablePostText(userName: userName , postText: postText)
+                
+                Text("View all 5 comments")
+                    .font(.system(size: 13.5))
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                
+                HStack {
+                    Circle()
+                        .frame(height: 25)
+                        .foregroundColor(.black)
+                        .overlay {
+                            Circle()
+                                .stroke(.white, lineWidth: 0.5)
+                        }
+                    
+                    Text("Add a comment...")
+                        .font(.system(size: 14))
+                        .foregroundColor(.gray)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.vertical, 8)
+                
+                
+                Text("29 minutes ago")
+                    .font(.system(size: 12))
+                    .foregroundColor(.gray)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 
             }
