@@ -99,8 +99,8 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                         }
                         
                         
-                        SponsoredImagePost("user3" , "247 Fitness" , postImageNames: ["ad1"] , postText: "Let's get started! ")
-                        ReelPost(postText: "ayo" )
+                        SponsoredImagePost("http://127.0.0.1:9999/user3.jpg" , "247 Fitness" , postImageNames: ["ad1"] , postText: "Let's get started! ")
+                        // ReelPost(postText: "ayo" )
                     }
                     .onAppear {
                         let url = URL(string: "http://localhost:5022/api/post")!
@@ -760,7 +760,7 @@ extension MainPage {
     
     
     @ViewBuilder
-    func SponsoredImagePost(_ userIcon : String = "user2" , _ userName: String = "sumo.ryu", _ haveStory : Bool = true, postImageNames : [String] = ["posts1", "posts2"] , postText : String) -> some View {
+    func SponsoredImagePost(_ userIcon : String = "user3.jpg" , _ userName: String = "sumo.ryu", _ haveStory : Bool = true, postImageNames : [String] = ["posts1", "posts2"] , postText : String) -> some View {
         VStack {
             HStack {
                 UserIcon(userIcon, userName, haveStory: haveStory)
@@ -955,7 +955,7 @@ struct ExpanablePostText : View {
                 if isExpand {
                     Text("**\(userName)** \(String(postText))" )
                 } else {
-                    let truncatedText = postText.prefix(50)
+                    let truncatedText = postText.prefix(10 * 3)
                     Text("**\(userName)** \(String(truncatedText))... " ) + Text("more").foregroundColor(.gray)
                 }
             } else {
