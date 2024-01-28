@@ -133,13 +133,13 @@ struct PrivateMessagePage: View {
                                         .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
                                 }
                             }
-                            Text("Bro")
+                            Text("True")
                                 .padding(.vertical , 12)
                                 .padding(.horizontal , 12)
                                 .background(Color.MessageColor)
                                 .cornerRadius(24)
                             
-                            Text("So depressed in these few days")
+                            Text("0 motivation abt life")
                                 .padding(.vertical , 12)
                                 .padding(.horizontal , 12)
                                 .background(Color.MessageColor)
@@ -296,10 +296,9 @@ struct PrivateMessagePage: View {
                 .frame(maxWidth: .infinity)
                 
                 
-                
+                Color.clear.frame(height: 60)
             }
-            .frame(height: 745)
-            .offset(y: -20)
+            .frame(height: 790)
             
             
             HStack(alignment: .center) {
@@ -321,7 +320,8 @@ struct PrivateMessagePage: View {
             }
             .font(.system(size: 22))
             .frame(maxWidth: .infinity, maxHeight: 20)
-            .padding(.horizontal)
+            .padding(.trailing)
+            .padding(.leading, 8)
             .padding(.vertical, 12)
             .background(.thinMaterial)
             .cornerRadius(.infinity)
