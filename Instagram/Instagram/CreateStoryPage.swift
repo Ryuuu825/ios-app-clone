@@ -10,30 +10,35 @@ import SwiftUI
 struct CreateStoryPage: View {
     @State var scale : CGFloat = 1
     @State var moveX : CGFloat = 0
-    @State var moveY : CGFloat = 0
+    @State var moveY : CGFloat = 200
     
     var body: some View {
         ZStack {
             GeometryReader { proxy in
                 DynamicBackgroundColor("story" , width: proxy.size.width, height: proxy.size.height - 60 )
+                
+                Image("story")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: .infinity)
+                    .scaleEffect(x: scale,y: scale)
+                    .offset(x: moveX, y: moveY)
+                    .gesture(
+                        MagnificationGesture()
+                            .onChanged({ v in
+                                scale = v
+                            }).simultaneously(with: DragGesture().onChanged({ v in
+                                moveX = v.translation.width
+                                moveY = v.translation.height
+                            }))
+                    )
+                
+                Color.black.frame(height: 70)
+                    .offset(y: proxy.size.height - 70)
             }
             .cornerRadius(24)
             
-            Image("story")
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: .infinity)
-                .scaleEffect(x: scale,y: scale)
-                .offset(x: moveX, y: moveY)
-                .gesture(
-                    MagnificationGesture()
-                        .onChanged({ v in
-                            scale = v
-                        }).simultaneously(with: DragGesture().onChanged({ v in
-                            moveX = v.translation.width
-                            moveY = v.translation.height
-                        }))
-                )
+            
             
             HStack {
                 HStack {
