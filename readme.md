@@ -1,6 +1,6 @@
 # IOS Application Clone
 
-[latest update](./Instagram/update.md)
+Working Project - [Instagram](./Instagram/update.md)
 
 ## Description
 
