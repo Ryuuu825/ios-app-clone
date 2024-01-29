@@ -26,14 +26,12 @@ struct CreateStoryPage: View {
                 .scaleEffect(x: scale,y: scale)
                 .offset(x: moveX, y: moveY)
                 .gesture(
-                    DragGesture()
-                    .onChanged({ v in
-                        self.moveX = v.translation.width
-                        self.moveY = v.translation.height
-                        
-                    }).simultaneously(with: MagnificationGesture()
+                    MagnificationGesture()
                         .onChanged({ v in
                             scale = v
+                        }).simultaneously(with: DragGesture().onChanged({ v in
+                            moveX = v.translation.width
+                            moveY = v.translation.height
                         }))
                 )
             
