@@ -4,6 +4,10 @@
 Make a backend for it is so tired. I am retarded
 ```
 
+`a5c4125` - create story page
+
+![story](./update/a5c4125.gif)
+
 `def24df` - select photo from gallery to post story
 
 ![story](./update/def24df.png)
