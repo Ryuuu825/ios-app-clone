@@ -4,6 +4,10 @@
 Make a backend for it is so tired. I am retarded
 ```
 
+`def24df` - select photo from gallery to post story
+
+![story](./update/def24df.png)
+
 `bd12cad` - display the reply of comment
 
 ![reply](./update/bd12cad.png)
