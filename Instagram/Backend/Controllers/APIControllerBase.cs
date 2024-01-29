@@ -1,3 +1,5 @@
+// I dont know how to refactor this, so I'm just going to leave it as is
+
 namespace Backend.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -167,8 +169,6 @@ public class APIControllerBase<T> : ControllerBase
             
         }
     }
-
-    
 
     private void Save()
     {
