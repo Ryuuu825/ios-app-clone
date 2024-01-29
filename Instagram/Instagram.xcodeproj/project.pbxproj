@@ -12,6 +12,7 @@
 		42569D502B669527009D429B /* CommentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42569D4F2B669527009D429B /* CommentPage.swift */; };
 		4299EDAE2B5D4DBE00717BB2 /* a.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4299EDAD2B5D4DBE00717BB2 /* a.mp4 */; };
 		4299EDB42B5D62C900717BB2 /* ProfilePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4299EDB32B5D62C900717BB2 /* ProfilePage.swift */; };
+		42B0CE752B6790FB000CF245 /* SelectPhotoForStory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B0CE742B6790FB000CF245 /* SelectPhotoForStory.swift */; };
 		42B9E25C2B5BC96B008357A6 /* InstagramApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B9E25B2B5BC96B008357A6 /* InstagramApp.swift */; };
 		42B9E25E2B5BC96B008357A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B9E25D2B5BC96B008357A6 /* ContentView.swift */; };
 		42B9E2602B5BC96C008357A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42B9E25F2B5BC96C008357A6 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		42569D4F2B669527009D429B /* CommentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPage.swift; sourceTree = "<group>"; };
 		4299EDAD2B5D4DBE00717BB2 /* a.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = a.mp4; sourceTree = "<group>"; };
 		4299EDB32B5D62C900717BB2 /* ProfilePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePage.swift; sourceTree = "<group>"; };
+		42B0CE742B6790FB000CF245 /* SelectPhotoForStory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPhotoForStory.swift; sourceTree = "<group>"; };
 		42B9E2582B5BC96B008357A6 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42B9E25B2B5BC96B008357A6 /* InstagramApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramApp.swift; sourceTree = "<group>"; };
 		42B9E25D2B5BC96B008357A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				42D420D52B63FBC300569B24 /* PrivateMessagePage.swift */,
 				42569D4D2B66260D009D429B /* ExplorePage.swift */,
 				42569D4F2B669527009D429B /* CommentPage.swift */,
+				42B0CE742B6790FB000CF245 /* SelectPhotoForStory.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B0CE752B6790FB000CF245 /* SelectPhotoForStory.swift in Sources */,
 				42569D4E2B66260D009D429B /* ExplorePage.swift in Sources */,
 				422AC47B2B5CF16400043335 /* StoryPage.swift in Sources */,
 				42B9E25E2B5BC96B008357A6 /* ContentView.swift in Sources */,
@@ -322,6 +326,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Instagram/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = testing;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -353,6 +358,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Instagram/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = testing;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

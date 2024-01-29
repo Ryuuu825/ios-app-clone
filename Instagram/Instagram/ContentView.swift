@@ -16,7 +16,7 @@ struct ContentView: View {
     @StateObject var setting = Setting()
     
     var body: some View {
-        MainPage()
+        SelectPhotoForStory()
             .preferredColorScheme(.dark)
             .onAppear {
                 let url = URL(string: "http://localhost:5022/api/me")!

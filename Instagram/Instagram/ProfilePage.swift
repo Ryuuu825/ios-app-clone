@@ -308,7 +308,6 @@ extension ProfilePage {
             Image(uiImage: Helper.getPreviewImage(forURL: Bundle.main.url(forResource: videoName, withExtension: videoExtension)!, atSeconds: 0)!)
                 .resizable()
                 
-            
             Image(systemName: "video.fill")
                 .offset(x: 45, y: -45)
         }
