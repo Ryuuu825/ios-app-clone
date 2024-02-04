@@ -4,6 +4,10 @@
 Make a backend for it is so tired. I am retarded
 ```
 
+`4ed97de` - reels page ( only one video , no scrolling )
+
+![4ed97de](./update/4ed97de.gif)
+
 `9ae720e` - story page
 
 ![story](./update/9ae720e.gif)
