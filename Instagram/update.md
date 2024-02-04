@@ -4,6 +4,10 @@
 Make a backend for it is so tired. I am retarded
 ```
 
+`9ae720e` - story page
+
+![story](./update/9ae720e.gif)
+
 `bcfd20d` - add text? for story
 
 ![story](./update/bcfd20d.png)
