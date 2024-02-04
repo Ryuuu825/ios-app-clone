@@ -12,33 +12,37 @@ struct CreateStoryPage: View {
     @State var moveX : CGFloat = 0
     @State var moveY : CGFloat = 200
     
+    @State var text : String = ""
+    @FocusState var focusOnKb : Int?
+    
     var body: some View {
         ZStack {
             GeometryReader { proxy in
                 DynamicBackgroundColor("story" , width: proxy.size.width, height: proxy.size.height - 60 )
                 
-                Image("story")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity)
-                    .scaleEffect(x: scale,y: scale)
-                    .offset(x: moveX, y: moveY)
-                    .gesture(
-                        MagnificationGesture()
-                            .onChanged({ v in
-                                scale = v
-                            }).simultaneously(with: DragGesture().onChanged({ v in
-                                moveX = v.translation.width
-                                moveY = v.translation.height
-                            }))
-                    )
+                ZStack {
+                    Image("story")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity)
+                        .scaleEffect(scale)
+                        .offset(x: moveX, y: moveY)
+                        .gesture(
+                            MagnificationGesture()
+                                .onChanged({ v in
+                                    scale = v * 0.9
+                                }).simultaneously(with: DragGesture().onChanged({ v in
+                                    moveX = v.translation.width
+                                    moveY = v.translation.height
+                                }))
+                        )
+                        .animation(.interactiveSpring(), value: scale)
+                }
                 
                 Color.black.frame(height: 70)
                     .offset(y: proxy.size.height - 70)
             }
             .cornerRadius(24)
-            
-            
             
             HStack {
                 HStack {
@@ -141,6 +145,53 @@ struct CreateStoryPage: View {
             .frame(maxWidth: .infinity)
             .padding(.horizontal)
             .offset(y: -350)
+            
+            ZStack {
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                
+                VStack {
+                    
+                    
+                    
+                    HStack {
+                        
+                        ZStack {
+                            Rectangle()
+                                .frame(width: 20, height: 300)
+                                .foregroundColor(.gray)
+                                .rotationEffect(.degrees(3))
+                            
+                            Circle()
+                                .frame(width: 25)
+                                .offset(x: 5)
+                        }
+                        .offset(x: -15)
+                        
+                        TextField("" , text: $text)
+                            .focused($focusOnKb, equals: 1)
+                            .onAppear {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    self.focusOnKb = 1
+                                }
+                            }
+                            .frame(height: 100)
+                    }
+                    .frame(height: 300)
+                    .frame(maxWidth: .infinity)
+                    .cornerRadius(0)
+                    
+                        
+                        
+                   
+                }
+                .frame(height: 500)
+                .ignoresSafeArea(.keyboard, edges: .bottom)
+                
+                
+            }
+            .ignoresSafeArea()
+            
 
         }
         .preferredColorScheme(.dark)
