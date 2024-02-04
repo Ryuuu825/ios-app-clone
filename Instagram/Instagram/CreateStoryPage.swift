@@ -12,6 +12,7 @@ struct CreateStoryPage: View {
     @State var moveX : CGFloat = 0
     @State var moveY : CGFloat = 200
     
+    @State var showAddText : Bool = false
     @State var text : String = ""
     @FocusState var focusOnKb : Int?
     
@@ -146,53 +147,58 @@ struct CreateStoryPage: View {
             .padding(.horizontal)
             .offset(y: -350)
             
-            ZStack {
-                Color.black.opacity(0.4)
-                    .ignoresSafeArea()
-                
-                VStack {
+            if showAddText {
+                ZStack {
+                    Color.black.opacity(0.4)
+                        .ignoresSafeArea()
                     
-                    
-                    
-                    HStack {
+                    VStack {
                         
-                        ZStack {
-                            Rectangle()
-                                .frame(width: 20, height: 300)
-                                .foregroundColor(.gray)
-                                .rotationEffect(.degrees(3))
+                        
+                        
+                        HStack {
                             
-                            Circle()
-                                .frame(width: 25)
-                                .offset(x: 5)
-                        }
-                        .offset(x: -15)
-                        
-                        TextField("" , text: $text)
-                            .focused($focusOnKb, equals: 1)
-                            .onAppear {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                    self.focusOnKb = 1
-                                }
+                            ZStack {
+                                Rectangle()
+                                    .frame(width: 20, height: 300)
+                                    .foregroundColor(.gray)
+                                    .rotationEffect(.degrees(3))
+                                
+                                Circle()
+                                    .frame(width: 25)
+                                    .offset(x: 5)
                             }
-                            .frame(height: 100)
+                            .offset(x: -15)
+                            
+                            TextField("" , text: $text)
+                                .focused($focusOnKb, equals: 1)
+                                .onAppear {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                        self.focusOnKb = 1
+                                    }
+                                }
+                                .frame(height: 100)
+                        }
+                        .frame(height: 300)
+                        .frame(maxWidth: .infinity)
+                        .cornerRadius(0)
+                        
+                            
+                            
+                       
                     }
-                    .frame(height: 300)
-                    .frame(maxWidth: .infinity)
-                    .cornerRadius(0)
+                    .frame(height: 500)
+                    .ignoresSafeArea(.keyboard, edges: .bottom)
                     
-                        
-                        
-                   
+                    
                 }
-                .frame(height: 500)
-                .ignoresSafeArea(.keyboard, edges: .bottom)
-                
-                
+                .ignoresSafeArea()
             }
-            .ignoresSafeArea()
             
 
+        }
+        .onTapGesture {
+            showAddText.toggle()
         }
         .preferredColorScheme(.dark)
     }
