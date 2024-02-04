@@ -740,7 +740,7 @@ extension MainPage {
 
 extension View {
     @ViewBuilder
-    func UserIcon(_ iconName : String , _ username : String, haveStory : Bool = false , isCloseFriend : Bool = false , width: CGFloat = 30) -> some View {
+    func UserIcon(_ iconName : String , _ username : String, haveStory : Bool = false , isCloseFriend : Bool = false , width: CGFloat = 30, noRing : Bool = false) -> some View {
             
         AsyncImage(url: URL(string: iconName)) { image in
             image
@@ -751,22 +751,24 @@ extension View {
                 .padding(4)
                 .overlay {
                     
-                    if haveStory {
-                       
-                        if isCloseFriend {
-                            Circle()
-                                .stroke( Color.green  , lineWidth: width > 45 ? 3 : 1.8)
+                    if !noRing {
+                        if haveStory {
+                           
+                            if isCloseFriend {
+                                Circle()
+                                    .stroke( Color.green  , lineWidth: width > 45 ? 3 : 1.8)
+                                
+                            } else {
+                                Circle()
+                                    .stroke(  LinearGradient(colors: [.yellow, Color.mainColor], startPoint: .bottomLeading, endPoint: .topTrailing)  , lineWidth: width > 45 ? 3 : 1.8)
+                               
+                            }
                             
                         } else {
                             Circle()
-                                .stroke(  LinearGradient(colors: [.yellow, Color.mainColor], startPoint: .bottomLeading, endPoint: .topTrailing)  , lineWidth: width > 45 ? 3 : 1.8)
-                           
+                                .stroke(.gray , lineWidth: 1)
+                                
                         }
-                        
-                    } else {
-                        Circle()
-                            .stroke(.gray , lineWidth: 1)
-                            
                     }
                     
                    

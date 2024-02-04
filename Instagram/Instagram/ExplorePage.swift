@@ -9,6 +9,9 @@ import SwiftUI
 import AVKit
 
 struct ExplorePage: View {
+    
+    @State var player = AVPlayer(url: Bundle.main.url(forResource: "a", withExtension: "mp4")!)
+    
     var body: some View {
         VStack {
             HStack {
@@ -63,7 +66,7 @@ struct ExplorePage: View {
                                 }
                                 .frame(width: proxy.size.width / 3 * 2 , height: proxy.size.width / 3 * 2)
                                 
-                                @State var player = AVPlayer(url: Bundle.main.url(forResource: "a", withExtension: "mp4")!)
+                                
                                 VideoPlayer(player: player)
                                     .frame(width: proxy.size.width / 3, height: proxy.size.width / 3 * 2 )
                                     .cornerRadius(0)
@@ -76,7 +79,7 @@ struct ExplorePage: View {
                             
                             HStack(spacing: 2) {
                              
-                                @State var player = AVPlayer(url: Bundle.main.url(forResource: "a", withExtension: "mp4")!)
+                                
                                 VideoPlayer(player: player)
                                     .frame(width: proxy.size.width / 3, height: proxy.size.width / 3 * 2 )
                                     .cornerRadius(0)

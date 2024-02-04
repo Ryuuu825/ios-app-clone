@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		422AC47B2B5CF16400043335 /* StoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422AC47A2B5CF16400043335 /* StoryPage.swift */; };
+		4243253F2B6F8882006CF01E /* ReelsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4243253E2B6F8882006CF01E /* ReelsPage.swift */; };
+		424325462B6F9343006CF01E /* 1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 424325452B6F9343006CF01E /* 1.mp4 */; };
 		42569D4E2B66260D009D429B /* ExplorePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42569D4D2B66260D009D429B /* ExplorePage.swift */; };
 		42569D502B669527009D429B /* CommentPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42569D4F2B669527009D429B /* CommentPage.swift */; };
 		4299EDAE2B5D4DBE00717BB2 /* a.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 4299EDAD2B5D4DBE00717BB2 /* a.mp4 */; };
@@ -22,13 +24,13 @@
 		42BB47AB2B5FB988009B6A39 /* Giffy in Frameworks */ = {isa = PBXBuildFile; productRef = 42BB47AA2B5FB988009B6A39 /* Giffy */; };
 		42BB47AD2B5FFC7C009B6A39 /* MessagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42BB47AC2B5FFC7C009B6A39 /* MessagePage.swift */; };
 		42D420D62B63FBC300569B24 /* PrivateMessagePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D420D52B63FBC300569B24 /* PrivateMessagePage.swift */; };
-		42FE36672B5FA8AD00787890 /* IMG_7201.MOV in Resources */ = {isa = PBXBuildFile; fileRef = 42FE36662B5FA8AD00787890 /* IMG_7201.MOV */; };
-		42FE366B2B5FAC2F00787890 /* test.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 42FE366A2B5FAC2F00787890 /* test.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		422AC47A2B5CF16400043335 /* StoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPage.swift; sourceTree = "<group>"; };
 		422AC4822B5D1CC700043335 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4243253E2B6F8882006CF01E /* ReelsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReelsPage.swift; sourceTree = "<group>"; };
+		424325452B6F9343006CF01E /* 1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 1.mp4; sourceTree = "<group>"; };
 		42569D4D2B66260D009D429B /* ExplorePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExplorePage.swift; sourceTree = "<group>"; };
 		42569D4F2B669527009D429B /* CommentPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentPage.swift; sourceTree = "<group>"; };
 		4299EDAD2B5D4DBE00717BB2 /* a.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = a.mp4; sourceTree = "<group>"; };
@@ -43,8 +45,6 @@
 		42B9E2692B5BCA30008357A6 /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		42BB47AC2B5FFC7C009B6A39 /* MessagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePage.swift; sourceTree = "<group>"; };
 		42D420D52B63FBC300569B24 /* PrivateMessagePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateMessagePage.swift; sourceTree = "<group>"; };
-		42FE36662B5FA8AD00787890 /* IMG_7201.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = IMG_7201.MOV; sourceTree = "<group>"; };
-		42FE366A2B5FAC2F00787890 /* test.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = test.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +78,8 @@
 		42B9E25A2B5BC96B008357A6 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				424325452B6F9343006CF01E /* 1.mp4 */,
 				4299EDAD2B5D4DBE00717BB2 /* a.mp4 */,
-				42FE36662B5FA8AD00787890 /* IMG_7201.MOV */,
-				42FE366A2B5FAC2F00787890 /* test.mp4 */,
 				422AC4822B5D1CC700043335 /* Info.plist */,
 				42B9E25B2B5BC96B008357A6 /* InstagramApp.swift */,
 				42B9E25D2B5BC96B008357A6 /* ContentView.swift */,
@@ -95,6 +94,7 @@
 				42569D4F2B669527009D429B /* CommentPage.swift */,
 				42B0CE742B6790FB000CF245 /* SelectPhotoForStory.swift */,
 				42B0CE762B67A19A000CF245 /* CreateStoryPage.swift */,
+				4243253E2B6F8882006CF01E /* ReelsPage.swift */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -156,6 +156,7 @@
 			mainGroup = 42B9E24F2B5BC96B008357A6;
 			packageReferences = (
 				42BB47A92B5FB988009B6A39 /* XCRemoteSwiftPackageReference "Giffy" */,
+				424325422B6F8C05006CF01E /* XCRemoteSwiftPackageReference "VideoPlayer" */,
 			);
 			productRefGroup = 42B9E2592B5BC96B008357A6 /* Products */;
 			projectDirPath = "";
@@ -172,10 +173,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				42B9E2632B5BC96C008357A6 /* Preview Assets.xcassets in Resources */,
-				42FE36672B5FA8AD00787890 /* IMG_7201.MOV in Resources */,
 				42B9E2602B5BC96C008357A6 /* Assets.xcassets in Resources */,
+				424325462B6F9343006CF01E /* 1.mp4 in Resources */,
 				4299EDAE2B5D4DBE00717BB2 /* a.mp4 in Resources */,
-				42FE366B2B5FAC2F00787890 /* test.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +188,7 @@
 			files = (
 				42B0CE752B6790FB000CF245 /* SelectPhotoForStory.swift in Sources */,
 				42569D4E2B66260D009D429B /* ExplorePage.swift in Sources */,
+				4243253F2B6F8882006CF01E /* ReelsPage.swift in Sources */,
 				422AC47B2B5CF16400043335 /* StoryPage.swift in Sources */,
 				42B9E25E2B5BC96B008357A6 /* ContentView.swift in Sources */,
 				42BB47AD2B5FFC7C009B6A39 /* MessagePage.swift in Sources */,
@@ -405,6 +406,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		424325422B6F8C05006CF01E /* XCRemoteSwiftPackageReference "VideoPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wxxsw/VideoPlayer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		42BB47A92B5FB988009B6A39 /* XCRemoteSwiftPackageReference "Giffy" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/tfmart/Giffy.git";
