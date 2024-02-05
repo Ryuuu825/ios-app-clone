@@ -126,6 +126,9 @@ struct CreateStoryPage: View {
                 .cornerRadius(.infinity))
     ]
     
+    let dismiss : () -> Void
+    
+    
     var body: some View {
         ZStack {
             GeometryReader { proxy in
@@ -209,6 +212,9 @@ struct CreateStoryPage: View {
             }
             .frame(maxWidth: .infinity)
             .offset(y: 350)
+            .onTapGesture {
+                dismiss()
+            }
             
             HStack {
                 Image(systemName: "chevron.left")
@@ -252,7 +258,9 @@ struct CreateStoryPage: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.horizontal)
+            
             .offset(y: -350)
+            
             
            
             ZStack {
@@ -549,9 +557,7 @@ struct CreateStoryPage: View {
             
             
         }
-        .onTapGesture {
-            showAddText = true
-        }
+        
         .sheet(isPresented: $showPreMusic, content: {
             VStack {
                 HStack {
@@ -652,6 +658,8 @@ struct CreateStoryPage: View {
 
 struct CreateStoryPage_Previews: PreviewProvider {
     static var previews: some View {
-        CreateStoryPage()
+        CreateStoryPage {
+         
+        }
     }
 }

@@ -17,6 +17,8 @@ enum MainPageShowViewStatus {
     case Nth
     case Story
     case Comment
+    case CreateStory
+    case Message
 }
 
 struct PostModel : Codable {
@@ -93,6 +95,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                 
                 ScrollView {
                     Header()
+                        .padding(.top, 24)
 
                     StoryIcon()
 
@@ -101,7 +104,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                         .foregroundColor(.gray)
 
                 
-                    VStack(spacing: 20) {
+                    LazyVStack(spacing: 20) {
                         
                         if (postsData != nil) {
                             ForEach(postsData! , id:\.id) { post in
@@ -125,27 +128,31 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
 
                 }
                 
-                if showStatus == .Story {
-                    StoryPage {
-                        showStatus = .Nth
-                    }
-                        .background(.black)
-                        .animation(.spring(), value: showStatus)
+        
+                StoryPage {
+                    showStatus = .Nth
                 }
+                .background(.black)
+                .opacity(showStatus == .Story ? 1 : 0)
                 
-                if showStatus == .Comment {
-                    Color.black.opacity(0.7)
-                        .frame(height: 750)
-                        .onTapGesture {
-                            showStatus = .Nth
-                        }
-                    
+                SelectPhotoForStory {
+                    showStatus = .Nth
                 }
+                .opacity(showStatus == .CreateStory ? 1 : 0)
+                
+                MessagePage {
+                    showStatus = .Nth
+                }
+                .offset(x: showStatus == .Message ? 0 : 450)
+                .transition(.slide)
+                
+                
             }
             .background(.black)
             .sheet(isPresented: .constant(showStatus == .Comment)) {
                 CommentPage()
             }
+            .animation(.spring(), value: showStatus)
             
         }
         .preferredColorScheme(.dark)
@@ -158,6 +165,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                 
             }.resume()
         }
+        
     }
 }
 
@@ -189,6 +197,9 @@ extension MainPage {
                         }
                         .offset(x:10,y:-10)
                 }
+                .onTapGesture {
+                    showStatus = .Message
+                }
                     
             }
             .fontWeight(.medium)
@@ -207,6 +218,7 @@ extension MainPage {
                 if me != nil {
                     VStack(spacing: 6) {
                         
+                        
                         ZStack {
                             
                             let firstProfile = me!.first!
@@ -222,6 +234,13 @@ extension MainPage {
                                 }
                                 .offset(x: 30, y: 25)
                         }
+                        .accentColor(.white)
+                        .onTapGesture {
+                            showStatus = .CreateStory
+                        }
+                        
+
+                        
                         
                         Text("Your story")
                             .foregroundColor(.gray)
@@ -775,7 +794,9 @@ extension View {
                 }
 
         } placeholder: {
-            
+            Circle()
+                .frame(width: width)
+                .foregroundColor(.black)
         }
 
         

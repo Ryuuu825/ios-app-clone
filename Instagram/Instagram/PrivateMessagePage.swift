@@ -16,11 +16,18 @@ extension Color {
     static let ReplyMessageColor : Color = Color(red: 0.1559624195, green: 0.0728477716, blue: 0.4215835929)
 }
 struct PrivateMessagePage: View {
+    
+    
+    let dismiss : () -> Void
+    
     var body: some View {
         ZStack {
             VStack(spacing:0) {
                 HStack {
                     Image(systemName: "chevron.left")
+                        .onTapGesture {
+                            dismiss()
+                        }
                     Image("user2")
                         .resizable()
                         .scaledToFill()
@@ -352,6 +359,7 @@ struct PrivateMessagePage: View {
                             
                         }
                         .fontWeight(.regular)
+                        .padding(.trailing, 12)
                     }
                 }
                 .frame(maxWidth: .infinity)
@@ -391,12 +399,15 @@ struct PrivateMessagePage: View {
             
         }
         .preferredColorScheme(.dark)
+        .background()
     }
 }
 
 struct PrivateMessagePage_Previews: PreviewProvider {
     static var previews: some View {
-        PrivateMessagePage()
+        PrivateMessagePage {
+            
+        }
     }
 }
 

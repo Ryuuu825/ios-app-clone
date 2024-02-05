@@ -444,6 +444,9 @@ struct StoryPage: View {
                     Image(systemName: "ellipsis")
                     Image(systemName: "xmark")
                         .font(.system(size: 28))
+                        .onTapGesture {
+                            dismiss()
+                        }
 
                 }
                 .padding(.horizontal,4)
