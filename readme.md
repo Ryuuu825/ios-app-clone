@@ -13,9 +13,9 @@ I am trying to clone some IOS application to learn how to build IOS application.
 
 [Instagram](https://apps.apple.com/hk/app/instagram/id389801252) (so laggy after update to xcode 15.3)
 
-![Instagram](./assets/Instagram/instagram.gif)
-![Instagram](./assets/Instagram/instagram2.gif)
-![Instagram](./assets/Instagram/instagram3.gif)
+![Instagram](./assets/instagram/instagram.gif)
+![Instagram](./assets/instagram/instagram2.gif)
+![Instagram](./assets/instagram/instagram3.gif)
 
 
 </tr>
