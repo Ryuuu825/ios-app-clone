@@ -89,6 +89,8 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
     @State var users : [UserModel]? = nil
     @State var postsData : [PostModel]? = nil
     
+    @Binding var showBottomBar : Bool
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -134,6 +136,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                 }
                 .background(.black)
                 .opacity(showStatus == .Story ? 1 : 0)
+                .padding(.top, 24)
                 
                 SelectPhotoForStory {
                     showStatus = .Nth
@@ -145,7 +148,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
                 }
                 .offset(x: showStatus == .Message ? 0 : 450)
                 .transition(.slide)
-                
+                .padding(.top, 24)
                 
             }
             .background(.black)
@@ -155,6 +158,7 @@ Having no enemies can be tough, i swore an oath I wouldn't have any enemies a lo
             .animation(.spring(), value: showStatus)
             
         }
+        .ignoresSafeArea()
         .preferredColorScheme(.dark)
         .onAppear {
             let url = URL(string: "http://localhost:5022/api/me")!
@@ -286,6 +290,7 @@ extension MainPage {
         }
         .onTapGesture {
             showStatus = .Story
+            showBottomBar = false
         }
     }
     
@@ -867,7 +872,7 @@ struct MainPage_Previews: PreviewProvider {
     
     
     static var previews: some View {
-        MainPage()
+        MainPage(showBottomBar: .constant(false))
             
     }
 }

@@ -304,6 +304,7 @@ struct MessagePage: View {
         }
         .preferredColorScheme(.dark)
         .background(.black)
+    
         
         
         

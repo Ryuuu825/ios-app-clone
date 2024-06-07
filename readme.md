@@ -10,6 +10,16 @@ I am trying to clone some IOS application to learn how to build IOS application.
 
 <table width="100%">
 <tr>
+
+[Instagram](https://apps.apple.com/hk/app/instagram/id389801252) (so laggy after update to xcode 15.3)
+
+![Instagram](./assets/Instagram/instagram.gif)
+![Instagram](./assets/Instagram/instagram2.gif)
+![Instagram](./assets/Instagram/instagram3.gif)
+
+
+</tr>
+<tr>
 <td>
 
 [MCL Cinemas](https://apps.apple.com/hk/app/mcl-cinemas-ticketing/id807365065?l=en-GB)
